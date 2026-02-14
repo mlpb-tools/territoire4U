@@ -1,1181 +1,681 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Plateforme pédagogique Iparralde 2040 - Mission Locale Pays Basque">
-    <meta name="theme-color" content="#C62828">
-    <title>Compétence Territoire – Iparralde 2040 x LS4YOU</title>
-    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiSXBhcnJhbGRlIDIwNDAiLCJzaG9ydF9uYW1lIjoiSXBhcnJhbGRlIiwic3RhcnRfdXJsIjoiLyIsImRpc3BsYXkiOiJzdGFuZGFsb25lIiwiYmFja2dyb3VuZF9jb2xvciI6IiNGRkZGRkYiLCJ0aGVtZV9jb2xvciI6IiNDNjI4MjgiLCJpY29ucyI6W3sic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCNGJXeHVjejBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01DOXpkbWNpSUhkcFpIUm9QU0l4T1RJaUlHaGxhV2RvZEQwaU1Ua3lJajQ4Y21WamRDQjNhV1IwYUQwaU1Ua3lJaUJvWldsbmFIUTlJakU1TWlJZ1ptbHNiRDBpSTBNMk1qZ3lPQ0l2UGp3dmMzWm5QZz09Iiwic2l6ZXMiOiIxOTJ4MTkyIiwidHlwZSI6ImltYWdlL3N2Zyt4bWwifV19">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Nunito:wght@300;400;600;800;900&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --rouge-cerise: #C62828;
-            --jaune-vif: #FFD54F;
-            --turquoise: #4DD0E1;
-            --menthe: #B2DFDB;
-            --orange: #FFB74D;
-            --blanc: #FFFFFF;
-            --noir: #212121;
-            --gris-leger: #F5F5F5;
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        body {
-            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 1.7;
-            color: var(--noir);
-            background: var(--blanc);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Nunito', sans-serif;
-            font-weight: 900;
-            line-height: 1.2;
-        }
-
-        h1 {
-            font-size: clamp(36px, 6vw, 64px);
-            color: var(--rouge-cerise);
-            letter-spacing: -0.02em;
-        }
-
-        h2 {
-            font-size: clamp(28px, 5vw, 48px);
-            color: var(--rouge-cerise);
-        }
-
-        h3 {
-            font-size: clamp(20px, 4vw, 32px);
-            color: var(--noir);
-            font-weight: 800;
-        }
-
-        p {
-            font-weight: 300;
-            font-size: clamp(15px, 2vw, 18px);
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .header {
-            background: var(--blanc);
-            padding: 24px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 20px rgba(198, 40, 40, 0.08);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .logo {
-            font-family: 'Nunito', sans-serif;
-            font-weight: 900;
-            font-size: clamp(24px, 4vw, 36px);
-            color: var(--rouge-cerise);
-            letter-spacing: -0.01em;
-        }
-
-        .logo span {
-            color: var(--turquoise);
-        }
-
-        .nav-breadcrumb {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            flex-wrap: wrap;
-            font-weight: 500;
-            color: var(--noir);
-        }
-
-        .btn {
-            font-family: 'Nunito', sans-serif;
-            font-weight: 700;
-            padding: 16px 40px;
-            border-radius: 50px;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 18px;
-            display: inline-block;
-            text-decoration: none;
-            text-align: center;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--rouge-cerise), #D32F2F);
-            color: var(--blanc);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 32px rgba(198, 40, 40, 0.3);
-        }
-
-        .btn-secondary {
-            background: linear-gradient(135deg, var(--turquoise), #26C6DA);
-            color: var(--blanc);
-        }
-
-        .btn-secondary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 32px rgba(77, 208, 225, 0.3);
-        }
-
-        .btn-outline {
-            background: var(--blanc);
-            color: var(--rouge-cerise);
-            border: 3px solid var(--rouge-cerise);
-            box-shadow: none;
-        }
-
-        .btn-outline:hover {
-            background: var(--rouge-cerise);
-            color: var(--blanc);
-        }
-
-        .card {
-            background: var(--blanc);
-            border-radius: 32px;
-            padding: 40px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
-            transition: var(--transition);
-            margin-bottom: 30px;
-            position: relative;
-            overflow: visible;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: var(--turquoise);
-            opacity: 0.1;
-            top: -30px;
-            right: -30px;
-            z-index: 0;
-        }
-
-        .card > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-        }
-
-        .pillar-card {
-            cursor: pointer;
-            border-radius: 32px;
-            position: relative;
-            overflow: hidden;
-            border: 4px solid transparent;
-        }
-
-        .pillar-card::after {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            top: -50px;
-            right: -50px;
-            opacity: 0.15;
-            transition: var(--transition);
-        }
-
-        .pillar-card.accueillir {
-            border-color: var(--rouge-cerise);
-        }
-
-        .pillar-card.accueillir::after {
-            background: var(--rouge-cerise);
-        }
-
-        .pillar-card.creer {
-            border-color: var(--jaune-vif);
-        }
-
-        .pillar-card.creer::after {
-            background: var(--jaune-vif);
-        }
-
-        .pillar-card.habiter {
-            border-color: var(--turquoise);
-        }
-
-        .pillar-card.habiter::after {
-            background: var(--turquoise);
-        }
-
-        .pillar-card.soin {
-            border-color: var(--orange);
-        }
-
-        .pillar-card.soin::after {
-            background: var(--orange);
-        }
-
-        .pillar-card:hover::after {
-            opacity: 0.25;
-            transform: scale(1.2);
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 12px 28px;
-            border-radius: 50px;
-            background: linear-gradient(135deg, var(--jaune-vif), var(--orange));
-            color: var(--noir);
-            font-weight: 700;
-            font-size: 16px;
-            margin: 8px;
-            box-shadow: 0 6px 20px rgba(255, 213, 79, 0.4);
-            font-family: 'Nunito', sans-serif;
-        }
-
-        .badge-earned {
-            padding: 32px;
-            border-radius: 32px;
-            background: linear-gradient(135deg, var(--rouge-cerise), var(--orange));
-            color: var(--blanc);
-            text-align: center;
-            min-width: 220px;
-            box-shadow: 0 12px 40px rgba(198, 40, 40, 0.3);
-        }
-
-        .badge-icon {
-            font-size: 64px;
-            margin-bottom: 16px;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 16px;
-            background: var(--gris-leger);
-            border-radius: 50px;
-            overflow: hidden;
-            margin: 20px 0;
-            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--turquoise), var(--menthe));
-            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 50px;
-            box-shadow: 0 2px 12px rgba(77, 208, 225, 0.5);
-        }
-
-        .grid {
-            display: grid;
-            gap: 30px;
-            margin: 30px 0;
-        }
-
-        .grid-2 {
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        }
-
-        .grid-3 {
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        }
-
-        .choice-card {
-            padding: 24px;
-            border: 3px solid var(--gris-leger);
-            border-radius: 24px;
-            cursor: pointer;
-            transition: var(--transition);
-            background: var(--blanc);
-            position: relative;
-        }
-
-        .choice-card::before {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--turquoise);
-            opacity: 0;
-            top: -15px;
-            right: -15px;
-            transition: var(--transition);
-        }
-
-        .choice-card:hover {
-            border-color: var(--turquoise);
-            transform: scale(1.03);
-        }
-
-        .choice-card:hover::before {
-            opacity: 0.15;
-        }
-
-        .choice-card.selected {
-            border-color: var(--rouge-cerise);
-            background: linear-gradient(135deg, rgba(198, 40, 40, 0.05), rgba(255, 183, 77, 0.05));
-            box-shadow: 0 8px 24px rgba(198, 40, 40, 0.2);
-        }
-
-        .choice-card.selected::before {
-            background: var(--rouge-cerise);
-            opacity: 0.2;
-        }
-
-        input[type="text"],
-        input[type="number"],
-        textarea,
-        select {
-            width: 100%;
-            padding: 16px 24px;
-            border: 3px solid var(--gris-leger);
-            border-radius: 20px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 16px;
-            transition: var(--transition);
-            background: var(--blanc);
-        }
-
-        input:focus,
-        textarea:focus,
-        select:focus {
-            outline: none;
-            border-color: var(--turquoise);
-            box-shadow: 0 0 0 4px rgba(77, 208, 225, 0.15);
-        }
-
-        textarea {
-            min-height: 140px;
-            resize: vertical;
-        }
-
-        .score-display {
-            background: linear-gradient(135deg, var(--turquoise), var(--menthe));
-            color: var(--blanc);
-            padding: 48px;
-            border-radius: 32px;
-            text-align: center;
-            margin: 30px 0;
-            box-shadow: 0 16px 48px rgba(77, 208, 225, 0.3);
-        }
-
-        .score-number {
-            font-size: clamp(56px, 8vw, 80px);
-            font-weight: 900;
-            font-family: 'Nunito', sans-serif;
-            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .verb-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 16px;
-            margin: 30px 0;
-        }
-
-        .verb-card {
-            padding: 24px;
-            text-align: center;
-            border: 3px solid var(--gris-leger);
-            border-radius: 24px;
-            cursor: pointer;
-            transition: var(--transition);
-            background: var(--blanc);
-        }
-
-        .verb-card:hover {
-            transform: scale(1.08) rotate(2deg);
-            border-color: var(--jaune-vif);
-        }
-
-        .verb-card.selected {
-            border-color: var(--rouge-cerise);
-            background: linear-gradient(135deg, var(--jaune-vif), var(--orange));
-            color: var(--blanc);
-            box-shadow: 0 8px 24px rgba(255, 213, 79, 0.4);
-        }
-
-        .verb-icon {
-            font-size: 40px;
-            margin-bottom: 12px;
-        }
-
-        .slider-container {
-            margin: 30px 0;
-        }
-
-        input[type="range"] {
-            width: 100%;
-            height: 12px;
-            border-radius: 12px;
-            background: var(--gris-leger);
-            outline: none;
-            -webkit-appearance: none;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--rouge-cerise), var(--orange));
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(198, 40, 40, 0.3);
-        }
-
-        input[type="range"]::-moz-range-thumb {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--rouge-cerise), var(--orange));
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 4px 12px rgba(198, 40, 40, 0.3);
-        }
-
-        .canvas-container {
-            background: var(--gris-leger);
-            border-radius: 24px;
-            padding: 30px;
-            margin: 30px 0;
-            box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-
-        #mindmapCanvas {
-            border: 3px dashed var(--turquoise);
-            border-radius: 16px;
-            cursor: crosshair;
-            background: var(--blanc);
-        }
-
-        .simulator-result {
-            padding: 32px;
-            border-radius: 24px;
-            margin: 30px 0;
-            border-left: 8px solid;
-        }
-
-        .simulator-result.vert {
-            background: linear-gradient(135deg, rgba(77, 208, 225, 0.1), rgba(178, 223, 219, 0.1));
-            border-left-color: var(--turquoise);
-        }
-
-        .simulator-result.orange {
-            background: linear-gradient(135deg, rgba(255, 183, 77, 0.1), rgba(255, 213, 79, 0.1));
-            border-left-color: var(--orange);
-        }
-
-        .simulator-result.rouge {
-            background: linear-gradient(135deg, rgba(198, 40, 40, 0.1), rgba(211, 47, 47, 0.1));
-            border-left-color: var(--rouge-cerise);
-        }
-
-        .drag-drop-area {
-            min-height: 200px;
-            border: 3px dashed var(--turquoise);
-            border-radius: 24px;
-            padding: 24px;
-            margin: 20px 0;
-            background: var(--gris-leger);
-        }
-
-        .draggable {
-            padding: 16px 24px;
-            background: var(--blanc);
-            border: 3px solid var(--turquoise);
-            border-radius: 20px;
-            margin: 12px 0;
-            cursor: move;
-            user-select: none;
-            font-weight: 500;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .draggable:hover {
-            border-color: var(--rouge-cerise);
-            transform: scale(1.02);
-        }
-
-        .tree-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .tree-section {
-            width: 100%;
-            max-width: 600px;
-        }
-
-        .badges-collection {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 24px;
-            justify-content: center;
-            margin: 40px 0;
-        }
-
-        .passport-section {
-            background: var(--blanc);
-            padding: 60px 40px;
-            border-radius: 32px;
-            margin: 30px 0;
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
-            position: relative;
-        }
-
-        .passport-section::before {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: var(--turquoise);
-            opacity: 0.05;
-            top: -100px;
-            right: -100px;
-        }
-
-        .passport-section::after {
-            content: '';
-            position: absolute;
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: var(--jaune-vif);
-            opacity: 0.05;
-            bottom: -80px;
-            left: -80px;
-        }
-
-        .feedback-display {
-            background: linear-gradient(135deg, rgba(77, 208, 225, 0.1), rgba(178, 223, 219, 0.1));
-            border-left: 6px solid var(--turquoise);
-            padding: 24px;
-            border-radius: 20px;
-            margin: 16px 0;
-        }
-
-        .notification {
-            position: fixed;
-            top: 100px;
-            right: 30px;
-            padding: 20px 32px;
-            background: var(--blanc);
-            border-radius: 50px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            animation: slideIn 0.4s ease;
-            font-weight: 600;
-            border-left: 6px solid var(--rouge-cerise);
-        }
-
-        @keyframes slideIn {
-            from { transform: translateX(500px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        .loading {
-            text-align: center;
-            padding: 60px;
-        }
-
-        .spinner {
-            width: 60px;
-            height: 60px;
-            border: 6px solid var(--gris-leger);
-            border-top-color: var(--rouge-cerise);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .fade-in {
-            animation: fadeIn 0.6s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .floating-circle {
-            position: fixed;
-            border-radius: 50%;
-            opacity: 0.08;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .circle-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--turquoise);
-            top: 10%;
-            right: -100px;
-        }
-
-        .circle-2 {
-            width: 300px;
-            height: 300px;
-            background: var(--jaune-vif);
-            bottom: 15%;
-            left: -80px;
-        }
-
-        .circle-3 {
-            width: 200px;
-            height: 200px;
-            background: var(--orange);
-            top: 50%;
-            right: 10%;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px 16px;
-            }
-
-            .card {
-                padding: 24px;
-                border-radius: 24px;
-            }
-
-            .btn {
-                padding: 14px 32px;
-                width: 100%;
-                margin: 8px 0;
-            }
-
-            .grid-2, .grid-3 {
-                grid-template-columns: 1fr;
-            }
-
-            .verb-grid {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            }
-
-            .score-display {
-                padding: 32px 24px;
-            }
-
-            .passport-section {
-                padding: 40px 24px;
-            }
-
-            h1 {
-                font-size: 36px;
-            }
-
-            h2 {
-                font-size: 28px;
-            }
-        }
-
-        @media print {
-            .header, .btn, .notification {
-                display: none;
-            }
-
-            .passport-section {
-                box-shadow: none;
-                page-break-inside: avoid;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MLS4YOU #2 — Accueillir</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+
+  <style>
+    :root { --red:#C62828; --yellow:#FFC928; --turq:#20B8AE; --mint:#BFEFE8; --orange:#FFB067; --bg:#FFF9F0; --ink:#101114; --muted:rgba(16,17,20,.7); --max:980px; }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:'Montserrat',system-ui,-apple-system,sans-serif;overflow-x:hidden}
+    h1,h2,h3{font-family:'Baloo 2',cursive;font-weight:800;margin:0}
+    .bg-shapes{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+    .bg-circle{position:absolute;border-radius:999px;filter:blur(2px);opacity:.8}
+    .c-mint{width:400px;height:400px;left:-100px;top:-100px;background:var(--mint);opacity:.9}
+    .c-yellow{width:350px;height:350px;right:-100px;top:15%;background:rgba(255,201,40,.5)}
+    .c-orange{width:450px;height:450px;left:-150px;bottom:0;background:rgba(255,176,103,.4)}
+    .c-red{width:300px;height:300px;right:-50px;bottom:-50px;background:rgba(198,40,40,.25)}
+    .wrap{position:relative;z-index:1;max-width:var(--max);margin:22px auto 28px;padding:0 16px 26px}
+    .frame{border-radius:24px;box-shadow:0 20px 40px rgba(0,0,0,.1);overflow:hidden;border:5px solid transparent;background-image:linear-gradient(rgba(255,255,255,.95),rgba(255,255,255,.95)),linear-gradient(135deg,var(--red),var(--yellow),var(--turq));background-origin:border-box;background-clip:padding-box,border-box}
+    .hero{position:relative;border-bottom:4px solid var(--turq);padding:16px;background:#fff}
+    .hero-inner{position:relative;border-radius:18px;overflow:hidden;min-height:clamp(120px,22vw,170px);display:flex;align-items:center;padding:22px 28px}
+    .header-pattern{position:absolute;inset:0;background:#fdfdfd;z-index:0}
+    .hs{position:absolute;border-radius:50%;opacity:.65;mix-blend-mode:multiply}
+    .hs-1{background:var(--red);width:140px;height:140px;top:-40px;left:10%}
+    .hs-2{background:var(--yellow);width:180px;height:180px;bottom:-60px;right:20%}
+    .hs-3{background:var(--turq);width:120px;height:120px;top:20px;right:40%}
+    .hs-4{background:var(--mint);width:90px;height:90px;bottom:10px;left:30%}
+    .hs-5{background:var(--orange);width:70px;height:70px;top:60px;left:45%}
+    .header-content{position:relative;z-index:10;display:flex;width:100%;justify-content:space-between;align-items:flex-start}
+    .logo-left,.logo-right{display:flex;z-index:20}
+    .logo-left{margin-top:-12px;margin-left:-16px}
+    .logo-right{margin-top:-12px;margin-right:-16px}
+    .header-logo{height:58px;object-fit:contain;mix-blend-mode:multiply;filter:drop-shadow(0 4px 6px rgba(0,0,0,.05))}
+    .title-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:15}
+    .hero-title{font-size:clamp(28px,3.6vw,38px);color:var(--red);line-height:1;text-shadow:-3px -3px 0 #fff,3px -3px 0 #fff,-3px 3px 0 #fff,3px 3px 0 #fff,0 8px 16px rgba(0,0,0,.12)}
+    .hero-title small{display:block;font-family:'Montserrat',sans-serif;font-size:clamp(12px,1.8vw,16px);color:var(--ink);text-transform:uppercase;letter-spacing:.05em;margin-top:8px;text-shadow:-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff,2px 2px 0 #fff}
+
+    .content{background:#fff;padding:18px 16px 14px}
+    .toprow{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .back{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:800;padding:10px 12px;border-radius:999px;background:#fff;border:2px solid rgba(16,17,20,.08);box-shadow:0 2px 4px rgba(0,0,0,.05)}
+    .back:hover{transform:translateY(-1px)}
+    .progress-wrap{flex:1;min-width:240px;max-width:420px;background:rgba(0,0,0,.06);border-radius:999px;overflow:hidden;height:12px}
+    .progress{height:100%;width:0%;background:var(--turq);transition:width .3s ease}
+    .progress-meta{font-weight:800;font-size:12px;color:var(--muted)}
+
+    .panel{margin-top:14px;border-radius:18px;border:3px solid rgba(16,17,20,.08);box-shadow:0 8px 16px rgba(16,17,20,.06);overflow:hidden}
+    .panel-h{padding:14px 14px;background:rgba(191,239,232,.25);display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .panel-h h2{font-size:18px}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:#fff;border:2px solid rgba(16,17,20,.08);font-weight:900;font-size:11px}
+    .panel-b{padding:14px}
+    .hint{color:var(--muted);font-weight:600;font-size:13px;line-height:1.4}
+
+    .cardset{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+    .opt{border-radius:16px;border:2px solid rgba(16,17,20,.10);background:#fff;padding:12px;cursor:pointer;transition:.15s;min-height:78px}
+    .opt:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
+    .opt strong{display:block}
+    .opt small{display:block;margin-top:6px;color:var(--muted);font-weight:600}
+    .opt[data-on="1"]{border-color:var(--turq);box-shadow:0 0 0 4px rgba(32,184,174,.15)}
+    .story{margin-top:12px;padding:12px;border-radius:16px;background:rgba(0,0,0,.05);border-left:5px solid var(--turq);color:var(--muted);font-weight:600;line-height:1.5}
+    .ml-tip{margin-top:12px;padding:12px;border-radius:16px;background:rgba(255,201,40,.14);border-left:5px solid var(--yellow);color:rgba(16,17,20,.78);font-weight:700;line-height:1.5}
+
+    .field{margin-top:12px}
+    textarea,input{width:100%;padding:12px;border-radius:14px;border:2px solid rgba(16,17,20,.12);font:inherit;font-weight:600}
+    textarea{min-height:86px;resize:vertical}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 14px;border-radius:14px;border:none;font-weight:900;cursor:pointer;text-transform:uppercase;letter-spacing:.05em;box-shadow:0 4px 12px rgba(0,0,0,.10)}
+    .btn.primary{background:var(--turq);color:#fff}
+    .btn.ghost{background:#fff;border:2px solid rgba(16,17,20,.12);color:var(--ink);box-shadow:0 2px 4px rgba(0,0,0,.05)}
+    .btn.warn{background:var(--red);color:#fff}
+    .mini{font-size:12px;color:var(--muted);font-weight:700}
+
+    .badgebox{margin-top:14px;padding:12px;border-radius:18px;background:linear-gradient(90deg,rgba(32,184,174,.12),rgba(255,201,40,.12));border:2px solid rgba(16,17,20,.10)}
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .badge{display:inline-flex;align-items:center;gap:10px;padding:10px 12px;border-radius:16px;background:#fff;border:2px solid rgba(16,17,20,.10);font-weight:900}
+    .dot{width:14px;height:14px;border-radius:999px;background:rgba(0,0,0,.08)}
+    .badge[data-on="1"] .dot{background:var(--turq)}
+    .badge small{display:block;color:var(--muted);font-weight:700}
+
+    .frieze{display:flex;gap:12px;padding:0 20px;margin-top:10px;margin-bottom:24px;background:#fff}
+    .capsule{height:16px;border-radius:999px;flex:1;box-shadow:inset 0 2px 4px rgba(0,0,0,.1)}
+    .eu{margin:0 20px 20px;border-radius:20px;background:#fff;border:3px solid rgba(16,17,20,.08);box-shadow:0 10px 20px rgba(16,17,20,.05);padding:20px;text-align:center}
+    .eu-logo{height:65px;mix-blend-mode:multiply;filter:drop-shadow(0 4px 6px rgba(0,0,0,.05))}
+    .eu p{margin:8px auto 0;max-width:90ch;font-size:12px;line-height:1.6;color:var(--muted);font-weight:500}
+    .eu .copyright{color:var(--ink);font-weight:800;font-size:12px;margin-top:4px}
+    .eu .link{display:inline-block;margin-top:12px;color:var(--turq);font-weight:900;text-decoration:none;font-size:13px}
+    .eu .link:hover{text-decoration:underline;color:var(--red)}
+
+    @media(max-width:760px){
+      .title-center{position:relative;top:auto;left:auto;transform:none;width:100%;margin-top:10px}
+      .cardset{grid-template-columns:1fr}
+    }
+  </style>
 </head>
+
 <body>
-    <div class="floating-circle circle-1"></div>
-    <div class="floating-circle circle-2"></div>
-    <div class="floating-circle circle-3"></div>
+  <div class="bg-shapes" aria-hidden="true">
+    <div class="bg-circle c-mint"></div>
+    <div class="bg-circle c-yellow"></div>
+    <div class="bg-circle c-orange"></div>
+    <div class="bg-circle c-red"></div>
+  </div>
 
-    <header class="header">
-        <div class="header-content">
-            <div class="logo">Iparralde <span>2040</span></div>
-            <div class="nav-breadcrumb">
-                <span id="breadcrumb">Accueil</span>
+  <main class="wrap">
+    <section class="frame">
+
+      <header class="hero">
+        <div class="hero-inner">
+          <div class="header-pattern" aria-hidden="true">
+            <div class="hs hs-1"></div><div class="hs hs-2"></div><div class="hs hs-3"></div><div class="hs hs-4"></div><div class="hs hs-5"></div>
+          </div>
+
+          <div class="header-content">
+            <div class="logo-left">
+              <img src="https://static.wixstatic.com/media/dd5dab_47743b1c86024865ba19e623a3db327f~mv2.avif/v1/fill/w_224,h_60,al_c,q_80,enc_avif,quality_auto/dd5dab_47743b1c86024865ba19e623a3db327f~mv2.avif" alt="Logo Mission Locale Pays Basque" class="header-logo" loading="lazy" />
             </div>
-            <button class="btn btn-outline" onclick="showProgress()">📊 Ma Progression</button>
+
+            <div class="title-center">
+              <h1 class="hero-title">ACCUEILLIR<small>Ton super-pouvoir relationnel — ~1h</small></h1>
+            </div>
+
+            <div class="logo-right">
+              <img src="https://www.lifeskills4youth.eu/wp-content/uploads/2024/07/LS4YOU_Logo.png" alt="Logo LS4YOU" class="header-logo" loading="lazy" />
+            </div>
+          </div>
         </div>
-    </header>
+      </header>
 
-    <div class="container">
-        <div id="app-content"></div>
-    </div>
+      <section class="content">
+        <div class="toprow">
+          <a class="back" href="./index.html"><i data-lucide="arrow-left"></i> Retour</a>
 
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('data:text/javascript;base64,c2VsZi5hZGRFdmVudExpc3RlbmVyKCdpbnN0YWxsJywgKCkgPT4gc2VsZi5za2lwV2FpdGluZygpKTsKc2VsZi5hZGRFdmVudExpc3RlbmVyKCdmZXRjaCcsIGV2ZW50ID0+IHsKICBldmVudC5yZXNwb25kV2l0aCgKICAgIGNhY2hlcy5tYXRjaChldmVudC5yZXF1ZXN0KS50aGVuKHJlc3BvbnNlID0+IHJlc3BvbnNlIHx8IGZldGNoKGV2ZW50LnJlcXVlc3QpKQogICk7Cn0pOw==');
-        }
+          <div class="progress-wrap" aria-label="progression">
+            <div id="progress" class="progress"></div>
+          </div>
+          <div class="progress-meta"><span id="pct">0%</span> complété</div>
+        </div>
 
-        const AppState = {
-            currentView: 'accueil',
-            userData: {},
-            badges: [],
-            progress: {
-                accueillir: 0,
-                creer: 0,
-                habiter: 0,
-                soin: 0
-            },
-            load() {
-                const saved = localStorage.getItem('iparralde2040');
-                if (saved) {
-                    const data = JSON.parse(saved);
-                    this.userData = data.userData || {};
-                    this.badges = data.badges || [];
-                    this.progress = data.progress || this.progress;
-                }
-            },
-            save() {
-                localStorage.setItem('iparralde2040', JSON.stringify({
-                    userData: this.userData,
-                    badges: this.badges,
-                    progress: this.progress
-                }));
-            },
-            addBadge(name) {
-                if (!this.badges.includes(name)) {
-                    this.badges.push(name);
-                    this.save();
-                    showNotification(`🎉 Badge "${name}" débloqué !`);
-                }
-            },
-            updateProgress(pillar, percent) {
-                this.progress[pillar] = Math.max(this.progress[pillar], percent);
-                this.save();
+        <div class="badgebox">
+          <div style="font-weight:900;">Objectif du pilier</div>
+          <div class="hint">
+            Transformer la méfiance en <strong>reliance</strong>, prendre ta place, et maîtriser 3 rituels simples.
+            Tu débloques le badge <strong>RELIEUR</strong> quand tu valides <strong>7 cartes</strong> + que tu écris <strong>1 ajustement concret</strong>.
+          </div>
+          <div class="badges">
+            <div class="badge" id="b-relieur"><span class="dot"></span>RELIEUR <small>Accueillir validé</small></div>
+          </div>
+        </div>
+
+        <!-- MICROLEARNING + JEU EXPÉRIENTIEL -->
+        <div class="panel" data-step="1">
+          <div class="panel-h">
+            <h2>Ton super-pouvoir relationnel (NotebookLM Audio Overview)</h2>
+            <span class="chip"><i data-lucide="headphones"></i>7 cartes</span>
+          </div>
+
+          <div class="panel-b">
+            <div class="hint">
+              Si tu crois que “accueillir” = juste être poli, tu rates ton arme secrète.
+              Ici, tu vas apprendre à <strong>désarmer la méfiance</strong> et à créer de la <strong>reliance</strong> pour t’intégrer et avancer vers 2040.
+            </div>
+
+            <div class="ml-tip">
+              <strong>Mode d’emploi :</strong> clique une carte → lis l’audio → fais l’action → valide la carte.
+              <br>Ensuite : le <strong>Miroir Pro</strong> te montre l’écart entre l’image que tu veux renvoyer et ce que tes gestes envoient vraiment.
+            </div>
+
+            <!-- NAV 7 CARTES -->
+            <div style="margin-top:14px;font-weight:900;">Tes 7 cartes</div>
+            <div class="hint">Clique une carte pour l’ouvrir. Tu peux revenir quand tu veux.</div>
+
+            <div class="cardset" id="cards7" style="margin-top:10px;">
+              <div class="opt" data-card="1"><strong>Carte 1</strong><small>Pourquoi l'accueil change tout</small></div>
+              <div class="opt" data-card="2"><strong>Carte 2</strong><small>La magie de la RELIANCE</small></div>
+              <div class="opt" data-card="3"><strong>Carte 3</strong><small>Posture d’accueil réciproque</small></div>
+              <div class="opt" data-card="4"><strong>Carte 4</strong><small>Plaza Hartzea (prendre sa place)</small></div>
+              <div class="opt" data-card="5"><strong>Carte 5</strong><small>Les 3 rituels d’accueil</small></div>
+              <div class="opt" data-card="6"><strong>Carte 6</strong><small>Ton 1er réseau solidaire</small></div>
+              <div class="opt" data-card="7"><strong>Carte 7</strong><small>Ton badge RELIEUR</small></div>
+            </div>
+
+            <!-- LECTEUR CARTE -->
+            <div class="badgebox" style="margin-top:14px;">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+                <div style="font-weight:900;" id="cardTitle">Choisis une carte</div>
+                <div class="chip"><i data-lucide="sparkles"></i><span id="cardMeta">Microlearning</span></div>
+              </div>
+
+              <div id="cardVisual" class="story" style="margin-top:10px;">
+                <strong>Visuel :</strong> —
+              </div>
+
+              <div id="cardAudio" class="story" style="margin-top:10px;">
+                <strong>Audio (45–60s) :</strong> clique une carte pour afficher le texte audio.
+              </div>
+
+              <div id="cardAction" class="story" style="margin-top:10px;">
+                <strong>Action flash :</strong> clique une carte pour afficher le défi.
+              </div>
+
+              <div class="actions" style="margin-top:12px;">
+                <button class="btn primary" onclick="validateCurrentCard()"><i data-lucide="check"></i> Valider cette carte</button>
+                <button class="btn ghost" onclick="markAsDoneLater()"><i data-lucide="bookmark"></i> Je le fais plus tard</button>
+              </div>
+
+              <div class="mini" style="margin-top:8px;">
+                Cartes validées : <strong><span id="cardsDone">0</span>/7</strong>
+              </div>
+            </div>
+
+            <!-- JEU MIROIR -->
+            <div class="panel" style="margin-top:14px;border-width:2px;">
+              <div class="panel-h" style="background:rgba(32,184,174,.12);">
+                <h2 style="font-size:16px;">Jeu — Le Miroir Pro (image de soi vs image renvoyée)</h2>
+                <span class="chip"><i data-lucide="scan-face"></i>Miroir</span>
+              </div>
+              <div class="panel-b">
+                <div class="hint">
+                  <strong>But insertion :</strong> aligner l’image que tu veux donner avec ce que tes gestes envoient.
+                  <br>Pas de note. Juste un miroir + 1 ajustement concret.
+                </div>
+
+                <div style="margin-top:10px;font-weight:900;">1) Comment tu veux être perçu (choisis 3 cartes)</div>
+                <div class="hint">Choisis <strong>3</strong> mots-clés.</div>
+
+                <div class="cardset" id="selfCards">
+                  <div class="opt" data-mode="self" data-v="fiable"><strong>Fiable</strong><small>Je fais ce que je dis.</small></div>
+                  <div class="opt" data-mode="self" data-v="calme"><strong>Calme</strong><small>Je garde mon sang-froid.</small></div>
+                  <div class="opt" data-mode="self" data-v="ouvert"><strong>Ouvert</strong><small>Je vais vers les autres.</small></div>
+                  <div class="opt" data-mode="self" data-v="respect"><strong>Digne</strong><small>Égal à égal.</small></div>
+                  <div class="opt" data-mode="self" data-v="curieux"><strong>Curieux</strong><small>Je pose des questions.</small></div>
+                  <div class="opt" data-mode="self" data-v="place"><strong>Je prends ma place</strong><small>Je ne reste pas invisible.</small></div>
+                </div>
+
+                <div id="selfPickInfo" class="story" style="display:none;"></div>
+
+                <div style="margin-top:12px;font-weight:900;">2) 3 scènes (tu choisis 1 action par scène)</div>
+
+                <div class="panel" style="margin-top:10px;border-width:2px;">
+                  <div class="panel-h" style="background:rgba(255,201,40,.18);">
+                    <h2 style="font-size:16px;">Scène 1 — Première seconde (salut)</h2>
+                    <span class="chip"><i data-lucide="hand"></i>Accueil</span>
+                  </div>
+                  <div class="panel-b">
+                    <div class="cardset" id="scene1">
+                      <div class="opt" data-mode="s1" data-v="rituel"><strong>Regard + bonjour + sourire</strong><small>Je casse la méfiance.</small></div>
+                      <div class="opt" data-mode="s1" data-v="faible"><strong>Bonjour faible / évite le regard</strong><small>Je me protège.</small></div>
+                      <div class="opt" data-mode="s1" data-v="tel"><strong>Téléphone / distance</strong><small>Je gère mon stress.</small></div>
+                      <div class="opt" data-mode="s1" data-v="trop_familier"><strong>Trop familier</strong><small>Je veux briser la glace vite.</small></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel" style="margin-top:10px;border-width:2px;">
+                  <div class="panel-h" style="background:rgba(32,184,174,.12);">
+                    <h2 style="font-size:16px;">Scène 2 — Réciprocité (égal à égal)</h2>
+                    <span class="chip"><i data-lucide="scale"></i>Dignité</span>
+                  </div>
+                  <div class="panel-b">
+                    <div class="cardset" id="scene2">
+                      <div class="opt" data-mode="s2" data-v="question_active"><strong>Je demande un conseil</strong><small>Question active, respect.</small></div>
+                      <div class="opt" data-mode="s2" data-v="subit"><strong>J’attends qu’on me guide</strong><small>Je subis.</small></div>
+                      <div class="opt" data-mode="s2" data-v="sec"><strong>Droit au but sec</strong><small>Ça peut fermer.</small></div>
+                      <div class="opt" data-mode="s2" data-v="trop_efface"><strong>Je m’efface</strong><small>Je deviens invisible.</small></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel" style="margin-top:10px;border-width:2px;">
+                  <div class="panel-h" style="background:rgba(255,176,103,.16);">
+                    <h2 style="font-size:16px;">Scène 3 — Plaza Hartzea (prendre sa place)</h2>
+                    <span class="chip"><i data-lucide="users"></i>Groupe</span>
+                  </div>
+                  <div class="panel-b">
+                    <div class="cardset" id="scene3">
+                      <div class="opt" data-mode="s3" data-v="prise_parole"><strong>Je pose 1 question</strong><small>J’existe dans le groupe.</small></div>
+                      <div class="opt" data-mode="s3" data-v="silence"><strong>Je reste silencieux</strong><small>Je me coupe.</small></div>
+                      <div class="opt" data-mode="s3" data-v="valide"><strong>Je valide une idée</strong><small>Je renforce le collectif.</small></div>
+                      <div class="opt" data-mode="s3" data-v="ironique"><strong>Ironie / distance</strong><small>Ça peut casser le lien.</small></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="badgebox" style="margin-top:12px;">
+                  <div style="font-weight:900;">Ton miroir</div>
+                  <div class="hint">Quand tu as 3 mots-clés + 3 scènes, le miroir s’affiche.</div>
+
+                  <div id="mirrorBox" class="story" style="display:none;"></div>
+
+                  <div class="field" style="margin-top:12px;">
+                    <label class="mini" for="mirrorAction">Mon micro-ajustement (30 secondes) :</label>
+                    <textarea id="mirrorAction" placeholder="Ex : “Regard + prénom + 1 question ouverte.”"></textarea>
+                  </div>
+
+                  <div class="actions">
+                    <button class="btn primary" onclick="saveMirror()"><i data-lucide="save"></i> Enregistrer</button>
+                    <button class="btn ghost" onclick="autoSuggestMirror()"><i data-lucide="wand-2"></i> Suggestion</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- FIN -->
+            <div class="badgebox" style="margin-top:14px;">
+              <div style="font-weight:900;">Badge RELIEUR</div>
+              <div class="hint">
+                Le badge s’active quand :
+                <br>✅ tu as validé <strong>7/7 cartes</strong>
+                <br>✅ tu as écrit <strong>1 micro-ajustement</strong> dans le miroir
+              </div>
+              <div class="actions" style="margin-top:10px;">
+                <button class="btn warn" onclick="finishAccueillir()"><i data-lucide="trophy"></i> Terminer ACCUEILLIR</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+      <div class="frieze" aria-hidden="true">
+        <div class="capsule" style="background: var(--yellow);"></div>
+        <div class="capsule" style="background: var(--turq);"></div>
+        <div class="capsule" style="background: var(--red);"></div>
+        <div class="capsule" style="background: var(--mint);"></div>
+      </div>
+
+      <footer class="eu" aria-label="Mentions UE">
+        <div class="eu-top">
+          <img src="https://www.immigration.interieur.gouv.fr/var/miomcti/storage/images/media/mi/images/logos-pictos/cofinance-par-l-union-europeenne-v/1060317-1-fre-FR/Cofinance-par-l-Union-europeenne-V.png" alt="Cofinancé par l'Union européenne" class="eu-logo" loading="lazy">
+        </div>
+        <div class="copyright">© 2026 LS4YOU Project Nr. 2023-2-FR02-KA220-YOU-000175417</div>
+        <p>Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the Agence Erasmus+ France Jeunesse &amp; Sport (Agence du Service Civique). Neither the European Union nor the granting authority can be held responsible for them.</p>
+        <a class="link" href="#" onclick="return false;">Data Privacy Statement &amp; Imprint</a>
+      </footer>
+
+    </section>
+  </main>
+
+  <script>
+    const KEY="mls4you_territoire_v1";
+    function readState(){ try{return JSON.parse(localStorage.getItem(KEY))||{} }catch{return{}} }
+    function writeState(s){ localStorage.setItem(KEY, JSON.stringify(s)); }
+    function ensure(){
+      const s=readState();
+      s.badges=s.badges||{relieur:false,createur:false,ancre:false,robuste:false};
+      s.done=s.done||{accueillir:false,creer:false,habiter:false,soin:false};
+      s.profile=s.profile||{};
+      s.accueillir=s.accueillir||{};
+      s.accueillir.cards = s.accueillir.cards || { done:{1:false,2:false,3:false,4:false,5:false,6:false,7:false}, current:1 };
+      s.accueillir.miroir = s.accueillir.miroir || { self:[], s1:null, s2:null, s3:null, result:null, action:null };
+      writeState(s); return s;
+    }
+    const S=ensure();
+
+    function setProgress(){
+      const cardsDone = Object.values(S.accueillir.cards.done).filter(Boolean).length; // /7
+      const mirrorDone = !!(S.accueillir.miroir.action && S.accueillir.miroir.action.trim());
+      const steps = cardsDone + (mirrorDone ? 1 : 0);
+      const total = 8;
+      const pct = Math.round((steps/total)*100);
+
+      document.getElementById("progress").style.width = pct + "%";
+      document.getElementById("pct").textContent = pct + "%";
+
+      const b=document.getElementById("b-relieur");
+      b.dataset.on = (S.badges.relieur || S.done.accueillir) ? "1" : "0";
+    }
+
+    // ----------------- 7 CARTES (MICROLEARNING) -----------------
+    const ACCUEILLIR_CARDS = {
+      1: {
+        title: "CARTE 1 : Pourquoi l'accueil change tout",
+        visual: "Un contact visuel franc et une posture ouverte lors d'une rencontre.",
+        audio: "Écoute bien : chaque inconnu est une porte fermée à double tour par la méfiance. Ton super-pouvoir, c’est l’accueil. En envoyant les bons signaux dès les premières secondes, tu ne fais pas que dire bonjour, tu dis : “Je connais les codes, tu peux me faire confiance”. Ce n'est pas être soumis, c'est être stratège. C’est toi qui décides que la rencontre va bien se passer. C'est ta force pour entrer dans n'importe quelle équipe.",
+        action: "Ton défi : salue et souris à trois personnes inconnues aujourd'hui (boulangerie, bus, Mission Locale). Observe comment leur visage change."
+      },
+      2: {
+        title: "CARTE 2 : La magie de la RELIANCE",
+        visual: "Deux maillons de fer qui se soudent pour former une chaîne indestructible.",
+        audio: "En Iparralde, on bouge tout le temps. Entre ceux qui s'installent et ceux qui ne font que passer, le risque c'est que tout le monde reste dans son coin. La reliance, c'est ton antenne sociale. C'est transformer cette foule en communauté. Si tu sais parler à quelqu'un qui ne te ressemble pas, tu deviens indispensable. Les entreprises cherchent des gens qui “font du lien”. Ne reste pas spectateur de ce changement, sois celui qui soude le groupe.",
+        action: "Entre dans un commerce ou un lieu de ton quartier où tu ne vas jamais. Regarde, puis dis un “Bonjour” clair en partant."
+      },
+      3: {
+        title: "CARTE 3 : La posture d'Accueil Réciproque",
+        visual: "Un échange équilibré entre un professionnel et un client, dos droit, regard horizontal.",
+        audio: "Ne confonds pas accueil et servilité. Accueillir, c'est prendre les commandes. Quand tu reçois quelqu'un, c'est toi qui diriges l'échange avec dignité. Et quand c'est toi qui arrives, montre que tu respectes le lieu et les gens qui y sont déjà. C'est ça la réciprocité : j'accepte qui tu es, tu acceptes qui je suis. C'est une question de respect mutuel, et c'est toi qui donnes le ton.",
+        action: "Dans un commerce : “Bonjour, est-ce que vous auriez un conseil pour ce produit ?” ou un “Bonne journée” bien senti en regardant la personne."
+      },
+      4: {
+        title: "CARTE 4 : Prendre SA place (Plaza Hartzea)",
+        visual: "Un jeune qui s'avance au centre d'un cercle de discussion lors d'un atelier.",
+        audio: "En Iparralde, la place appartient à ceux qui l'occupent. “Plaza Hartzea”, c'est oser dire : “Je suis là”. Ne demande pas la permission d'exister dans un groupe. En apportant ta voix, tu accueilles le collectif et tu lui donnes de la force. Le silence est un mur, la parole est une porte. Prends ce courage : c'est en prenant ta place que tu deviens un membre reconnu de la communauté.",
+        action: "Lors de ta prochaine réunion/atelier, sois le premier à prendre la parole pour poser une question ou valider l'idée d'un autre."
+      },
+      5: {
+        title: "CARTE 5 : Les 3 rituels d'Accueil",
+        visual: "Trois icônes : un œil (regard), une bulle (nom), un point d'interrogation (question).",
+        audio: "Voici ton kit de survie social en trois étapes. Rituel 1 : le regard. Fixe les yeux sans provoquer : signal “je suis en confiance”. Rituel 2 : le nom. Donne ton prénom et retiens celui de l'autre : on n'est plus des inconnus. Rituel 3 : la question ouverte. Demande “Comment ?” ou “Quoi ?” pour lancer la discussion. En 30 secondes, tu as cassé la glace et tu maîtrises le terrain.",
+        action: "Applique Regard / Nom / Question dès ton prochain rendez-vous (conseiller, voisin, commerce)."
+      },
+      6: {
+        title: "CARTE 6 : Ton 1er réseau solidaire",
+        visual: "Une carte reliant un jeune à un commerçant, un voisin âgé et un acteur local.",
+        audio: "Ton réseau, c'est ton filet de sécurité. En Iparralde, la solidarité n'est pas un vain mot. Accueillir les besoins d'un voisin âgé ou s'intéresser au travail d'un ancien, c'est poser des briques pour ton propre avenir. Un jour, c'est ce réseau qui te donnera le bon tuyau pour un job ou un logement. Ne reste pas dans ton coin : crée des liens avec ceux qui t'ont précédé. C'est ça, préparer 2040.",
+        action: "Micro-conversation avec une personne d'une autre génération dans ton quartier : demande son avis sur un sujet local."
+      },
+      7: {
+        title: "CARTE 7 : Ton badge RELIEUR",
+        visual: "Un badge “RELIEUR” avec cases cochées : Rituels, Place, Reliance.",
+        audio: "Tu as les clés en main. Ton badge de Relieur est activé dès que tu oses aller vers l'autre. C'est cette force qui te fera sortir du lot en entretien. Tu n'es pas juste un candidat : tu es celui qui sait souder une équipe. Partage tes succès avec ton conseiller. N'oublie jamais : en 2040, ce sont les relieurs qui mèneront la danse dans un monde qui change. À toi de jouer !",
+        action: "Prends rendez-vous avec ton conseiller Mission Locale : raconte comment tu as utilisé ton pouvoir de “Relieur” pour ton prochain stage/emploi."
+      }
+    };
+
+    function showCard(n){
+      S.accueillir.cards.current = n;
+      writeState(S);
+
+      document.getElementById("cardTitle").textContent = ACCUEILLIR_CARDS[n].title;
+      document.getElementById("cardVisual").innerHTML = "<strong>Visuel :</strong> " + ACCUEILLIR_CARDS[n].visual;
+      document.getElementById("cardAudio").innerHTML = "<strong>Audio (45–60s) :</strong> “" + ACCUEILLIR_CARDS[n].audio + "”";
+      document.getElementById("cardAction").innerHTML = "<strong>Action flash :</strong> " + ACCUEILLIR_CARDS[n].action;
+
+      // highlight selected card
+      document.querySelectorAll("#cards7 .opt").forEach(x=>x.dataset.on="0");
+      const btn = document.querySelector(`#cards7 .opt[data-card="${n}"]`);
+      if(btn) btn.dataset.on="1";
+
+      refreshCardsDone();
+    }
+
+    function refreshCardsDone(){
+      const done = Object.values(S.accueillir.cards.done).filter(Boolean).length;
+      document.getElementById("cardsDone").textContent = done;
+      setProgress();
+    }
+
+    function validateCurrentCard(){
+      const n = S.accueillir.cards.current || 1;
+      S.accueillir.cards.done[n] = true;
+      writeState(S);
+      refreshCardsDone();
+      alert("✅ Carte " + n + " validée.");
+    }
+
+    function markAsDoneLater(){
+      alert("Ok. Reviens valider quand tu as fait l’action flash 🙂");
+    }
+
+    // ----------------- MIROIR PRO -----------------
+    function wireMirror(){
+      // multi select self (max 3)
+      const selfBox = document.getElementById("selfCards");
+      if(selfBox){
+        selfBox.addEventListener("click", (e)=>{
+          const el = e.target.closest(".opt"); if(!el) return;
+          const v = el.getAttribute("data-v");
+          const cur = S.accueillir.miroir.self || [];
+
+          if(el.dataset.on === "1"){
+            el.dataset.on = "0";
+            S.accueillir.miroir.self = cur.filter(x=>x!==v);
+          }else{
+            if(cur.length >= 3){
+              const first = cur[0];
+              const firstEl = selfBox.querySelector(`.opt[data-v="${first}"]`);
+              if(firstEl) firstEl.dataset.on = "0";
+              S.accueillir.miroir.self = cur.slice(1);
             }
-        };
+            el.dataset.on = "1";
+            S.accueillir.miroir.self = [...S.accueillir.miroir.self, v];
+          }
 
-        function navigate(view) {
-            window.location.hash = view;
-        }
-
-        function handleRoute() {
-            const hash = window.location.hash.slice(1) || 'accueil';
-            AppState.currentView = hash;
-            updateBreadcrumb(hash);
-            renderView(hash);
-        }
-
-        function updateBreadcrumb(view) {
-            const breadcrumb = document.getElementById('breadcrumb');
-            const labels = {
-                'accueil': 'Accueil',
-                'accueillir': 'Accueillir',
-                'accueillir-a': 'Accueillir → Image de soi',
-                'accueillir-b': 'Accueillir → Feedback',
-                'creer': 'Créer',
-                'creer-a': 'Créer → Mon meilleur',
-                'creer-b': 'Créer → Switch posture',
-                'habiter': 'Habiter',
-                'habiter-a': 'Habiter → Mindmap',
-                'habiter-b': 'Habiter → Simulateur',
-                'soin': 'Prendre soin',
-                'soin-a': 'Soin → Arbre résilience',
-                'soin-b': 'Soin → Réseau soutien',
-                'synthese': 'Mon Passeport'
-            };
-            breadcrumb.textContent = labels[view] || 'Navigation';
-        }
-
-        function renderView(view) {
-            const content = document.getElementById('app-content');
-            content.className = 'fade-in';
-
-            switch(view) {
-                case 'accueil':
-                    renderAccueil();
-                    break;
-                case 'accueillir':
-                    renderPillarIntro('accueillir');
-                    break;
-                case 'accueillir-a':
-                    renderAccueillirA();
-                    break;
-                case 'accueillir-b':
-                    renderAccueillirB();
-                    break;
-                case 'creer':
-                    renderPillarIntro('creer');
-                    break;
-                case 'creer-a':
-                    renderCreerA();
-                    break;
-                case 'creer-b':
-                    renderCreerB();
-                    break;
-                case 'habiter':
-                    renderPillarIntro('habiter');
-                    break;
-                case 'habiter-a':
-                    renderHabiterA();
-                    break;
-                case 'habiter-b':
-                    renderHabiterB();
-                    break;
-                case 'soin':
-                    renderPillarIntro('soin');
-                    break;
-                case 'soin-a':
-                    renderSoinA();
-                    break;
-                case 'soin-b':
-                    renderSoinB();
-                    break;
-                case 'synthese':
-                    renderSynthese();
-                    break;
-                default:
-                    renderAccueil();
-            }
-        }
-
-        function renderAccueil() {
-            const content = document.getElementById('app-content');
-            content.innerHTML = `
-                <div style="text-align: center; margin: 60px 0;">
-                    <h1>🌍 Bienvenue dans Iparralde 2040</h1>
-                    <p style="font-size: 20px; color: #757575; max-width: 700px; margin: 30px auto; font-weight: 300;">
-                        Explore ton territoire, développe tes compétences et construis ton avenir au Pays Basque.
-                    </p>
-                </div>
-
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: ${calculateGlobalProgress()}%"></div>
-                </div>
-                <p style="text-align: center; margin-bottom: 50px; font-size: 18px; font-weight: 600;">Progression globale : ${calculateGlobalProgress()}%</p>
-
-                <div class="grid grid-2">
-                    <div class="card pillar-card accueillir" onclick="navigate('accueillir')">
-                        <h2>🤝 ACCUEILLIR</h2>
-                        <p style="margin: 20px 0;">Découvre ton style relationnel et apprends à recevoir les feedbacks.</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: ${AppState.progress.accueillir}%"></div>
-                        </div>
-                        <p style="margin-top: 12px; font-size: 15px; font-weight: 600; color: #757575;">
-                            ${AppState.progress.accueillir}% complété
-                        </p>
-                    </div>
-
-                    <div class="card pillar-card creer" onclick="navigate('creer')">
-                        <h2>✨ CRÉER</h2>
-                        <p style="margin: 20px 0;">Identifie tes forces et transforme ta posture professionnelle.</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: ${AppState.progress.creer}%"></div>
-                        </div>
-                        <p style="margin-top: 12px; font-size: 15px; font-weight: 600; color: #757575;">
-                            ${AppState.progress.creer}% complété
-                        </p>
-                    </div>
-
-                    <div class="card pillar-card habiter" onclick="navigate('habiter')">
-                        <h2>🏡 HABITER</h2>
-                        <p style="margin: 20px 0;">Cartographie tes ressources et simule ton budget de vie.</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: ${AppState.progress.habiter}%"></div>
-                        </div>
-                        <p style="margin-top: 12px; font-size: 15px; font-weight: 600; color: #757575;">
-                            ${AppState.progress.habiter}% complété
-                        </p>
-                    </div>
-
-                    <div class="card pillar-card soin" onclick="navigate('soin')">
-                        <h2>💚 PRENDRE SOIN</h2>
-                        <p style="margin: 20px 0;">Construis ton arbre de résilience et ton réseau de soutien.</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: ${AppState.progress.soin}%"></div>
-                        </div>
-                        <p style="margin-top: 12px; font-size: 15px; font-weight: 600; color: #757575;">
-                            ${AppState.progress.soin}% complété
-                        </p>
-                    </div>
-                </div>
-
-                ${AppState.badges.length > 0 ? `
-                    <div class="card" style="margin-top: 50px; text-align: center;">
-                        <h3>🏆 Mes Badges</h3>
-                        <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 24px;">
-                            ${AppState.badges.map(b => `<span class="badge">${b}</span>`).join('')}
-                        </div>
-                    </div>
-                ` : ''}
-
-                <div style="text-align: center; margin-top: 60px;">
-                    <button class="btn btn-primary" onclick="navigate('synthese')">
-                        📋 Voir Mon Passeport Compétences
-                    </button>
-                </div>
-            `;
-        }
-
-        function renderPillarIntro(pillar) {
-            const content = document.getElementById('app-content');
-            const data = {
-                accueillir: {
-                    title: '🤝 ACCUEILLIR',
-                    desc: 'Comment je me présente et comment je reçois les retours des autres ?',
-                    activities: [
-                        { id: 'a', title: 'Image de soi/publique', desc: 'Explore ton style relationnel en groupe et en situation professionnelle' },
-                        { id: 'b', title: 'Le feedback comme don', desc: 'Apprends à recevoir et utiliser les retours constructifs' }
-                    ]
-                },
-                creer: {
-                    title: '✨ CRÉER',
-                    desc: 'Quelles sont mes forces et comment je les valorise ?',
-                    activities: [
-                        { id: 'a', title: 'Moi à mon meilleur', desc: 'Identifie tes compétences à travers tes réussites' },
-                        { id: 'b', title: 'Switch posture', desc: 'Passe de demandeur à offreur sur le marché du travail' }
-                    ]
-                },
-                habiter: {
-                    title: '🏡 HABITER',
-                    desc: 'De quoi j\'ai besoin pour vivre ici et maintenant ?',
-                    activities: [
-                        { id: 'a', title: 'Fais le point', desc: 'Cartographie tes ressources, obstacles et alliés' },
-                        { id: 'b', title: 'Simulateur Vraie Vie', desc: 'Teste ton budget et ta stratégie financière' }
-                    ]
-                },
-                soin: {
-                    title: '💚 PRENDRE SOIN',
-                    desc: 'Comment je cultive mon bien-être et ma résilience ?',
-                    activities: [
-                        { id: 'a', title: 'Arbre de résilience', desc: 'Construis tes fondations, ton tronc et tes branches' },
-                        { id: 'b', title: 'Réseau + Stressomètre', desc: 'Identifie tes soutiens et mesure ton stress' }
-                    ]
-                }
-            };
-
-            const info = data[pillar];
-            content.innerHTML = `
-                <div class="card" style="text-align: center;">
-                    <h1>${info.title}</h1>
-                    <p style="font-size: 20px; margin: 30px 0; font-weight: 300;">${info.desc}</p>
-                </div>
-
-                <div class="grid grid-2">
-                    ${info.activities.map(act => `
-                        <div class="card" style="cursor: pointer;" onclick="navigate('${pillar}-${act.id}')">
-                            <h3>Activité ${act.id.toUpperCase()} : ${act.title}</h3>
-                            <p style="margin: 20px 0;">${act.desc}</p>
-                            <button class="btn btn-primary" style="margin-top: 20px;">
-                                Commencer →
-                            </button>
-                        </div>
-                    `).join('')}
-                </div>
-
-                <div style="text-align: center; margin-top: 40px;">
-                    <button class="btn btn-outline" onclick="navigate('accueil')">
-                        ← Retour à l'accueil
-                    </button>
-                </div>
-            `;
-        }
-
-        function renderAccueillirA() {
-            showNotification('📝 Module Accueillir A - En développement');
-            navigate('accueil');
-        }
-
-        function renderAccueillirB() {
-            showNotification('📝 Module Accueillir B - En développement');
-            navigate('accueil');
-        }
-
-        function renderCreerA() {
-            showNotification('📝 Module Créer A - En développement');
-            navigate('accueil');
-        }
-
-        function renderCreerB() {
-            showNotification('📝 Module Créer B - En développement');
-            navigate('accueil');
-        }
-
-        function renderHabiterA() {
-            showNotification('📝 Module Habiter A - En développement');
-            navigate('accueil');
-        }
-
-        function renderHabiterB() {
-            showNotification('📝 Module Habiter B - En développement');
-            navigate('accueil');
-        }
-
-        function renderSoinA() {
-            showNotification('📝 Module Soin A - En développement');
-            navigate('accueil');
-        }
-
-        function renderSoinB() {
-            showNotification('📝 Module Soin B - En développement');
-            navigate('accueil');
-        }
-
-        function renderSynthese() {
-            const content = document.getElementById('app-content');
-            const totalProgress = calculateGlobalProgress();
-
-            content.innerHTML = `
-                <div class="passport-section">
-                    <div style="text-align: center;">
-                        <h1 style="margin-bottom: 16px;">📋 Mon Passeport Compétences</h1>
-                        <p style="font-size: 20px; color: #757575; font-weight: 300;">Iparralde 2040 - Mission Locale Pays Basque</p>
-                        <div class="progress-bar" style="margin: 30px auto; max-width: 500px;">
-                            <div class="progress-fill" style="width: ${totalProgress}%"></div>
-                        </div>
-                        <p style="font-weight: 700; font-size: 20px; color: var(--rouge-cerise);">Parcours complété à ${totalProgress}%</p>
-                    </div>
-
-                    <div class="badges-collection" style="margin: 60px 0;">
-                        <h2 style="width: 100%; text-align: center; margin-bottom: 30px;">🏆 Mes Badges</h2>
-                        ${AppState.badges.length > 0 ? 
-                            AppState.badges.map(badge => `
-                                <div class="badge-earned">
-                                    <div class="badge-icon">${badge.includes('RELIEUR') ? '🤝' : badge.includes('CRÉATEUR') ? '✨' : badge.includes('ANCRÉ') ? '🏡' : '💚'}</div>
-                                    <h3 style="margin-top: 12px;">${badge}</h3>
-                                </div>
-                            `).join('') :
-                            '<p style="color: #757575; text-align: center; width: 100%; font-size: 18px;">Complète les modules pour débloquer des badges</p>'
-                        }
-                    </div>
-
-                    <div class="card" style="margin-top: 60px; text-align: center; background: linear-gradient(135deg, var(--turquoise), var(--menthe)); color: white;">
-                        <h3 style="color: white;">📅 Date de création</h3>
-                        <p style="margin-top: 12px; font-size: 20px; font-weight: 700;">${new Date().toLocaleDateString('fr-FR')}</p>
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin-top: 50px;">
-                    <button class="btn btn-outline" onclick="navigate('accueil')">
-                        ← Retour à l'accueil
-                    </button>
-                </div>
-            `;
-        }
-
-        function calculateGlobalProgress() {
-            const p = AppState.progress;
-            return Math.round((p.accueillir + p.creer + p.habiter + p.soin) / 4);
-        }
-
-        function showProgress() {
-            const modal = `
-                <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; display: flex; align-items: center; justify-content: center;" onclick="this.remove()">
-                    <div class="card" style="max-width: 600px; margin: 20px;" onclick="event.stopPropagation()">
-                        <h2>📊 Ma Progression</h2>
-                        <div style="margin: 30px 0;">
-                            <p style="font-weight: 600; margin-bottom: 8px;">ACCUEILLIR: ${AppState.progress.accueillir}%</p>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: ${AppState.progress.accueillir}%"></div>
-                            </div>
-
-                            <p style="font-weight: 600; margin: 20px 0 8px;">CRÉER: ${AppState.progress.creer}%</p>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: ${AppState.progress.creer}%"></div>
-                            </div>
-
-                            <p style="font-weight: 600; margin: 20px 0 8px;">HABITER: ${AppState.progress.habiter}%</p>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: ${AppState.progress.habiter}%"></div>
-                            </div>
-
-                            <p style="font-weight: 600; margin: 20px 0 8px;">PRENDRE SOIN: ${AppState.progress.soin}%</p>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: ${AppState.progress.soin}%"></div>
-                            </div>
-                        </div>
-
-                        <p style="text-align: center; font-weight: 900; font-size: 24px; color: var(--rouge-cerise); font-family: 'Nunito', sans-serif;">
-                            Global: ${calculateGlobalProgress()}%
-                        </p>
-
-                        <button class="btn btn-primary" style="width: 100%; margin-top: 30px;" onclick="this.parentElement.parentElement.remove()">
-                            Fermer
-                        </button>
-                    </div>
-                </div>
-            `;
-
-            document.body.insertAdjacentHTML('beforeend', modal);
-        }
-
-        function showNotification(message) {
-            const notif = document.createElement('div');
-            notif.className = 'notification';
-            notif.textContent = message;
-            document.body.appendChild(notif);
-
-            setTimeout(() => notif.remove(), 3500);
-        }
-
-        window.addEventListener('hashchange', handleRoute);
-        window.addEventListener('load', () => {
-            AppState.load();
-            handleRoute();
+          writeState(S);
+          renderSelfPickInfo();
+          renderMirror();
         });
-    </script>
+      }
+
+      wireScenePick("scene1","s1");
+      wireScenePick("scene2","s2");
+      wireScenePick("scene3","s3");
+    }
+
+    function wireScenePick(boxId, key){
+      const box = document.getElementById(boxId);
+      if(!box) return;
+      box.addEventListener("click",(e)=>{
+        const el=e.target.closest(".opt"); if(!el) return;
+        [...box.querySelectorAll(".opt")].forEach(x=>x.dataset.on="0");
+        el.dataset.on="1";
+        S.accueillir.miroir[key] = el.getAttribute("data-v");
+        writeState(S);
+        renderMirror();
+      });
+    }
+
+    function renderSelfPickInfo(){
+      const info = document.getElementById("selfPickInfo");
+      const picks = S.accueillir.miroir.self || [];
+      if(!info) return;
+      if(picks.length === 0){
+        info.style.display = "none";
+        return;
+      }
+      info.style.display = "block";
+      info.innerHTML = "<strong>Tu veux renvoyer :</strong> " + picks.map(labelFr).join(" • ") + (picks.length<3 ? "<br><em>Encore " + (3-picks.length) + " choix</em>" : "");
+    }
+
+    function perceivedFromScenes(s1,s2,s3){
+      const tags = [];
+
+      // Scène 1 (rituels)
+      if(s1==="rituel"){ tags.push("ouvert","fiable"); }
+      if(s1==="faible"){ tags.push("timide","fermé"); }
+      if(s1==="tel"){ tags.push("distant","désengagé"); }
+      if(s1==="trop_familier"){ tags.push("sympa","risque"); }
+
+      // Scène 2 (réciprocité)
+      if(s2==="question_active"){ tags.push("respect","curieux"); }
+      if(s2==="subit"){ tags.push("passif","timide"); }
+      if(s2==="sec"){ tags.push("tendu"); }
+      if(s2==="trop_efface"){ tags.push("invisible","passif"); }
+
+      // Scène 3 (place)
+      if(s3==="prise_parole"){ tags.push("place","ouvert"); }
+      if(s3==="silence"){ tags.push("invisible","fermé"); }
+      if(s3==="valide"){ tags.push("place","coop"); }
+      if(s3==="ironique"){ tags.push("risque","distant"); }
+
+      return [...new Set(tags)];
+    }
+
+    function labelFr(tag){
+      const m = {
+        fiable:"fiable",
+        calme:"calme",
+        ouvert:"ouvert",
+        respect:"digne / respectueux",
+        curieux:"curieux",
+        place:"je prends ma place",
+        coop:"je renforce le collectif",
+
+        timide:"timide",
+        fermé:"fermé",
+        distant:"distant",
+        désengagé:"désengagé",
+        sympa:"sympa",
+        risque:"trop familier / risqué",
+        passif:"passif",
+        tendu:"tendu",
+        invisible:"invisible"
+      };
+      return m[tag] || tag;
+    }
+
+    function renderMirror(){
+      const box = document.getElementById("mirrorBox");
+      if(!box) return;
+
+      const self = S.accueillir.miroir.self || [];
+      const s1 = S.accueillir.miroir.s1;
+      const s2 = S.accueillir.miroir.s2;
+      const s3 = S.accueillir.miroir.s3;
+
+      if(self.length<3 || !s1 || !s2 || !s3){
+        box.style.display="none";
+        return;
+      }
+
+      const perceived = perceivedFromScenes(s1,s2,s3);
+      const selfLabels = self.map(labelFr);
+      const perceivedLabels = perceived.map(labelFr);
+
+      const gap1 = self.filter(x=>!perceived.includes(x)).map(labelFr);
+      const gap2 = perceived.filter(x=>!self.includes(x)).map(labelFr);
+
+      S.accueillir.miroir.result = { self, perceived };
+      writeState(S);
+
+      box.style.display="block";
+      box.innerHTML = `
+        <div><strong>Image que tu veux donner :</strong> ${selfLabels.join(" • ")}</div>
+        <div style="margin-top:6px;"><strong>Image renvoyée par tes choix :</strong> ${perceivedLabels.join(" • ")}</div>
+        <div style="margin-top:10px;">
+          <strong>Le miroir (écart) :</strong><br>
+          • <em>Tu veux montrer mais on ne le voit pas assez</em> : ${gap1.length?gap1.join(" • "):"—"}<br>
+          • <em>On peut croire (sans vouloir)</em> : ${gap2.length?gap2.join(" • "):"—"}
+        </div>
+        <div style="margin-top:10px;"><strong>Objectif :</strong> choisis 1 micro-ajustement pour recoller à l’image voulue.</div>
+      `;
+      setProgress();
+    }
+
+    function autoSuggestMirror(){
+      document.getElementById("mirrorAction").value =
+        "À chaque rencontre : Regard (calme) → Prénom (moi + lui) → 1 question ouverte (Comment/Quoi).";
+    }
+
+    function saveMirror(){
+      const action = document.getElementById("mirrorAction").value.trim();
+      if(!action){ alert("Écris 1 ajustement concret (1 phrase), puis enregistre."); return; }
+      S.accueillir.miroir.action = action;
+      S.profile.ajustementAccueil = action;
+      writeState(S);
+      setProgress();
+      alert("✅ Miroir enregistré.");
+    }
+
+    // ----------------- FIN PILIER -----------------
+    function finishAccueillir(){
+      const cardsOk = Object.values(S.accueillir.cards.done).every(Boolean);
+      const mirrorOk = !!(S.accueillir.miroir && S.accueillir.miroir.action && S.accueillir.miroir.action.trim());
+
+      if(!cardsOk){ alert("Il te manque au moins une carte à valider (7/7)."); return; }
+      if(!mirrorOk){ alert("Il te manque ton micro-ajustement dans le Miroir Pro."); return; }
+
+      S.done.accueillir = true;
+      S.badges.relieur = true;
+      writeState(S);
+
+      setProgress();
+      alert("✅ Badge RELIEUR activé !");
+      window.location.href="./synthese.html";
+    }
+
+    // ----------------- RESTORE UI -----------------
+    function restoreUI(){
+      // restore selected card and done count
+      const cur = S.accueillir.cards.current || 1;
+      showCard(cur);
+      refreshCardsDone();
+
+      // restore mirror self
+      const ms = S.accueillir.miroir || {};
+      if(ms.self){
+        ms.self.forEach(v=>{
+          const el = document.querySelector(`#selfCards .opt[data-v="${v}"]`);
+          if(el) el.dataset.on="1";
+        });
+        renderSelfPickInfo();
+      }
+
+      // restore scenes
+      const map = { s1:"scene1", s2:"scene2", s3:"scene3" };
+      Object.keys(map).forEach(k=>{
+        const val = ms[k];
+        if(!val) return;
+        const el = document.querySelector(`#${map[k]} .opt[data-v="${val}"]`);
+        if(el) el.dataset.on="1";
+      });
+
+      if(ms.action) document.getElementById("mirrorAction").value = ms.action;
+      renderMirror();
+      setProgress();
+    }
+
+    window.addEventListener('load', function() {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+
+      // click cards
+      document.getElementById("cards7")?.addEventListener("click",(e)=>{
+        const el = e.target.closest(".opt"); if(!el) return;
+        const n = parseInt(el.getAttribute("data-card"),10);
+        if(!n) return;
+        showCard(n);
+      });
+
+      wireMirror();
+      restoreUI();
+    });
+  </script>
 </body>
 </html>
