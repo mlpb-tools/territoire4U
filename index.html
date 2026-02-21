@@ -1,681 +1,1893 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MLS4YOU #2 — Accueillir</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LS4YOU — Comprendre le Territoire · Mission Locale Pays Basque</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --vert:#95c11f;
+  --orange:#f39200;
+  --bleu:#2897d5;
+  --rose:#d60b52;
+  --violet:#a3195b;
+  --rouge:#9f3d3f;
+  --noir:#171718;
+  --blanc:#ffffff;
+  --gris-clair:#f4f4f4;
+  --gris-border:#e0e0e0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;overflow:hidden;font-family:'Nunito Sans',sans-serif;}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+/* ════════ LAYOUT ════════ */
+body{display:flex;flex-direction:column;background:var(--gris-clair);}
 
-  <style>
-    :root { --red:#C62828; --yellow:#FFC928; --turq:#20B8AE; --mint:#BFEFE8; --orange:#FFB067; --bg:#FFF9F0; --ink:#101114; --muted:rgba(16,17,20,.7); --max:980px; }
-    *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--ink);font-family:'Montserrat',system-ui,-apple-system,sans-serif;overflow-x:hidden}
-    h1,h2,h3{font-family:'Baloo 2',cursive;font-weight:800;margin:0}
-    .bg-shapes{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-    .bg-circle{position:absolute;border-radius:999px;filter:blur(2px);opacity:.8}
-    .c-mint{width:400px;height:400px;left:-100px;top:-100px;background:var(--mint);opacity:.9}
-    .c-yellow{width:350px;height:350px;right:-100px;top:15%;background:rgba(255,201,40,.5)}
-    .c-orange{width:450px;height:450px;left:-150px;bottom:0;background:rgba(255,176,103,.4)}
-    .c-red{width:300px;height:300px;right:-50px;bottom:-50px;background:rgba(198,40,40,.25)}
-    .wrap{position:relative;z-index:1;max-width:var(--max);margin:22px auto 28px;padding:0 16px 26px}
-    .frame{border-radius:24px;box-shadow:0 20px 40px rgba(0,0,0,.1);overflow:hidden;border:5px solid transparent;background-image:linear-gradient(rgba(255,255,255,.95),rgba(255,255,255,.95)),linear-gradient(135deg,var(--red),var(--yellow),var(--turq));background-origin:border-box;background-clip:padding-box,border-box}
-    .hero{position:relative;border-bottom:4px solid var(--turq);padding:16px;background:#fff}
-    .hero-inner{position:relative;border-radius:18px;overflow:hidden;min-height:clamp(120px,22vw,170px);display:flex;align-items:center;padding:22px 28px}
-    .header-pattern{position:absolute;inset:0;background:#fdfdfd;z-index:0}
-    .hs{position:absolute;border-radius:50%;opacity:.65;mix-blend-mode:multiply}
-    .hs-1{background:var(--red);width:140px;height:140px;top:-40px;left:10%}
-    .hs-2{background:var(--yellow);width:180px;height:180px;bottom:-60px;right:20%}
-    .hs-3{background:var(--turq);width:120px;height:120px;top:20px;right:40%}
-    .hs-4{background:var(--mint);width:90px;height:90px;bottom:10px;left:30%}
-    .hs-5{background:var(--orange);width:70px;height:70px;top:60px;left:45%}
-    .header-content{position:relative;z-index:10;display:flex;width:100%;justify-content:space-between;align-items:flex-start}
-    .logo-left,.logo-right{display:flex;z-index:20}
-    .logo-left{margin-top:-12px;margin-left:-16px}
-    .logo-right{margin-top:-12px;margin-right:-16px}
-    .header-logo{height:58px;object-fit:contain;mix-blend-mode:multiply;filter:drop-shadow(0 4px 6px rgba(0,0,0,.05))}
-    .title-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:15}
-    .hero-title{font-size:clamp(28px,3.6vw,38px);color:var(--red);line-height:1;text-shadow:-3px -3px 0 #fff,3px -3px 0 #fff,-3px 3px 0 #fff,3px 3px 0 #fff,0 8px 16px rgba(0,0,0,.12)}
-    .hero-title small{display:block;font-family:'Montserrat',sans-serif;font-size:clamp(12px,1.8vw,16px);color:var(--ink);text-transform:uppercase;letter-spacing:.05em;margin-top:8px;text-shadow:-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff,2px 2px 0 #fff}
+/* ════════ HEADER ════════ */
+header{
+  flex-shrink:0;
+  background:var(--blanc);
+  border-bottom:3px solid var(--vert);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 1.2rem;height:48px;
+  box-shadow:0 2px 12px rgba(0,0,0,0.08);
+  z-index:200;
+}
+.logo-area{display:flex;align-items:center;gap:.5rem;}
+.logo-badge{
+  width:32px;height:32px;background:var(--vert);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:900;color:var(--blanc);
+  letter-spacing:-0.02em;flex-shrink:0;
+}
+.logo-text{line-height:1.15;}
+.logo-top{font-family:'Nunito',sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--bleu);}
+.logo-bot{font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;color:var(--noir);}
 
-    .content{background:#fff;padding:18px 16px 14px}
-    .toprow{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-    .back{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:800;padding:10px 12px;border-radius:999px;background:#fff;border:2px solid rgba(16,17,20,.08);box-shadow:0 2px 4px rgba(0,0,0,.05)}
-    .back:hover{transform:translateY(-1px)}
-    .progress-wrap{flex:1;min-width:240px;max-width:420px;background:rgba(0,0,0,.06);border-radius:999px;overflow:hidden;height:12px}
-    .progress{height:100%;width:0%;background:var(--turq);transition:width .3s ease}
-    .progress-meta{font-weight:800;font-size:12px;color:var(--muted)}
+nav{display:flex;align-items:center;gap:3px;}
+.ntab{
+  font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:800;
+  text-transform:uppercase;letter-spacing:.04em;
+  color:var(--noir);background:none;border:none;
+  padding:.28rem .55rem;border-radius:5px;cursor:pointer;
+  transition:all .18s;white-space:nowrap;
+}
+.ntab:hover{background:var(--gris-clair);}
+.ntab.active{background:var(--bleu);color:var(--blanc);}
 
-    .panel{margin-top:14px;border-radius:18px;border:3px solid rgba(16,17,20,.08);box-shadow:0 8px 16px rgba(16,17,20,.06);overflow:hidden}
-    .panel-h{padding:14px 14px;background:rgba(191,239,232,.25);display:flex;align-items:center;justify-content:space-between;gap:10px}
-    .panel-h h2{font-size:18px}
-    .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:#fff;border:2px solid rgba(16,17,20,.08);font-weight:900;font-size:11px}
-    .panel-b{padding:14px}
-    .hint{color:var(--muted);font-weight:600;font-size:13px;line-height:1.4}
+.h-right{display:flex;align-items:center;gap:.5rem;}
+.slide-ctr{font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:700;color:rgba(23,23,24,.35);}
+.rdv-btn{
+  font-family:'Nunito',sans-serif;font-size:.65rem;font-weight:800;
+  text-transform:uppercase;letter-spacing:.06em;
+  background:var(--orange);color:var(--blanc);
+  border:none;border-radius:5px;padding:.3rem .8rem;
+  cursor:pointer;transition:all .18s;
+}
+.rdv-btn:hover{background:#d07e00;transform:translateY(-1px);}
 
-    .cardset{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
-    .opt{border-radius:16px;border:2px solid rgba(16,17,20,.10);background:#fff;padding:12px;cursor:pointer;transition:.15s;min-height:78px}
-    .opt:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(0,0,0,.08)}
-    .opt strong{display:block}
-    .opt small{display:block;margin-top:6px;color:var(--muted);font-weight:600}
-    .opt[data-on="1"]{border-color:var(--turq);box-shadow:0 0 0 4px rgba(32,184,174,.15)}
-    .story{margin-top:12px;padding:12px;border-radius:16px;background:rgba(0,0,0,.05);border-left:5px solid var(--turq);color:var(--muted);font-weight:600;line-height:1.5}
-    .ml-tip{margin-top:12px;padding:12px;border-radius:16px;background:rgba(255,201,40,.14);border-left:5px solid var(--yellow);color:rgba(16,17,20,.78);font-weight:700;line-height:1.5}
+/* ════════ MAIN ════════ */
+main{flex:1;overflow:hidden;position:relative;}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;overflow:hidden;animation:fadeS .3s ease;}
+.slide.active{display:flex;}
+@keyframes fadeS{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
 
-    .field{margin-top:12px}
-    textarea,input{width:100%;padding:12px;border-radius:14px;border:2px solid rgba(16,17,20,.12);font:inherit;font-weight:600}
-    textarea{min-height:86px;resize:vertical}
-    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 14px;border-radius:14px;border:none;font-weight:900;cursor:pointer;text-transform:uppercase;letter-spacing:.05em;box-shadow:0 4px 12px rgba(0,0,0,.10)}
-    .btn.primary{background:var(--turq);color:#fff}
-    .btn.ghost{background:#fff;border:2px solid rgba(16,17,20,.12);color:var(--ink);box-shadow:0 2px 4px rgba(0,0,0,.05)}
-    .btn.warn{background:var(--red);color:#fff}
-    .mini{font-size:12px;color:var(--muted);font-weight:700}
+/* scrollable inner */
+.sbody{flex:1;overflow-y:auto;overflow-x:hidden;}
+.sbody::-webkit-scrollbar{width:3px;}
+.sbody::-webkit-scrollbar-thumb{background:var(--gris-border);}
 
-    .badgebox{margin-top:14px;padding:12px;border-radius:18px;background:linear-gradient(90deg,rgba(32,184,174,.12),rgba(255,201,40,.12));border:2px solid rgba(16,17,20,.10)}
-    .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-    .badge{display:inline-flex;align-items:center;gap:10px;padding:10px 12px;border-radius:16px;background:#fff;border:2px solid rgba(16,17,20,.10);font-weight:900}
-    .dot{width:14px;height:14px;border-radius:999px;background:rgba(0,0,0,.08)}
-    .badge[data-on="1"] .dot{background:var(--turq)}
-    .badge small{display:block;color:var(--muted);font-weight:700}
+/* ════════ FOOTER ════════ */
+footer{
+  flex-shrink:0;background:var(--blanc);border-top:2px solid var(--gris-border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.55rem 1.5rem;gap:1rem;
+}
+.fp{display:flex;align-items:center;gap:4px;flex:1;flex-wrap:wrap;}
+.pdot{width:8px;height:8px;border-radius:50%;background:var(--gris-border);border:none;cursor:pointer;padding:0;transition:all .2s;flex-shrink:0;}
+.pdot.active{transform:scale(1.6);}
+.pdot.done{opacity:.7;}
+.f-lbl{font-family:'Nunito',sans-serif;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(23,23,24,.35);text-align:center;flex:1;}
+.fnav{display:flex;gap:.4rem;}
+.fbtn{
+  font-family:'Nunito',sans-serif;font-size:.72rem;font-weight:800;
+  text-transform:uppercase;letter-spacing:.06em;
+  border:none;border-radius:6px;padding:.42rem 1rem;cursor:pointer;transition:all .18s;
+}
+.fbtn.prev{background:var(--gris-clair);color:var(--noir);}
+.fbtn.prev:hover{background:var(--gris-border);}
+.fbtn.next{background:var(--bleu);color:var(--blanc);}
+.fbtn.next:hover{background:#1a7ab5;}
 
-    .frieze{display:flex;gap:12px;padding:0 20px;margin-top:10px;margin-bottom:24px;background:#fff}
-    .capsule{height:16px;border-radius:999px;flex:1;box-shadow:inset 0 2px 4px rgba(0,0,0,.1)}
-    .eu{margin:0 20px 20px;border-radius:20px;background:#fff;border:3px solid rgba(16,17,20,.08);box-shadow:0 10px 20px rgba(16,17,20,.05);padding:20px;text-align:center}
-    .eu-logo{height:65px;mix-blend-mode:multiply;filter:drop-shadow(0 4px 6px rgba(0,0,0,.05))}
-    .eu p{margin:8px auto 0;max-width:90ch;font-size:12px;line-height:1.6;color:var(--muted);font-weight:500}
-    .eu .copyright{color:var(--ink);font-weight:800;font-size:12px;margin-top:4px}
-    .eu .link{display:inline-block;margin-top:12px;color:var(--turq);font-weight:900;text-decoration:none;font-size:13px}
-    .eu .link:hover{text-decoration:underline;color:var(--red)}
+/* ════════════════════════════
+   SLIDE 0 — HERO
+════════════════════════════ */
+#s0{background:var(--noir);}
+.hero-wrap{
+  position:relative;flex:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(160deg,#0a1f35 0%,#0d2d1a 40%,#1a1200 100%);
+}
+/* geometric accent blocks */
+.hero-geo{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.hg-block{position:absolute;border-radius:0;}
+.hg1{width:340px;height:600px;background:var(--bleu);opacity:.12;top:-80px;right:-60px;transform:rotate(15deg);}
+.hg2{width:280px;height:500px;background:var(--vert);opacity:.1;bottom:-100px;left:-80px;transform:rotate(-12deg);}
+.hg3{width:180px;height:320px;background:var(--rose);opacity:.1;top:0;left:30%;transform:rotate(8deg);}
 
-    @media(max-width:760px){
-      .title-center{position:relative;top:auto;left:auto;transform:none;width:100%;margin-top:10px}
-      .cardset{grid-template-columns:1fr}
-    }
-  </style>
+.hero-content{position:relative;z-index:2;padding:2rem;}
+.hero-eyebrow{
+  display:inline-block;
+  font-family:'Nunito',sans-serif;font-size:.7rem;font-weight:800;
+  text-transform:uppercase;letter-spacing:.2em;
+  color:var(--vert);background:rgba(149,193,31,.12);
+  border:1.5px solid rgba(149,193,31,.3);
+  padding:.3rem 1rem;border-radius:4px;margin-bottom:1.2rem;
+}
+.hero-title{
+  font-family:'Nunito',sans-serif;
+  font-size:clamp(2.2rem,5.5vw,4rem);font-weight:900;
+  color:var(--blanc);line-height:1.05;
+  margin-bottom:.5rem;letter-spacing:-.02em;
+}
+.hero-title .hl{color:var(--vert);}
+.hero-sub{
+  font-size:1rem;color:rgba(255,255,255,.5);
+  font-style:italic;margin-bottom:2rem;
+  font-family:'Nunito Sans',sans-serif;
+}
+.hero-chips{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;margin-bottom:2rem;}
+.hero-chip{
+  font-family:'Nunito',sans-serif;font-size:.72rem;font-weight:800;
+  text-transform:uppercase;letter-spacing:.08em;
+  padding:.38rem .9rem;border-radius:4px;color:var(--blanc);
+}
+.hero-start{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-family:'Nunito',sans-serif;font-size:.92rem;font-weight:900;
+  text-transform:uppercase;letter-spacing:.1em;
+  background:var(--vert);color:var(--blanc);
+  border:none;border-radius:6px;padding:.85rem 2rem;
+  cursor:pointer;transition:all .22s;
+}
+.hero-start:hover{background:#7aa018;transform:translateY(-2px);box-shadow:0 8px 24px rgba(149,193,31,.4);}
+.hero-meta{
+  display:flex;align-items:center;justify-content:center;gap:1.5rem;
+  margin-bottom:1.8rem;flex-wrap:wrap;
+}
+.hm-item{display:flex;flex-direction:column;align-items:center;}
+.hm-num{font-family:'Nunito',sans-serif;font-size:1.9rem;font-weight:900;color:var(--orange);line-height:1;}
+.hm-lbl{font-size:.65rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.1em;font-weight:700;}
+.hm-sep{width:1px;height:34px;background:rgba(255,255,255,.1);}
+
+/* ════════════════════════════
+   COLOR BLOCK ROW (comme le site MLPB)
+════════════════════════════ */
+.color-row{
+  display:grid;gap:0;
+  flex-shrink:0;
+}
+.color-row-4{grid-template-columns:repeat(4,1fr);}
+.color-row-2{grid-template-columns:repeat(2,1fr);}
+.cblock{
+  padding:1.5rem 1.2rem;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  cursor:pointer;transition:all .2s;position:relative;overflow:hidden;
+}
+.cblock:hover{filter:brightness(1.1);}
+.cblock-icon{font-size:2.2rem;margin-bottom:.6rem;}
+.cblock-title{
+  font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:900;
+  text-transform:uppercase;letter-spacing:.1em;color:var(--blanc);margin-bottom:.3rem;
+}
+.cblock-text{font-size:.75rem;color:rgba(255,255,255,.8);line-height:1.5;font-family:'Nunito Sans',sans-serif;}
+
+/* ════════════════════════════
+   SECTION DIVIDER SLIDE
+════════════════════════════ */
+.section-divider{
+  flex:1;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  padding:2rem;
+}
+.sd-num{
+  position:absolute;
+  font-family:'Nunito',sans-serif;font-size:12rem;font-weight:900;
+  opacity:.05;color:var(--blanc);line-height:1;
+  top:50%;transform:translateY(-50%);
+  pointer-events:none;
+}
+.sd-tag{
+  display:inline-block;font-family:'Nunito',sans-serif;
+  font-size:.7rem;font-weight:900;text-transform:uppercase;letter-spacing:.2em;
+  padding:.3rem 1.1rem;border-radius:4px;margin-bottom:1.2rem;
+}
+.sd-title{
+  font-family:'Nunito',sans-serif;
+  font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;
+  color:var(--blanc);line-height:1.1;margin-bottom:.8rem;letter-spacing:-.01em;
+}
+.sd-desc{
+  font-size:.95rem;color:rgba(255,255,255,.55);
+  max-width:500px;margin:0 auto 1.5rem;line-height:1.7;
+}
+.sd-pills{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;}
+.sd-pill{
+  font-family:'Nunito',sans-serif;font-size:.72rem;font-weight:800;
+  text-transform:uppercase;letter-spacing:.08em;
+  padding:.35rem .9rem;border-radius:4px;
+  background:rgba(255,255,255,.1);color:rgba(255,255,255,.75);
+  border:1px solid rgba(255,255,255,.15);
+}
+
+/* ════════════════════════════
+   CONTENT SLIDES — MLPB STYLE
+════════════════════════════ */
+/* header banner per slide */
+.slide-banner{
+  padding:1.2rem 2rem;color:var(--blanc);
+  display:flex;align-items:center;justify-content:space-between;flex-shrink:0;
+}
+.sb-left{}
+.sb-module{
+  font-family:'Nunito',sans-serif;font-size:.65rem;font-weight:900;
+  text-transform:uppercase;letter-spacing:.2em;color:rgba(255,255,255,.6);margin-bottom:.2rem;
+}
+.sb-title{
+  font-family:'Nunito',sans-serif;font-size:clamp(1.3rem,2.5vw,1.9rem);
+  font-weight:900;color:var(--blanc);line-height:1.1;letter-spacing:-.01em;
+}
+.sb-right{
+  font-family:'Nunito',sans-serif;font-size:.65rem;font-weight:700;
+  color:rgba(255,255,255,.4);text-align:right;white-space:nowrap;
+}
+
+/* content area */
+.scontent{padding:1.5rem 2rem 1rem;display:flex;flex-direction:column;gap:1rem;}
+
+/* MLPB-style card blocks */
+.mlpb-grid{display:grid;gap:3px;background:var(--gris-border);}
+.mlpb-grid-4{grid-template-columns:repeat(4,1fr);}
+.mlpb-grid-3{grid-template-columns:repeat(3,1fr);}
+.mlpb-grid-2{grid-template-columns:repeat(2,1fr);}
+.mlpb-card{
+  background:var(--blanc);padding:1.3rem;
+  display:flex;flex-direction:column;gap:.5rem;
+  transition:all .2s;position:relative;overflow:hidden;
+}
+.mlpb-card:hover{z-index:2;box-shadow:0 4px 20px rgba(0,0,0,.12);}
+.mlpb-card-icon{font-size:1.6rem;margin-bottom:.2rem;}
+.mlpb-card-title{
+  font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:900;
+  text-transform:uppercase;letter-spacing:.06em;color:var(--noir);
+}
+.mlpb-card-text{font-size:.82rem;color:rgba(23,23,24,.62);line-height:1.6;}
+.mlpb-card-link{
+  font-family:'Nunito',sans-serif;font-size:.72rem;font-weight:800;
+  text-transform:uppercase;letter-spacing:.06em;margin-top:auto;
+  display:flex;align-items:center;gap:.3rem;
+}
+/* colored top accent */
+.mcard-top{position:absolute;top:0;left:0;right:0;height:4px;}
+
+/* COLORED MLPB CARD */
+.mlpb-card.colored{
+  align-items:center;text-align:center;justify-content:center;
+  padding:1.6rem 1.2rem;
+}
+.mlpb-card.colored .mlpb-card-icon{font-size:2rem;}
+.mlpb-card.colored .mlpb-card-title{color:var(--blanc);}
+.mlpb-card.colored .mlpb-card-text{color:rgba(255,255,255,.82);}
+.mlpb-card.colored .mlpb-card-link{color:rgba(255,255,255,.7);}
+
+/* Two-pane layout */
+.two-pane{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--gris-border);}
+.pane{background:var(--blanc);padding:1.5rem;}
+.pane-title{
+  font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:900;
+  text-transform:uppercase;letter-spacing:.1em;margin-bottom:.85rem;
+}
+
+/* List items */
+.check-list{display:flex;flex-direction:column;gap:.45rem;}
+.cli{
+  display:flex;align-items:flex-start;gap:.75rem;
+  padding:.72rem .9rem;border-radius:4px;font-size:.85rem;line-height:1.5;
+  border:1.5px solid var(--gris-border);background:var(--blanc);
+  transition:all .22s;cursor:pointer;
+}
+.cli.chkd{background:rgba(149,193,31,.07);border-color:rgba(149,193,31,.5);}
+.cli-box{
+  width:20px;height:20px;border-radius:4px;border:2px solid var(--gris-border);
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .18s;
+}
+.cli.chkd .cli-box{background:var(--vert);border-color:var(--vert);}
+.cli-box svg{display:none;}
+.cli.chkd .cli-box svg{display:block;}
+.cli-text{font-family:'Nunito Sans',sans-serif;font-size:.83rem;line-height:1.5;}
+.prog-bar{height:5px;background:var(--gris-border);border-radius:3px;margin-top:.75rem;overflow:hidden;}
+.prog-fill{height:100%;background:var(--vert);border-radius:3px;width:0%;transition:width .35s;}
+.prog-lbl{font-size:.7rem;color:rgba(23,23,24,.45);margin-top:.3rem;font-family:'Nunito',sans-serif;font-weight:700;}
+
+/* Quote / highlight */
+.highlight{
+  border-left:5px solid var(--bleu);background:rgba(40,151,213,.06);
+  padding:.9rem 1.1rem;border-radius:0 6px 6px 0;
+  font-family:'Nunito',sans-serif;font-size:.92rem;font-weight:700;line-height:1.55;
+}
+.highlight.green{border-color:var(--vert);background:rgba(149,193,31,.06);}
+.highlight.orange{border-color:var(--orange);background:rgba(243,146,0,.06);}
+.highlight.rose{border-color:var(--rose);background:rgba(214,11,82,.06);}
+
+/* Dark pane */
+.dark-pane{background:var(--noir)!important;}
+.dark-pane .pane-title{color:var(--blanc);}
+
+.drow{
+  display:flex;align-items:center;gap:.65rem;
+  padding:.5rem .7rem;background:rgba(255,255,255,.05);border-radius:4px;
+  margin-bottom:.35rem;font-size:.83rem;font-family:'Nunito Sans',sans-serif;
+  color:rgba(255,255,255,.8);
+}
+.drow .ck{color:var(--vert);}
+
+/* Steps */
+.step-list{display:flex;flex-direction:column;gap:.5rem;}
+.sli{
+  display:flex;align-items:flex-start;gap:.9rem;
+  padding:.8rem 1rem;border:1.5px solid var(--gris-border);
+  background:var(--blanc);border-radius:4px;transition:all .2s;
+}
+.sli:hover{border-color:var(--bleu);background:rgba(40,151,213,.03);}
+.sli-num{
+  width:26px;height:26px;border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;
+  color:var(--blanc);flex-shrink:0;
+}
+.sli-title{font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:800;margin-bottom:.15rem;}
+.sli-text{font-size:.78rem;color:rgba(23,23,24,.58);line-height:1.5;}
+
+/* Axes MLPB */
+.axe-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;background:var(--gris-border);}
+.axe-block{
+  padding:1.8rem 1.5rem;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;transition:all .22s;cursor:pointer;
+}
+.axe-block:hover{filter:brightness(1.08);}
+.axe-bignum{
+  position:absolute;top:.2rem;right:.8rem;
+  font-family:'Nunito',sans-serif;font-size:5rem;font-weight:900;
+  opacity:.12;color:var(--blanc);line-height:1;
+}
+.axe-tag{font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.2em;color:rgba(255,255,255,.55);margin-bottom:.3rem;}
+.axe-name{font-family:'Nunito',sans-serif;font-size:1.35rem;font-weight:900;color:var(--blanc);margin-bottom:.4rem;}
+.axe-q{font-size:.83rem;color:rgba(255,255,255,.75);font-style:italic;line-height:1.45;font-family:'Nunito Sans',sans-serif;}
+
+/* Big question box */
+.big-q{
+  background:var(--noir);padding:1.8rem;text-align:center;position:relative;overflow:hidden;
+}
+.bq-label{font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.2em;color:rgba(255,255,255,.35);margin-bottom:.7rem;}
+.bq-text{font-family:'Nunito',sans-serif;font-size:clamp(1.1rem,2vw,1.6rem);font-weight:900;color:var(--blanc);line-height:1.3;}
+.bq-accent{color:var(--vert);}
+.bq-sub{font-size:.82rem;color:rgba(255,255,255,.4);margin-top:.5rem;font-style:italic;}
+
+/* Result box */
+.result{
+  display:flex;align-items:flex-start;gap:.75rem;
+  padding:1rem 1.1rem;border-radius:4px;
+}
+.result-icon{font-size:1.2rem;flex-shrink:0;}
+.result-title{font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:900;margin-bottom:.2rem;}
+.result-text{font-size:.8rem;line-height:1.5;}
+
+/* Q items */
+.q-list{display:flex;flex-direction:column;gap:.45rem;}
+.qli{
+  display:flex;align-items:flex-start;gap:.65rem;
+  padding:.65rem .85rem;background:var(--gris-clair);border-radius:4px;
+  font-size:.82rem;line-height:1.5;font-family:'Nunito Sans',sans-serif;
+}
+
+/* Table */
+.mlpb-table{width:100%;border-collapse:collapse;font-size:.8rem;}
+.mlpb-table th{font-family:'Nunito',sans-serif;font-weight:900;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;padding:.6rem .8rem;text-align:left;}
+.mlpb-table td{padding:.65rem .8rem;border-bottom:1px solid var(--gris-border);line-height:1.5;vertical-align:top;}
+.mlpb-table tr:last-child td{border-bottom:none;}
+.mlpb-table tr:hover td{background:var(--gris-clair);}
+
+/* tag pill */
+.pill{display:inline-block;font-family:'Nunito',sans-serif;font-size:.65rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;padding:.2rem .6rem;border-radius:3px;}
+
+/* Green CTA bottom bar */
+.cta-bar{
+  background:var(--vert);padding:1rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;flex-shrink:0;
+}
+.cta-bar-text{font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:800;color:var(--blanc);}
+.cta-bar-sub{font-size:.78rem;color:rgba(255,255,255,.7);margin-top:.1rem;}
+.cta-bar-btn{
+  font-family:'Nunito',sans-serif;font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;
+  background:var(--blanc);color:var(--vert);border:none;border-radius:4px;
+  padding:.5rem 1.3rem;cursor:pointer;transition:all .18s;
+}
+.cta-bar-btn:hover{background:var(--noir);color:var(--blanc);}
+
+/* Scale */
+.scale-stack{display:flex;flex-direction:column;gap:.4rem;}
+.sc-item{
+  display:flex;align-items:center;gap:.8rem;
+  padding:.65rem .9rem;background:var(--blanc);border:1.5px solid var(--gris-border);
+  border-radius:4px;transition:all .18s;
+}
+.sc-item:hover{transform:translateX(4px);}
+.sc-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.sc-lbl{font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:800;}
+.sc-desc{font-size:.75rem;color:rgba(23,23,24,.5);margin-left:auto;}
+.sc-badge{font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;padding:.18rem .55rem;border-radius:3px;}
+
+/* Atelier badge */
+.atelier-header{
+  display:flex;align-items:center;gap:1rem;
+  padding:1rem 2rem;border-bottom:2px solid var(--gris-border);flex-shrink:0;
+}
+.at-num{
+  font-family:'Nunito',sans-serif;font-size:1.8rem;font-weight:900;
+  width:52px;height:52px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;color:var(--blanc);flex-shrink:0;
+}
+.at-info{}
+.at-eyebrow{font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.2em;color:rgba(23,23,24,.4);margin-bottom:.1rem;}
+.at-name{font-family:'Nunito',sans-serif;font-size:1.15rem;font-weight:900;line-height:1.1;}
+.at-dur{font-family:'Nunito Sans',sans-serif;font-size:.75rem;color:rgba(23,23,24,.45);}
+
+/* Equation */
+.equation{display:flex;align-items:center;justify-content:center;gap:.5rem;flex-wrap:wrap;padding:1rem;}
+.eq-token{font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:900;text-transform:uppercase;padding:.35rem .9rem;border-radius:4px;letter-spacing:.06em;}
+.eq-op{font-size:1rem;font-weight:700;color:rgba(23,23,24,.4);}
+
+/* Bilan card */
+.bilan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;background:var(--gris-border);}
+.bilan-cell{background:var(--blanc);padding:1.2rem;display:flex;align-items:flex-start;gap:.8rem;}
+.bc-num{
+  font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:900;
+  width:36px;height:36px;border-radius:4px;display:flex;align-items:center;justify-content:center;
+  color:var(--blanc);flex-shrink:0;
+}
+.bc-title{font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:900;margin-bottom:.2rem;}
+.bc-text{font-size:.78rem;color:rgba(23,23,24,.58);line-height:1.5;}
+
+/* Final slide */
+#s20{background:var(--noir);}
+.final-inner{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:2rem;position:relative;overflow:hidden;
+}
+.f-bg-geo{position:absolute;inset:0;pointer-events:none;}
+.fbg1{position:absolute;width:500px;height:500px;border-radius:50%;background:var(--vert);opacity:.06;top:-200px;right:-100px;}
+.fbg2{position:absolute;width:300px;height:300px;border-radius:50%;background:var(--bleu);opacity:.06;bottom:-100px;left:-50px;}
+
+/* Transform example rows */
+.transfo{display:grid;grid-template-columns:1fr auto 1fr;gap:.5rem;align-items:center;padding:.65rem .85rem;background:var(--gris-clair);border-radius:4px;border:1.5px solid var(--gris-border);}
+.transfo-from{font-size:.8rem;color:rgba(23,23,24,.55);font-style:italic;}
+.transfo-arr{font-size:1rem;font-weight:900;}
+.transfo-to{font-size:.8rem;font-weight:700;}
+
+/* map legend */
+.map-legend{background:var(--noir);padding:1.1rem 1.3rem;display:flex;flex-direction:column;gap:.4rem;}
+.ml-title{font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.3);margin-bottom:.3rem;}
+.ml-row{display:flex;align-items:center;gap:.7rem;padding:.42rem .6rem;background:rgba(255,255,255,.05);border-radius:3px;}
+.ml-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}
+.ml-name{font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:800;color:var(--blanc);}
+.ml-desc{font-size:.72rem;color:rgba(255,255,255,.45);margin-left:auto;}
+
+/* Utility */
+.mt1{margin-top:.4rem;}.mt2{margin-top:.85rem;}.mt3{margin-top:1.2rem;}
+.mb1{margin-bottom:.4rem;}.mb2{margin-bottom:.85rem;}
+.fw9{font-family:'Nunito',sans-serif;font-weight:900;}
+.txt-blanc{color:var(--blanc);}
+/* ════ MAP SLIDE ════ */
+.map-filter-btn{font-family:"Nunito",sans-serif;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--blanc);border:none;border-radius:5px;padding:.38rem .85rem;cursor:pointer;transition:all .18s;opacity:.55;display:flex;align-items:center;gap:.35rem;}
+.map-filter-btn.active{opacity:1;box-shadow:0 2px 10px rgba(0,0,0,.25);}
+.map-filter-btn:hover{opacity:.85;}
+.mfb-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.8);flex-shrink:0;}
+.cat-opt{display:flex;align-items:center;gap:.5rem;padding:.5rem .7rem;border-radius:5px;border:2px solid;font-family:"Nunito",sans-serif;font-size:.78rem;font-weight:800;cursor:pointer;transition:all .18s;}
+.cat-opt.selected{opacity:1;transform:scale(1.02);}
+.cat-opt:not(.selected){opacity:.6;}
+.pin-list-item{display:flex;align-items:flex-start;gap:.55rem;padding:.6rem .7rem;background:var(--blanc);border-radius:5px;border:1.5px solid var(--gris-border);position:relative;transition:all .18s;}
+.pin-list-item:hover{border-color:rgba(40,151,213,.35);}
+.pin-list-item .pli-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:3px;}
+.pin-list-item .pli-name{font-family:"Nunito",sans-serif;font-size:.8rem;font-weight:800;line-height:1.3;}
+.pin-list-item .pli-note{font-size:.72rem;color:rgba(23,23,24,.5);line-height:1.4;margin-top:.1rem;}
+.pin-list-item .pli-del{position:absolute;top:.4rem;right:.4rem;background:none;border:none;cursor:pointer;color:rgba(23,23,24,.25);font-size:.9rem;line-height:1;transition:color .15s;}
+.pin-list-item .pli-del:hover{color:var(--rose);}
+#pin-modal.open{display:flex!important;}
+</style>
 </head>
-
 <body>
-  <div class="bg-shapes" aria-hidden="true">
-    <div class="bg-circle c-mint"></div>
-    <div class="bg-circle c-yellow"></div>
-    <div class="bg-circle c-orange"></div>
-    <div class="bg-circle c-red"></div>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="logo-area">
+    <img
+      src="https://static.wixstatic.com/media/dd5dab_47743b1c86024865ba19e623a3db327f~mv2.avif/v1/fill/w_224,h_60,al_c,q_80,enc_avif,quality_auto/dd5dab_47743b1c86024865ba19e623a3db327f~mv2.avif"
+      alt="Mission Locale Pays Basque"
+      style="height:28px;width:auto;object-fit:contain;flex-shrink:0;"
+      onerror="this.style.display='none';document.getElementById('logo-fallback').style.display='flex';"
+    />
+    <div id="logo-fallback" style="display:none;align-items:center;gap:.6rem">
+      <div class="logo-badge">ML</div>
+      <div class="logo-text">
+        <div class="logo-top">Mission Locale Pays Basque</div>
+        <div class="logo-bot">LS4YOU</div>
+      </div>
+    </div>
+    <div style="width:1px;height:20px;background:var(--gris-border);margin:0 .3rem;flex-shrink:0;"></div>
+    <img
+      src="https://www.lifeskills4youth.eu/wp-content/uploads/2024/07/LS4YOU_Logo.png"
+      alt="Life Skills for Youth"
+      style="height:26px;width:auto;object-fit:contain;flex-shrink:0;"
+      onerror="this.style.display='none';"
+    />
+    <div style="width:1px;height:20px;background:var(--gris-border);margin:0 .3rem;flex-shrink:0;"></div>
+    <div class="logo-text">
+      <div class="logo-top">LS4YOU</div>
+      <div class="logo-bot">Comprendre le Territoire</div>
+    </div>
   </div>
+  <nav>
+    <button class="ntab active" onclick="goTo(0)">Accueil</button>
+    <button class="ntab" onclick="goTo(1)">De quoi parle-t-on ?</button>
+    <button class="ntab" onclick="goTo(9)">Parcours Carto</button>
+    <button class="ntab" onclick="goTo(11)">Atelier 1</button>
+    <button class="ntab" onclick="goTo(13)">Atelier 2</button>
+    <button class="ntab" onclick="goTo(15)">Atelier 3</button>
+    <button class="ntab" onclick="goTo(17)">Atelier 4</button>
+    <button class="ntab" onclick="goTo(19)">🗺 Ma Carte</button>
+    <button class="ntab" onclick="goTo(20)">Bilan</button>
+  </nav>
+  <div class="h-right">
+    <span class="slide-ctr" id="sctr">01 / 21</span>
+    <button class="rdv-btn" onclick="nextSlide()">▶ Démarrer</button>
+  </div>
+</header>
 
-  <main class="wrap">
-    <section class="frame">
+<main>
 
-      <header class="hero">
-        <div class="hero-inner">
-          <div class="header-pattern" aria-hidden="true">
-            <div class="hs hs-1"></div><div class="hs hs-2"></div><div class="hs hs-3"></div><div class="hs hs-4"></div><div class="hs hs-5"></div>
+<!-- ══════════ S0 — HERO ══════════ -->
+<section class="slide active" id="s0">
+  <div class="hero-wrap">
+    <div class="hero-bg"></div>
+    <div class="hero-geo">
+      <div class="hg-block hg1"></div>
+      <div class="hg-block hg2"></div>
+      <div class="hg-block hg3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">🎓 De quoi parle-t-on ? + Parcours Cartographique · LS4YOU</div>
+      <h1 class="hero-title">Comprendre<br><span class="hl">le Territoire</span></h1>
+      <p class="hero-sub">Transformer ton environnement en compétence pour ton insertion</p>
+      <div class="hero-meta">
+        <div class="hm-item"><span class="hm-num">8</span><span class="hm-lbl">Modules</span></div>
+        <div class="hm-sep"></div>
+        <div class="hm-item"><span class="hm-num">4</span><span class="hm-lbl">Ateliers</span></div>
+        <div class="hm-sep"></div>
+        <div class="hm-item"><span class="hm-num">3h</span><span class="hm-lbl">Pratique</span></div>
+        <div class="hm-sep"></div>
+        <div class="hm-item"><span class="hm-num">1</span><span class="hm-lbl">Carte projet</span></div>
+      </div>
+      <div class="hero-chips">
+        <span class="hero-chip" style="background:var(--bleu)">🎯 Compétence Territoire</span>
+        <span class="hero-chip" style="background:var(--rose)">📍 Réseau local</span>
+        <span class="hero-chip" style="background:var(--orange)">🗺️ Carte projet perso</span>
+      </div>
+      <button class="hero-start" onclick="nextSlide()">
+        Commencer
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <!-- color blocks row like MLPB site -->
+  <div class="color-row color-row-4" style="flex-shrink:0">
+    <div class="cblock" style="background:var(--gris-clair)" onclick="goTo(1)">
+      <div class="cblock-icon">🗺️</div>
+      <div class="cblock-title" style="color:var(--noir)">De quoi parle-t-on ?</div>
+      <div class="cblock-text" style="color:rgba(23,23,24,.6)">8 modules pour comprendre le territoire</div>
+      <div style="margin-top:.5rem;font-family:'Nunito',sans-serif;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--bleu)">En savoir plus ›</div>
+    </div>
+    <div class="cblock" style="background:var(--bleu)" onclick="goTo(11)">
+      <div class="cblock-icon">👥</div>
+      <div class="cblock-title">Réseau</div>
+      <div class="cblock-text">Qui je connais, qui me connaît — Atelier 1</div>
+      <div style="margin-top:.5rem;font-family:'Nunito',sans-serif;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.7)">En savoir plus ›</div>
+    </div>
+    <div class="cblock" style="background:var(--rose)" onclick="goTo(13)">
+      <div class="cblock-icon">💡</div>
+      <div class="cblock-title">Compétences</div>
+      <div class="cblock-text">Mon CV géographique — Atelier 2</div>
+      <div style="margin-top:.5rem;font-family:'Nunito',sans-serif;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.7)">En savoir plus ›</div>
+    </div>
+    <div class="cblock" style="background:var(--orange)" onclick="goTo(15)">
+      <div class="cblock-icon">🚌</div>
+      <div class="cblock-title">Solutions</div>
+      <div class="cblock-text">Transport, repas, papiers — Atelier 3</div>
+      <div style="margin-top:.5rem;font-family:'Nunito',sans-serif;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.7)">En savoir plus ›</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ S1 — Définition ══════════ -->
+<section class="slide" id="s1">
+  <div class="sbody">
+    <div class="slide-banner" style="background:var(--bleu)">
+      <div class="sb-left"><div class="sb-module">Module 01 / 08 · De quoi parle-t-on ?</div><div class="sb-title">Le territoire : bien plus qu'une carte</div></div>
+      <div class="sb-right">De quoi parle-t-on ?<br>LS4YOU</div>
+    </div>
+    <div class="scontent">
+      <div class="mlpb-grid mlpb-grid-2">
+        <div style="background:var(--blanc);padding:1.3rem;display:flex;flex-direction:column;gap:.7rem">
+          <div class="highlight">
+            Un territoire = un espace + des acteurs + des règles + des ressources + des usages.
           </div>
+          <p style="font-size:.85rem;line-height:1.65;color:rgba(23,23,24,.65)">Ce n'est pas seulement <strong>"où tu es"</strong>. C'est <strong>"comment ça fonctionne ici, et comment je peux m'y positionner"</strong>.</p>
+          <div class="mlpb-grid mlpb-grid-2 mt2">
+            <div class="mlpb-card"><div class="mcard-top" style="background:var(--bleu)"></div><div class="mlpb-card-icon">📍</div><div class="mlpb-card-title">Un espace</div><div class="mlpb-card-text">Géographique et symbolique, les lieux que tu fréquentes</div></div>
+            <div class="mlpb-card"><div class="mcard-top" style="background:var(--vert)"></div><div class="mlpb-card-icon">👥</div><div class="mlpb-card-title">Des acteurs</div><div class="mlpb-card-text">Structures, personnes, réseaux qui font vivre ce territoire</div></div>
+            <div class="mlpb-card"><div class="mcard-top" style="background:var(--orange)"></div><div class="mlpb-card-icon">📋</div><div class="mlpb-card-title">Des règles</div><div class="mlpb-card-text">Dispositifs, droits, fonctionnements locaux</div></div>
+            <div class="mlpb-card"><div class="mcard-top" style="background:var(--violet)"></div><div class="mlpb-card-icon">💡</div><div class="mlpb-card-title">Des ressources</div><div class="mlpb-card-text">Opportunités, aides, infrastructures disponibles</div></div>
+          </div>
+        </div>
+        <div class="dark-pane pane">
+          <div class="pane-title" style="color:rgba(255,255,255,.35)">À la Mission Locale, l'objectif c'est</div>
+          <div class="drow"><span class="ck">✓</span>Te repérer dans ton environnement</div>
+          <div class="drow"><span class="ck">✓</span>Accéder à tes droits</div>
+          <div class="drow"><span class="ck">✓</span>Identifier les bonnes structures</div>
+          <div class="drow"><span class="ck">✓</span>Te déplacer efficacement</div>
+          <div class="drow"><span class="ck">✓</span>Sécuriser ta situation</div>
+          <div class="drow"><span class="ck">✓</span>Construire un réseau d'appuis</div>
+          <div class="highlight green mt2"><strong>Toutes ces dimensions sont liées à un contexte précis : ton territoire.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-          <div class="header-content">
-            <div class="logo-left">
-              <img src="https://static.wixstatic.com/media/dd5dab_47743b1c86024865ba19e623a3db327f~mv2.avif/v1/fill/w_224,h_60,al_c,q_80,enc_avif,quality_auto/dd5dab_47743b1c86024865ba19e623a3db327f~mv2.avif" alt="Logo Mission Locale Pays Basque" class="header-logo" loading="lazy" />
-            </div>
+<!-- ══════════ S2 — Pourquoi central ══════════ -->
+<section class="slide" id="s2">
+  <div class="sbody">
+    <div class="slide-banner" style="background:var(--orange)">
+      <div class="sb-left"><div class="sb-module">Module 02 / 08 · De quoi parle-t-on ?</div><div class="sb-title">Pourquoi le territoire est central</div></div>
+    </div>
+    <div class="scontent">
+      <div class="mlpb-grid mlpb-grid-4">
+        <div class="mlpb-card colored" style="background:var(--bleu)"><div class="mcard-top" style="background:rgba(255,255,255,.2)"></div><div class="mlpb-card-icon">🏢</div><div class="mlpb-card-title">Secteurs qui recrutent</div><div class="mlpb-card-text">Les débouchés varient fortement selon la zone et l'économie locale.</div><div class="mlpb-card-link" style="color:rgba(255,255,255,.5)">Impact direct ›</div></div>
+        <div class="mlpb-card colored" style="background:var(--vert)"><div class="mlpb-card-icon">🚌</div><div class="mlpb-card-title">Mobilité & transports</div><div class="mlpb-card-text">Les options conditionnent ton accès à l'emploi et à la formation.</div><div class="mlpb-card-link" style="color:rgba(255,255,255,.5)">Impact direct ›</div></div>
+        <div class="mlpb-card colored" style="background:var(--rose)"><div class="mlpb-card-icon">🏠</div><div class="mlpb-card-title">Logement & coût</div><div class="mlpb-card-text">Les loyers influencent ta capacité à accepter un emploi éloigné.</div><div class="mlpb-card-link" style="color:rgba(255,255,255,.5)">Impact direct ›</div></div>
+        <div class="mlpb-card colored" style="background:var(--violet)"><div class="mlpb-card-icon">💶</div><div class="mlpb-card-title">Dispositifs d'aide</div><div class="mlpb-card-text">Les aides disponibles diffèrent selon les territoires locaux.</div><div class="mlpb-card-link" style="color:rgba(255,255,255,.5)">Impact direct ›</div></div>
+      </div>
+      <div class="highlight orange">Les opportunités ne sont pas identiques partout. Connaître le territoire = comprendre ton environnement pour faire des choix stratégiques.</div>
+    </div>
+  </div>
+</section>
 
-            <div class="title-center">
-              <h1 class="hero-title">ACCUEILLIR<small>Ton super-pouvoir relationnel — ~1h</small></h1>
-            </div>
+<!-- ══════════ S3 — Plusieurs échelles ══════════ -->
+<section class="slide" id="s3">
+  <div class="sbody">
+    <div class="slide-banner" style="background:var(--vert)">
+      <div class="sb-left"><div class="sb-module">Module 03 / 08 · De quoi parle-t-on ?</div><div class="sb-title">Un territoire, plusieurs échelles</div></div>
+    </div>
+    <div class="scontent">
+      <div class="mlpb-grid mlpb-grid-2">
+        <div style="background:var(--blanc);padding:1.2rem">
+          <div class="pane-title" style="font-family:'Nunito',sans-serif;font-weight:900;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem">Les 6 échelles du territoire</div>
+          <div class="scale-stack">
+            <div class="sc-item"><div class="sc-dot" style="background:var(--rose)"></div><span class="sc-lbl">La commune</span><span class="sc-desc">Ta ville, ton quartier</span><span class="sc-badge" style="background:rgba(214,11,82,.1);color:var(--rose)">Proximal</span></div>
+            <div class="sc-item"><div class="sc-dot" style="background:var(--violet)"></div><span class="sc-lbl">L'intercommunalité</span><span class="sc-desc">Ensemble de communes</span><span class="sc-badge" style="background:rgba(163,25,91,.1);color:var(--violet)">Local</span></div>
+            <div class="sc-item"><div class="sc-dot" style="background:var(--orange)"></div><span class="sc-lbl">Le département</span><span class="sc-desc">Services départementaux</span><span class="sc-badge" style="background:rgba(243,146,0,.1);color:var(--orange)">Moyen</span></div>
+            <div class="sc-item"><div class="sc-dot" style="background:var(--bleu)"></div><span class="sc-lbl">La région</span><span class="sc-desc">Formations, politiques</span><span class="sc-badge" style="background:rgba(40,151,213,.1);color:var(--bleu)">Large</span></div>
+            <div class="sc-item" style="border-color:rgba(149,193,31,.4);background:rgba(149,193,31,.04)"><div class="sc-dot" style="background:var(--vert)"></div><span class="sc-lbl">Bassin de vie</span><span class="sc-desc">Services du quotidien</span><span class="sc-badge" style="background:var(--vert);color:var(--blanc)">Usage</span></div>
+            <div class="sc-item" style="border-color:rgba(149,193,31,.4);background:rgba(149,193,31,.04)"><div class="sc-dot" style="background:var(--vert)"></div><span class="sc-lbl">Zone d'emploi</span><span class="sc-desc">Logique domicile-travail</span><span class="sc-badge" style="background:var(--vert);color:var(--blanc)">Emploi</span></div>
+          </div>
+        </div>
+        <div style="background:var(--blanc);padding:1.2rem;display:flex;flex-direction:column;gap:.85rem">
+          <div class="pane-title" style="font-family:'Nunito',sans-serif;font-weight:900;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em">Selon l'objectif, l'échelle change</div>
+          <div style="display:flex;flex-direction:column;gap:.5rem">
+            <div class="sli"><div class="sli-num" style="background:var(--bleu)">🎓</div><div><div class="sli-title">Chercher une formation</div><div class="sli-text">→ Région voire national</div></div></div>
+            <div class="sli"><div class="sli-num" style="background:var(--vert)">💼</div><div><div class="sli-title">Trouver un stage</div><div class="sli-text">→ Zone d'emploi locale</div></div></div>
+            <div class="sli"><div class="sli-num" style="background:var(--orange)">🏠</div><div><div class="sli-title">Chercher un logement</div><div class="sli-text">→ Commune / intercommunalité</div></div></div>
+            <div class="sli"><div class="sli-num" style="background:var(--rose)">🚑</div><div><div class="sli-title">Accéder aux droits</div><div class="sli-text">→ Département</div></div></div>
+          </div>
+          <div class="highlight green mt1">La compétence : identifier la bonne échelle pour la bonne action.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <div class="logo-right">
-              <img src="https://www.lifeskills4youth.eu/wp-content/uploads/2024/07/LS4YOU_Logo.png" alt="Logo LS4YOU" class="header-logo" loading="lazy" />
+<!-- ══════════ S4 — Territoire vécu ══════════ -->
+<section class="slide" id="s4">
+  <div class="sbody">
+    <div class="slide-banner" style="background:var(--rose)">
+      <div class="sb-left"><div class="sb-module">Module 04 / 08 · De quoi parle-t-on ?</div><div class="sb-title">Ton territoire personnel existe aussi</div></div>
+    </div>
+    <div class="scontent">
+      <div class="mlpb-grid mlpb-grid-2">
+        <div style="background:var(--blanc);padding:1.2rem;display:flex;flex-direction:column;gap:.6rem">
+          <div class="pane-title" style="font-family:'Nunito',sans-serif;font-weight:900;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em">Ton territoire vécu, c'est…</div>
+          <div class="sli"><div class="sli-num" style="background:var(--rose)">🗺</div><div><div class="sli-title">Tes trajets habituels</div><div class="sli-text">Les chemins que tu empruntes au quotidien</div></div></div>
+          <div class="sli"><div class="sli-num" style="background:var(--violet)">🏡</div><div><div class="sli-title">Les lieux où tu te sens légitime</div><div class="sli-text">Tes zones de confort, tes repères</div></div></div>
+          <div class="sli"><div class="sli-num" style="background:var(--orange)">🌟</div><div><div class="sli-title">Tes espaces d'opportunité</div><div class="sli-text">Les zones où tu sais que des choses se passent</div></div></div>
+          <div class="highlight rose mt1">Ta capacité à élargir ton territoire personnel influence directement tes opportunités.</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <div style="background:linear-gradient(135deg,var(--rose),var(--violet));padding:1.8rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;flex:1">
+            <div style="font-size:2.8rem;margin-bottom:.75rem">🌱</div>
+            <div style="font-family:'Nunito',sans-serif;font-size:1.2rem;font-weight:900;color:var(--blanc);margin-bottom:.6rem">Ton territoire peut s'élargir</div>
+            <div style="font-size:.85rem;color:rgba(255,255,255,.8);line-height:1.6">Plus tu explores, plus tu rencontres, plus il s'élargit. Ce territoire est <strong style="color:var(--blanc)">évolutif</strong>.</div>
+          </div>
+          <div style="background:var(--blanc);padding:1.1rem">
+            <div class="pane-title" style="font-family:'Nunito',sans-serif;font-weight:900;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem">L'équation simple</div>
+            <div class="equation">
+              <span class="eq-token" style="background:var(--bleu);color:var(--blanc)">+ exploration</span>
+              <span class="eq-op">+</span>
+              <span class="eq-token" style="background:var(--vert);color:var(--blanc)">+ rencontres</span>
+              <span class="eq-op">=</span>
+              <span class="eq-token" style="background:var(--orange);color:var(--blanc)">+ opportunités</span>
             </div>
           </div>
         </div>
-      </header>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <section class="content">
-        <div class="toprow">
-          <a class="back" href="./index.html"><i data-lucide="arrow-left"></i> Retour</a>
-
-          <div class="progress-wrap" aria-label="progression">
-            <div id="progress" class="progress"></div>
+<!-- ══════════ S5 — Connaître ══════════ -->
+<section class="slide" id="s5">
+  <div class="sbody">
+    <div class="slide-banner" style="background:var(--bleu)">
+      <div class="sb-left"><div class="sb-module">Module 05 / 08 · De quoi parle-t-on ?</div><div class="sb-title">À partir de quand sait-on connaître un territoire ?</div></div>
+    </div>
+    <div class="scontent">
+      <div class="mlpb-grid mlpb-grid-2">
+        <div style="background:var(--blanc);padding:1.2rem">
+          <div class="pane-title" style="font-family:'Nunito',sans-serif;font-weight:900;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem">Coche les compétences que tu maîtrises déjà !</div>
+          <div class="check-list" id="cl5">
+            <div class="cli" onclick="tck(this,5)"><div class="cli-box"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5l3 3L10 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><span class="cli-text">Je sais où aller pour une démarche précise (CAF, CPAM, Pôle Emploi…)</span></div>
+            <div class="cli" onclick="tck(this,5)"><div class="cli-box"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5l3 3L10 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><span class="cli-text">Je sais qui contacter selon la situation (emploi, logement, santé, formation)</span></div>
+            <div class="cli" onclick="tck(this,5)"><div class="cli-box"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5l3 3L10 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><span class="cli-text">Je sais quelle structure est compétente pour chaque besoin</span></div>
+            <div class="cli" onclick="tck(this,5)"><div class="cli-box"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5l3 3L10 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><span class="cli-text">Je sais combien de temps prend une démarche et je peux l'anticiper</span></div>
+            <div class="cli" onclick="tck(this,5)"><div class="cli-box"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5l3 3L10 1" stroke="white" stroke-width="2" stroke-linecap="round"/></svg></div><span class="cli-text">Je sais quel plan B activer en cas d'imprévu ou de refus</span></div>
           </div>
-          <div class="progress-meta"><span id="pct">0%</span> complété</div>
+          <div class="prog-bar"><div class="prog-fill" id="pf5"></div></div>
+          <div class="prog-lbl" id="pl5">0 / 5 compétences identifiées</div>
         </div>
-
-        <div class="badgebox">
-          <div style="font-weight:900;">Objectif du pilier</div>
-          <div class="hint">
-            Transformer la méfiance en <strong>reliance</strong>, prendre ta place, et maîtriser 3 rituels simples.
-            Tu débloques le badge <strong>RELIEUR</strong> quand tu valides <strong>7 cartes</strong> + que tu écris <strong>1 ajustement concret</strong>.
-          </div>
-          <div class="badges">
-            <div class="badge" id="b-relieur"><span class="dot"></span>RELIEUR <small>Accueillir validé</small></div>
-          </div>
-        </div>
-
-        <!-- MICROLEARNING + JEU EXPÉRIENTIEL -->
-        <div class="panel" data-step="1">
-          <div class="panel-h">
-            <h2>Ton super-pouvoir relationnel (NotebookLM Audio Overview)</h2>
-            <span class="chip"><i data-lucide="headphones"></i>7 cartes</span>
-          </div>
-
-          <div class="panel-b">
-            <div class="hint">
-              Si tu crois que “accueillir” = juste être poli, tu rates ton arme secrète.
-              Ici, tu vas apprendre à <strong>désarmer la méfiance</strong> et à créer de la <strong>reliance</strong> pour t’intégrer et avancer vers 2040.
-            </div>
-
-            <div class="ml-tip">
-              <strong>Mode d’emploi :</strong> clique une carte → lis l’audio → fais l’action → valide la carte.
-              <br>Ensuite : le <strong>Miroir Pro</strong> te montre l’écart entre l’image que tu veux renvoyer et ce que tes gestes envoient vraiment.
-            </div>
-
-            <!-- NAV 7 CARTES -->
-            <div style="margin-top:14px;font-weight:900;">Tes 7 cartes</div>
-            <div class="hint">Clique une carte pour l’ouvrir. Tu peux revenir quand tu veux.</div>
-
-            <div class="cardset" id="cards7" style="margin-top:10px;">
-              <div class="opt" data-card="1"><strong>Carte 1</strong><small>Pourquoi l'accueil change tout</small></div>
-              <div class="opt" data-card="2"><strong>Carte 2</strong><small>La magie de la RELIANCE</small></div>
-              <div class="opt" data-card="3"><strong>Carte 3</strong><small>Posture d’accueil réciproque</small></div>
-              <div class="opt" data-card="4"><strong>Carte 4</strong><small>Plaza Hartzea (prendre sa place)</small></div>
-              <div class="opt" data-card="5"><strong>Carte 5</strong><small>Les 3 rituels d’accueil</small></div>
-              <div class="opt" data-card="6"><strong>Carte 6</strong><small>Ton 1er réseau solidaire</small></div>
-              <div class="opt" data-card="7"><strong>Carte 7</strong><small>Ton badge RELIEUR</small></div>
-            </div>
-
-            <!-- LECTEUR CARTE -->
-            <div class="badgebox" style="margin-top:14px;">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap;">
-                <div style="font-weight:900;" id="cardTitle">Choisis une carte</div>
-                <div class="chip"><i data-lucide="sparkles"></i><span id="cardMeta">Microlearning</span></div>
-              </div>
-
-              <div id="cardVisual" class="story" style="margin-top:10px;">
-                <strong>Visuel :</strong> —
-              </div>
-
-              <div id="cardAudio" class="story" style="margin-top:10px;">
-                <strong>Audio (45–60s) :</strong> clique une carte pour afficher le texte audio.
-              </div>
-
-              <div id="cardAction" class="story" style="margin-top:10px;">
-                <strong>Action flash :</strong> clique une carte pour afficher le défi.
-              </div>
-
-              <div class="actions" style="margin-top:12px;">
-                <button class="btn primary" onclick="validateCurrentCard()"><i data-lucide="check"></i> Valider cette carte</button>
-                <button class="btn ghost" onclick="markAsDoneLater()"><i data-lucide="bookmark"></i> Je le fais plus tard</button>
-              </div>
-
-              <div class="mini" style="margin-top:8px;">
-                Cartes validées : <strong><span id="cardsDone">0</span>/7</strong>
-              </div>
-            </div>
-
-            <!-- JEU MIROIR -->
-            <div class="panel" style="margin-top:14px;border-width:2px;">
-              <div class="panel-h" style="background:rgba(32,184,174,.12);">
-                <h2 style="font-size:16px;">Jeu — Le Miroir Pro (image de soi vs image renvoyée)</h2>
-                <span class="chip"><i data-lucide="scan-face"></i>Miroir</span>
-              </div>
-              <div class="panel-b">
-                <div class="hint">
-                  <strong>But insertion :</strong> aligner l’image que tu veux donner avec ce que tes gestes envoient.
-                  <br>Pas de note. Juste un miroir + 1 ajustement concret.
-                </div>
-
-                <div style="margin-top:10px;font-weight:900;">1) Comment tu veux être perçu (choisis 3 cartes)</div>
-                <div class="hint">Choisis <strong>3</strong> mots-clés.</div>
-
-                <div class="cardset" id="selfCards">
-                  <div class="opt" data-mode="self" data-v="fiable"><strong>Fiable</strong><small>Je fais ce que je dis.</small></div>
-                  <div class="opt" data-mode="self" data-v="calme"><strong>Calme</strong><small>Je garde mon sang-froid.</small></div>
-                  <div class="opt" data-mode="self" data-v="ouvert"><strong>Ouvert</strong><small>Je vais vers les autres.</small></div>
-                  <div class="opt" data-mode="self" data-v="respect"><strong>Digne</strong><small>Égal à égal.</small></div>
-                  <div class="opt" data-mode="self" data-v="curieux"><strong>Curieux</strong><small>Je pose des questions.</small></div>
-                  <div class="opt" data-mode="self" data-v="place"><strong>Je prends ma place</strong><small>Je ne reste pas invisible.</small></div>
-                </div>
-
-                <div id="selfPickInfo" class="story" style="display:none;"></div>
-
-                <div style="margin-top:12px;font-weight:900;">2) 3 scènes (tu choisis 1 action par scène)</div>
-
-                <div class="panel" style="margin-top:10px;border-width:2px;">
-                  <div class="panel-h" style="background:rgba(255,201,40,.18);">
-                    <h2 style="font-size:16px;">Scène 1 — Première seconde (salut)</h2>
-                    <span class="chip"><i data-lucide="hand"></i>Accueil</span>
-                  </div>
-                  <div class="panel-b">
-                    <div class="cardset" id="scene1">
-                      <div class="opt" data-mode="s1" data-v="rituel"><strong>Regard + bonjour + sourire</strong><small>Je casse la méfiance.</small></div>
-                      <div class="opt" data-mode="s1" data-v="faible"><strong>Bonjour faible / évite le regard</strong><small>Je me protège.</small></div>
-                      <div class="opt" data-mode="s1" data-v="tel"><strong>Téléphone / distance</strong><small>Je gère mon stress.</small></div>
-                      <div class="opt" data-mode="s1" data-v="trop_familier"><strong>Trop familier</strong><small>Je veux briser la glace vite.</small></div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="panel" style="margin-top:10px;border-width:2px;">
-                  <div class="panel-h" style="background:rgba(32,184,174,.12);">
-                    <h2 style="font-size:16px;">Scène 2 — Réciprocité (égal à égal)</h2>
-                    <span class="chip"><i data-lucide="scale"></i>Dignité</span>
-                  </div>
-                  <div class="panel-b">
-                    <div class="cardset" id="scene2">
-                      <div class="opt" data-mode="s2" data-v="question_active"><strong>Je demande un conseil</strong><small>Question active, respect.</small></div>
-                      <div class="opt" data-mode="s2" data-v="subit"><strong>J’attends qu’on me guide</strong><small>Je subis.</small></div>
-                      <div class="opt" data-mode="s2" data-v="sec"><strong>Droit au but sec</strong><small>Ça peut fermer.</small></div>
-                      <div class="opt" data-mode="s2" data-v="trop_efface"><strong>Je m’efface</strong><small>Je deviens invisible.</small></div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="panel" style="margin-top:10px;border-width:2px;">
-                  <div class="panel-h" style="background:rgba(255,176,103,.16);">
-                    <h2 style="font-size:16px;">Scène 3 — Plaza Hartzea (prendre sa place)</h2>
-                    <span class="chip"><i data-lucide="users"></i>Groupe</span>
-                  </div>
-                  <div class="panel-b">
-                    <div class="cardset" id="scene3">
-                      <div class="opt" data-mode="s3" data-v="prise_parole"><strong>Je pose 1 question</strong><small>J’existe dans le groupe.</small></div>
-                      <div class="opt" data-mode="s3" data-v="silence"><strong>Je reste silencieux</strong><small>Je me coupe.</small></div>
-                      <div class="opt" data-mode="s3" data-v="valide"><strong>Je valide une idée</strong><small>Je renforce le collectif.</small></div>
-                      <div class="opt" data-mode="s3" data-v="ironique"><strong>Ironie / distance</strong><small>Ça peut casser le lien.</small></div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="badgebox" style="margin-top:12px;">
-                  <div style="font-weight:900;">Ton miroir</div>
-                  <div class="hint">Quand tu as 3 mots-clés + 3 scènes, le miroir s’affiche.</div>
-
-                  <div id="mirrorBox" class="story" style="display:none;"></div>
-
-                  <div class="field" style="margin-top:12px;">
-                    <label class="mini" for="mirrorAction">Mon micro-ajustement (30 secondes) :</label>
-                    <textarea id="mirrorAction" placeholder="Ex : “Regard + prénom + 1 question ouverte.”"></textarea>
-                  </div>
-
-                  <div class="actions">
-                    <button class="btn primary" onclick="saveMirror()"><i data-lucide="save"></i> Enregistrer</button>
-                    <button class="btn ghost" onclick="autoSuggestMirror()"><i data-lucide="wand-2"></i> Suggestion</button>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-            <!-- FIN -->
-            <div class="badgebox" style="margin-top:14px;">
-              <div style="font-weight:900;">Badge RELIEUR</div>
-              <div class="hint">
-                Le badge s’active quand :
-                <br>✅ tu as validé <strong>7/7 cartes</strong>
-                <br>✅ tu as écrit <strong>1 micro-ajustement</strong> dans le miroir
-              </div>
-              <div class="actions" style="margin-top:10px;">
-                <button class="btn warn" onclick="finishAccueillir()"><i data-lucide="trophy"></i> Terminer ACCUEILLIR</button>
-              </div>
-            </div>
-
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <div class="highlight" style="margin:1.2rem;">Connaître un territoire, c'est être capable d'agir sans rester bloqué face à la complexité.</div>
+          <div class="dark-pane" style="flex:1;padding:1.3rem">
+            <div style="font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.3);margin-bottom:.8rem">Ce que ça veut dire concrètement</div>
+            <p style="font-size:.85rem;line-height:1.7;color:rgba(255,255,255,.78)">Ce n'est pas mémoriser une liste de contacts.<br><br>C'est <strong style="color:var(--vert)">naviguer avec méthode</strong> face à une situation nouvelle, en sachant où chercher et qui solliciter.<br><br>Ce n'est pas être un GPS. C'est être capable de <strong style="color:var(--vert)">naviguer avec méthode</strong>.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      </section>
+<!-- ══════════ S6 — Compétence ══════════ -->
+<section class="slide" id="s6">
+  <div class="sbody">
+    <div class="slide-banner" style="background:var(--vert)">
+      <div class="sb-left"><div class="sb-module">Module 06 / 08 · De quoi parle-t-on ?</div><div class="sb-title">Quand la connaissance devient compétence</div></div>
+    </div>
+    <div class="scontent">
+      <div class="highlight green">Une compétence = la capacité à mobiliser des ressources dans une situation concrète.</div>
+      <div class="mlpb-grid mlpb-grid-3 mt2">
+        <div class="mlpb-card"><div class="mcard-top" style="background:var(--bleu)"></div><div style="font-family:'Nunito',sans-serif;font-size:1.8rem;font-weight:900;color:var(--bleu);margin-bottom:.3rem">01</div><div class="mlpb-card-title">Repérer les ressources</div><div class="mlpb-card-text">Identifier ce qui existe et ce qui peut t'aider dans une situation donnée</div></div>
+        <div class="mlpb-card"><div class="mcard-top" style="background:var(--vert)"></div><div style="font-family:'Nunito',sans-serif;font-size:1.8rem;font-weight:900;color:var(--vert);margin-bottom:.3rem">02</div><div class="mlpb-card-title">Comprendre les règles</div><div class="mlpb-card-text">Saisir les logiques et fonctionnements propres au territoire local</div></div>
+        <div class="mlpb-card"><div class="mcard-top" style="background:var(--orange)"></div><div style="font-family:'Nunito',sans-serif;font-size:1.8rem;font-weight:900;color:var(--orange);margin-bottom:.3rem">03</div><div class="mlpb-card-title">Identifier les acteurs</div><div class="mlpb-card-text">Savoir qui fait quoi et comment entrer en contact</div></div>
+        <div class="mlpb-card"><div class="mcard-top" style="background:var(--rose)"></div><div style="font-family:'Nunito',sans-serif;font-size:1.8rem;font-weight:900;color:var(--rose);margin-bottom:.3rem">04</div><div class="mlpb-card-title">Activer des réseaux</div><div class="mlpb-card-text">Mobiliser tes contacts, construire des ponts entre structures</div></div>
+        <div class="mlpb-card" style="grid-column:span 2"><div class="mcard-top" style="background:var(--violet)"></div><div style="font-family:'Nunito',sans-serif;font-size:1.8rem;font-weight:900;color:var(--violet);margin-bottom:.3rem">05</div><div class="mlpb-card-title">Adapter sa stratégie</div><div class="mlpb-card-text">Ajuster son approche en fonction du contexte territorial, des opportunités disponibles et des contraintes du moment.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="frieze" aria-hidden="true">
-        <div class="capsule" style="background: var(--yellow);"></div>
-        <div class="capsule" style="background: var(--turq);"></div>
-        <div class="capsule" style="background: var(--red);"></div>
-        <div class="capsule" style="background: var(--mint);"></div>
+<!-- ══════════ S7 — 4 Axes ══════════ -->
+<section class="slide" id="s7">
+  <div class="sbody">
+    <div class="slide-banner" style="background:var(--orange)">
+      <div class="sb-left"><div class="sb-module">Module 07 / 08 · De quoi parle-t-on ?</div><div class="sb-title">Les 4 axes LS4YOU — transformer le territoire en levier</div></div>
+    </div>
+    <div class="scontent">
+      <p style="font-size:.88rem;color:rgba(23,23,24,.6)">Lorsque ces quatre dimensions sont activées, le territoire devient un accélérateur plutôt qu'une contrainte.</p>
+      <div class="axe-grid mt2">
+        <div class="axe-block" style="background:var(--bleu)"><div class="axe-bignum">1</div><div class="axe-tag">Axe 1</div><div class="axe-name">Ton Réseau</div><div class="axe-q">"Qui je connais ? Qui me connaît ?"</div></div>
+        <div class="axe-block" style="background:var(--vert)"><div class="axe-bignum">2</div><div class="axe-tag">Axe 2</div><div class="axe-name">Tes Savoir-Faire</div><div class="axe-q">"Qu'est-ce que je sais faire ici ?"</div></div>
+        <div class="axe-block" style="background:var(--orange)"><div class="axe-bignum">3</div><div class="axe-tag">Axe 3</div><div class="axe-name">Ta Stratégie</div><div class="axe-q">"Quels dispositifs et ressources je sais activer ?"</div></div>
+        <div class="axe-block" style="background:var(--violet)"><div class="axe-bignum">4</div><div class="axe-tag">Axe 4</div><div class="axe-name">Tes Ressources</div><div class="axe-q">"Comment je recharge les batteries ?"</div></div>
+      </div>
+      <div style="background:var(--gris-clair);border:1.5px solid var(--gris-border);padding:.9rem 1.1rem;display:flex;align-items:center;gap:.85rem;border-radius:4px">
+        <span style="font-size:1.4rem">⚡</span>
+        <div>
+          <div style="font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:900">Réseau + Compétences + Solutions + Ressources</div>
+          <div style="font-size:.78rem;color:rgba(23,23,24,.55);margin-top:.1rem">= Le territoire devient un accélérateur de ton parcours d'insertion</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ S8 — À retenir ══════════ -->
+<section class="slide" id="s8">
+  <div class="sbody">
+    <div class="slide-banner" style="background:var(--vert)">
+      <div class="sb-left"><div class="sb-module">Module 08 / 08 · Conclusion</div><div class="sb-title">À retenir — La vraie question</div></div>
+    </div>
+    <div class="scontent">
+      <div class="mlpb-grid mlpb-grid-2">
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <div class="mlpb-card"><div class="mcard-top" style="background:var(--bleu)"></div><div class="mlpb-card-title">Un écosystème dynamique</div><div class="mlpb-card-text">Le territoire peut créer des opportunités, poser des contraintes, offrir du soutien ou générer de la pression. La différence se joue dans ta capacité à le comprendre et l'utiliser.</div></div>
+          <div class="mlpb-card"><div class="mcard-top" style="background:var(--vert)"></div><div class="mlpb-card-title">Ça s'apprend et ça se développe</div><div class="mlpb-card-text">La compétence territoire ne tombe pas du ciel. Elle se construit par l'exploration, les rencontres et la pratique concrète.</div></div>
+          <div style="background:var(--gris-clair);border:1.5px solid var(--gris-border);padding:.85rem">
+            <div style="font-family:'Nunito',sans-serif;font-size:.7rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:rgba(23,23,24,.4);margin-bottom:.4rem">La mauvaise question à éviter</div>
+            <div style="font-size:.88rem;color:rgba(23,23,24,.45);text-decoration:line-through">"Est-ce que je connais le territoire ?"</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <div class="big-q" style="flex:1">
+            <div class="bq-label">La vraie question à se poser</div>
+            <div class="bq-text">"Est-ce que je sais <span class="bq-accent">mobiliser le territoire</span> pour avancer ?"</div>
+            <div class="bq-sub">Et cette capacité, ça s'apprend et ça se développe.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cta-bar">
+    <div><div class="cta-bar-text">Bienvenue dans la compétence Territoire.</div><div class="cta-bar-sub">On passe maintenant à la pratique : ton parcours cartographique en 4 ateliers !</div></div>
+    <button class="cta-bar-btn" onclick="nextSlide()">Parcours carto →</button>
+  </div>
+</section>
+
+<!-- ══════════ S9 — TRANSITION CARTO ══════════ -->
+<section class="slide" id="s9">
+  <div class="section-divider" style="background:linear-gradient(160deg,var(--noir) 60%,#1d3010 100%)">
+    <div class="sd-num">P2</div>
+    <div style="position:relative;z-index:1">
+      <div class="sd-tag" style="background:rgba(149,193,31,.15);color:var(--vert);border:1.5px solid rgba(149,193,31,.3)">Partie 2 / 2</div>
+      <h2 class="sd-title">Parcours<br>Cartographique</h2>
+      <p class="sd-desc">Transformer ton territoire en compétence — 4 ateliers de 45 min pour construire ta carte projet personnelle.</p>
+      <div class="sd-pills">
+        <span class="sd-pill" style="background:rgba(214,11,82,.2);border-color:rgba(214,11,82,.3);color:var(--rose)">🔴 Atelier 1 — Réseau</span>
+        <span class="sd-pill" style="background:rgba(149,193,31,.2);border-color:rgba(149,193,31,.3);color:var(--vert)">🟢 Atelier 2 — Savoir-faire</span>
+        <span class="sd-pill" style="background:rgba(40,151,213,.2);border-color:rgba(40,151,213,.3);color:#7dd3f8">🔵 Atelier 3 — Solutions</span>
+        <span class="sd-pill" style="background:rgba(243,146,0,.2);border-color:rgba(243,146,0,.3);color:var(--orange)">🟡 Atelier 4 — Appuis</span>
+      </div>
+      <div style="margin-top:1.5rem;display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap">
+        <div style="color:rgba(255,255,255,.45);font-size:.8rem;display:flex;align-items:center;gap:.4rem"><span style="color:var(--vert)">📋</span>1 feuille A3 + feutres</div>
+        <div style="color:rgba(255,255,255,.45);font-size:.8rem;display:flex;align-items:center;gap:.4rem"><span style="color:var(--vert)">📌</span>4 couleurs de post-its</div>
+        <div style="color:rgba(255,255,255,.45);font-size:.8rem;display:flex;align-items:center;gap:.4rem"><span style="color:var(--vert)">⏱</span>Durée : 3 heures</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ S10 — Vue d'ensemble carto ══════════ -->
+<section class="slide" id="s10">
+  <div class="sbody">
+    <div class="slide-banner" style="background:var(--vert)">
+      <div class="sb-left"><div class="sb-module">Parcours Cartographique · Vue d'ensemble</div><div class="sb-title">Ta carte projet : 4 ateliers, 1 résultat</div></div>
+    </div>
+    <div class="scontent">
+      <div class="mlpb-grid mlpb-grid-2">
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <div class="dark-pane" style="padding:1.3rem;flex:1">
+            <div style="font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.3);margin-bottom:.6rem">À quoi ça sert ?</div>
+            <p style="font-size:.85rem;line-height:1.65;color:rgba(255,255,255,.78)">Tu vas dessiner ta carte perso pour mieux avancer dans ton projet pro et ta vie quotidienne. Tu repères tes ressources, tes soutiens, tes compétences et tes solutions concrètes autour de toi.</p>
+            <div style="margin-top:.9rem;padding:.75rem;background:rgba(149,193,31,.12);border:1px solid rgba(149,193,31,.25);border-radius:3px">
+              <div style="font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:var(--vert);margin-bottom:.3rem">Résultat final</div>
+              <div style="font-size:.83rem;color:rgba(255,255,255,.88)">Ta carte projet à garder et utiliser avec ton conseiller Mission Locale.</div>
+            </div>
+          </div>
+          <div class="map-legend">
+            <div class="ml-title">Légende de ta carte</div>
+            <div class="ml-row"><div class="ml-dot" style="background:var(--rose)"></div><div class="ml-name">Post-its ROUGE</div><div class="ml-desc">Réseau & lieux connus</div></div>
+            <div class="ml-row"><div class="ml-dot" style="background:var(--vert)"></div><div class="ml-name">Post-its VERT</div><div class="ml-desc">Compétences & expériences</div></div>
+            <div class="ml-row"><div class="ml-dot" style="background:var(--bleu)"></div><div class="ml-name">Post-its BLEU</div><div class="ml-desc">Solutions pratiques</div></div>
+            <div class="ml-row"><div class="ml-dot" style="background:var(--orange)"></div><div class="ml-name">Post-its JAUNE</div><div class="ml-desc">Appuis bien-être</div></div>
+          </div>
+        </div>
+        <div class="mlpb-grid mlpb-grid-2" style="gap:3px">
+          <div class="mlpb-card colored" style="background:var(--rose)">
+            <div style="font-family:'Nunito',sans-serif;font-size:.6rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.6);margin-bottom:.3rem">Atelier 1 · 45 min</div>
+            <div style="font-size:1.8rem;margin-bottom:.5rem">👥</div>
+            <div class="mlpb-card-title">Qui je connais</div>
+            <div class="mlpb-card-text">Réseau de base, lieux de légitimité</div>
+            <div style="margin-top:.6rem;font-size:.7rem;color:rgba(255,255,255,.65)">✅ 3 personnes/lieux prioritaires</div>
+          </div>
+          <div class="mlpb-card colored" style="background:var(--vert)">
+            <div style="font-family:'Nunito',sans-serif;font-size:.6rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.6);margin-bottom:.3rem">Atelier 2 · 45 min</div>
+            <div style="font-size:1.8rem;margin-bottom:.5rem">💡</div>
+            <div class="mlpb-card-title">Ce que je sais faire</div>
+            <div class="mlpb-card-text">Compétences, CV géographique</div>
+            <div style="margin-top:.6rem;font-size:.7rem;color:rgba(255,255,255,.65)">✅ 5 compétences CV</div>
+          </div>
+          <div class="mlpb-card colored" style="background:var(--bleu)">
+            <div style="font-family:'Nunito',sans-serif;font-size:.6rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.6);margin-bottom:.3rem">Atelier 3 · 45 min</div>
+            <div style="font-size:1.8rem;margin-bottom:.5rem">🚌</div>
+            <div class="mlpb-card-title">Mes solutions</div>
+            <div class="mlpb-card-text">Transport, repas, papiers</div>
+            <div style="margin-top:.6rem;font-size:.7rem;color:rgba(255,255,255,.65)">✅ Plan trajet + repas + papiers</div>
+          </div>
+          <div class="mlpb-card colored" style="background:var(--orange)">
+            <div style="font-family:'Nunito',sans-serif;font-size:.6rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.6);margin-bottom:.3rem">Atelier 4 · 45 min</div>
+            <div style="font-size:1.8rem;margin-bottom:.5rem">🛡️</div>
+            <div class="mlpb-card-title">Mes appuis</div>
+            <div class="mlpb-card-text">Bien-être, tenir dans la durée</div>
+            <div style="margin-top:.6rem;font-size:.7rem;color:rgba(255,255,255,.65)">✅ Plan B bien-être</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ S11 — ATELIER 1 Pourquoi ══════════ -->
+<section class="slide" id="s11">
+  <div class="sbody">
+    <div class="atelier-header">
+      <div class="at-num" style="background:var(--rose)">A1</div>
+      <div class="at-info">
+        <div class="at-eyebrow">Atelier 1 / 4 · Post-its ROUGES</div>
+        <div class="at-name" style="color:var(--rose)">Qui je connais / Qui me connaît</div>
+        <div class="at-dur">Ma première ressource : les gens et les lieux où je suis déjà reconnu(e)</div>
+      </div>
+    </div>
+    <div class="scontent">
+      <div class="mlpb-grid mlpb-grid-2">
+        <div style="background:var(--blanc);padding:1.2rem;display:flex;flex-direction:column;gap:.55rem">
+          <div style="font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:rgba(23,23,24,.4);margin-bottom:.2rem">Pourquoi c'est important</div>
+          <div class="mlpb-card" style="border-left:4px solid var(--rose)"><div style="display:flex;gap:.7rem"><span style="font-size:1.1rem;flex-shrink:0">🎯</span><div><div class="mlpb-card-title">Une légitimité immédiate</div><div class="mlpb-card-text">Tu sais déjà comment ça marche là-bas, à qui parler, quoi dire.</div></div></div></div>
+          <div class="mlpb-card" style="border-left:4px solid var(--rose)"><div style="display:flex;gap:.7rem"><span style="font-size:1.1rem;flex-shrink:0">📡</span><div><div class="mlpb-card-title">Des informations fiables</div><div class="mlpb-card-text">Les gens du coin te diront mieux que Google où trouver du boulot, des bons plans.</div></div></div></div>
+          <div class="mlpb-card" style="border-left:4px solid var(--rose)"><div style="display:flex;gap:.7rem"><span style="font-size:1.1rem;flex-shrink:0">🚪</span><div><div class="mlpb-card-title">Des portes qui s'ouvrent</div><div class="mlpb-card-text">Ces contacts peuvent te recommander, te présenter, t'expliquer un secteur.</div></div></div></div>
+          <div class="highlight rose">Connaître ton territoire commence par savoir où tu es déjà accepté(e).</div>
+        </div>
+        <div style="background:var(--blanc);padding:1.2rem">
+          <div style="font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:rgba(23,23,24,.4);margin-bottom:.65rem">Ce que tu fais</div>
+          <div class="step-list">
+            <div class="sli"><div class="sli-num" style="background:var(--rose)">1</div><div><div class="sli-title">Dessine ta carte de base</div><div class="sli-text">Où tu vis, ta Mission Locale, les grandes lignes de bus/train, ton quartier.</div></div></div>
+            <div class="sli"><div class="sli-num" style="background:var(--rose)">2</div><div><div class="sli-title">Marque en ROUGE tes lieux à l'aise</div><div class="sli-text">Mission Locale, ancien stage, club sport, asso, CFA, lycée, maison de quartier…</div></div></div>
+            <div class="sli"><div class="sli-num" style="background:var(--rose)">3</div><div><div class="sli-title">Écris les personnes qui te connaissent</div><div class="sli-text">Conseiller ML, éducateur, tuteur stage, ancien prof, voisin qui connaît du monde…</div></div></div>
+            <div class="sli"><div class="sli-num" style="background:var(--rose)">4</div><div><div class="sli-title">Relie chaque personne à son lieu</div><div class="sli-text">Trace une flèche entre chaque personne et l'endroit où elle opère.</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ S12 — ATELIER 1 Questions ══════════ -->
+<section class="slide" id="s12">
+  <div class="sbody">
+    <div class="atelier-header">
+      <div class="at-num" style="background:var(--rose)">A1</div>
+      <div class="at-info"><div class="at-eyebrow">Atelier 1 / 4</div><div class="at-name" style="color:var(--rose)">Questions & résultat attendu</div></div>
+    </div>
+    <div class="scontent">
+      <div class="mlpb-grid mlpb-grid-2">
+        <div style="display:flex;flex-direction:column;gap:.7rem;padding:.2rem">
+          <div style="background:rgba(214,11,82,.06);border:1.5px solid rgba(214,11,82,.2);padding:1.1rem;border-radius:4px">
+            <div style="font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:var(--rose);margin-bottom:.65rem">🔴 Post-its ROUGES — Pour chaque lieu / personne</div>
+            <div class="sli-text" style="color:rgba(23,23,24,.65);line-height:1.7">• Nom du lieu ou de la personne<br>• Ton lien avec eux (stage, asso, lycée…)<br>• Ce qu'ils peuvent t'apporter</div>
+          </div>
+          <div class="result" style="background:rgba(149,193,31,.08);border:1.5px solid rgba(149,193,31,.3)">
+            <span class="result-icon">✅</span>
+            <div><div class="result-title">Résultat attendu</div><div class="result-text">Tu identifies <strong>3 personnes/lieux prioritaires</strong> à recontacter cette semaine.</div></div>
+          </div>
+        </div>
+        <div style="background:var(--blanc);padding:1.1rem">
+          <div style="font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.65rem">Questions clés à se poser</div>
+          <div class="q-list">
+            <div class="qli">💭 <span>Où je peux retourner demain sans stress ?</span></div>
+            <div class="qli">🤝 <span>Qui pourrait me pistonner pour un stage/job ?</span></div>
+            <div class="qli">📞 <span>Qui appeler si j'ai besoin d'infos rapides sur le territoire ?</span></div>
+            <div class="qli">🏪 <span>Dans quels commerces, structures, associations je suis déjà connu(e) ?</span></div>
+            <div class="qli">👨‍👩‍👧 <span>Dans mon entourage, qui a un réseau pro que je pourrais activer ?</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ S13 — ATELIER 2 ══════════ -->
+<section class="slide" id="s13">
+  <div class="sbody">
+    <div class="atelier-header">
+      <div class="at-num" style="background:var(--vert)">A2</div>
+      <div class="at-info"><div class="at-eyebrow">Atelier 2 / 4 · Post-its VERTS</div><div class="at-name" style="color:var(--vert)">Ce que je sais faire — Mon CV géographique</div><div class="at-dur">Mes compétences et expériences posées sur le territoire</div></div>
+    </div>
+    <div class="scontent">
+      <div class="mlpb-grid mlpb-grid-2">
+        <div style="background:var(--blanc);padding:1.2rem;display:flex;flex-direction:column;gap:.55rem">
+          <div style="font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:rgba(23,23,24,.4);margin-bottom:.2rem">Pourquoi c'est important</div>
+          <div class="mlpb-card" style="border-left:4px solid var(--vert)"><div style="display:flex;gap:.7rem"><span style="font-size:1.1rem;flex-shrink:0">📍</span><div><div class="mlpb-card-title">Compétences non abstraites</div><div class="mlpb-card-text">Elles sont nées dans des lieux précis (l'usine du coin, le resto du quartier, l'asso du centre-ville).</div></div></div></div>
+          <div class="mlpb-card" style="border-left:4px solid var(--vert)"><div style="display:flex;gap:.7rem"><span style="font-size:1.1rem;flex-shrink:0">🤝</span><div><div class="mlpb-card-title">Le territoire reconnaît tes savoir-faire</div><div class="mlpb-card-text">Les patrons locaux savent que tu as bossé "chez X", "à la MJC", "sur le chantier Y".</div></div></div></div>
+          <div class="mlpb-card" style="border-left:4px solid var(--vert)"><div style="display:flex;gap:.7rem"><span style="font-size:1.1rem;flex-shrink:0">🗺️</span><div><div class="mlpb-card-title">Ton CV géographique</div><div class="mlpb-card-text">Au lieu d'un papier, tu montres une carte vivante qui raconte ton histoire pro sur TON territoire.</div></div></div></div>
+          <div class="highlight green">Tu passes de "j'ai travaillé quelque part" à "je connais les acteurs et les codes du boulot local".</div>
+        </div>
+        <div style="background:var(--blanc);padding:1.2rem">
+          <div style="font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:rgba(23,23,24,.4);margin-bottom:.65rem">Ce que tu fais — Exemples de transformation</div>
+          <div style="display:flex;flex-direction:column;gap:.4rem">
+            <div class="transfo"><div class="transfo-from">"J'ai servi en caisse à Spar"</div><div class="transfo-arr" style="color:var(--vert)">→</div><div class="transfo-to">Gestion caisse, relation client, travail sous pression</div></div>
+            <div class="transfo"><div class="transfo-from">"J'ai animé les juniors au foot"</div><div class="transfo-arr" style="color:var(--vert)">→</div><div class="transfo-to">Animation de groupe, leadership, pédagogie</div></div>
+            <div class="transfo"><div class="transfo-from">"J'ai aidé mon oncle à livrer"</div><div class="transfo-arr" style="color:var(--vert)">→</div><div class="transfo-to">Logistique, conduite, organisation tournées</div></div>
+            <div class="transfo"><div class="transfo-from">"Baby-sitting de mes cousins"</div><div class="transfo-arr" style="color:var(--vert)">→</div><div class="transfo-to">Prise en charge, responsabilité, patience</div></div>
+          </div>
+          <div class="result mt2" style="background:rgba(149,193,31,.08);border:1.5px solid rgba(149,193,31,.3)">
+            <span class="result-icon">✅</span>
+            <div><div class="result-title">Résultat attendu</div><div class="result-text"><strong>5 compétences CV</strong> à mettre dans ton dossier Mission Locale.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ S14 — ATELIER 2 Questions ══════════ -->
+<section class="slide" id="s14">
+  <div class="sbody">
+    <div class="atelier-header">
+      <div class="at-num" style="background:var(--vert)">A2</div>
+      <div class="at-info"><div class="at-eyebrow">Atelier 2 / 4</div><div class="at-name" style="color:var(--vert)">Questions & étapes pratiques</div></div>
+    </div>
+    <div class="scontent">
+      <div class="mlpb-grid mlpb-grid-2">
+        <div style="background:var(--blanc);padding:1.2rem">
+          <div style="font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.65rem">Étapes pratiques</div>
+          <div class="step-list">
+            <div class="sli"><div class="sli-num" style="background:var(--vert)">1</div><div><div class="sli-title">Continue sur la même carte</div><div class="sli-text">Utilise des post-its VERTS uniquement pour cet atelier.</div></div></div>
+            <div class="sli"><div class="sli-num" style="background:var(--vert)">2</div><div><div class="sli-title">Marque tes lieux de travail/apprentissage</div><div class="sli-text">Jobs saisonniers, stages, intérim, bénévolat, projet scolaire, animation, sport compétitif…</div></div></div>
+            <div class="sli"><div class="sli-num" style="background:var(--vert)">3</div><div><div class="sli-title">Décris ce que tu as fait et su faire</div><div class="sli-text">"Servi en caisse" → "gestion caisse", "relation client", "travail rapide"…</div></div></div>
+            <div class="sli"><div class="sli-num" style="background:var(--vert)">4</div><div><div class="sli-title">Ajoute les entreprises que tu connais</div><div class="sli-text">Via famille, amis — des lieux où tu pourrais postuler.</div></div></div>
+          </div>
+        </div>
+        <div style="background:var(--blanc);padding:1.1rem">
+          <div style="font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.65rem">Questions clés</div>
+          <div class="q-list">
+            <div class="qli">🔨 <span>Qu'est-ce que j'ai fait de concret dans chaque lieu ?</span></div>
+            <div class="qli">👔 <span>Quelles compétences un patron verrait sur mon CV ?</span></div>
+            <div class="qli">🔄 <span>Où je pourrais refaire ça (ou presque) demain ?</span></div>
+          </div>
+          <div style="margin-top:.85rem;padding:.9rem;background:rgba(149,193,31,.08);border:1.5px solid rgba(149,193,31,.3);border-radius:4px">
+            <div style="font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:var(--vert);margin-bottom:.3rem">Crée des ponts directs</div>
+            <div style="font-size:.82rem;line-height:1.55">"Tu connais déjà l'entreprise Z", "Tu as bossé au même endroit que le fils du patron", "Ton expérience à 500m colle pile au job."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ S15 — ATELIER 3 ══════════ -->
+<section class="slide" id="s15">
+  <div class="sbody">
+    <div class="atelier-header">
+      <div class="at-num" style="background:var(--bleu)">A3</div>
+      <div class="at-info"><div class="at-eyebrow">Atelier 3 / 4 · Post-its BLEUS</div><div class="at-name" style="color:var(--bleu)">Mes solutions concrètes — Transport, Repas, Papiers</div><div class="at-dur">Lever les premiers freins qui bloquent les jeunes</div></div>
+    </div>
+    <div class="scontent">
+      <p style="font-size:.85rem;color:rgba(23,23,24,.6)">Ces solutions pratiques sont les <strong>premiers freins</strong> qui bloquent les jeunes. Sans elles, même le meilleur projet ne tient pas.</p>
+      <div class="mlpb-grid mlpb-grid-3 mt2">
+        <div style="background:rgba(40,151,213,.07);border:1.5px solid rgba(40,151,213,.25);padding:1.2rem">
+          <div style="font-family:'Nunito',sans-serif;font-size:.65rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:var(--bleu);margin-bottom:.8rem">🚌 Transport</div>
+          <div style="display:flex;flex-direction:column;gap:.4rem;font-size:.82rem;line-height:1.5">
+            <div style="display:flex;gap:.5rem"><span style="color:var(--bleu);font-weight:900;flex-shrink:0">▸</span>Bus ligne + arrêt exact</div>
+            <div style="display:flex;gap:.5rem"><span style="color:var(--bleu);font-weight:900;flex-shrink:0">▸</span>TER, BlaBlaCar Daily</div>
+            <div style="display:flex;gap:.5rem"><span style="color:var(--bleu);font-weight:900;flex-shrink:0">▸</span>"Papa me dépose", Vélib 1€</div>
+            <div style="display:flex;gap:.5rem"><span style="color:var(--bleu);font-weight:900;flex-shrink:0">▸</span>Coût mensuel estimé</div>
+            <div style="display:flex;gap:.5rem"><span style="color:var(--bleu);font-weight:900;flex-shrink:0">▸</span>Plan B si retard ou grève</div>
+          </div>
+        </div>
+        <div style="background:rgba(40,151,213,.07);border:1.5px solid rgba(40,151,213,.25);padding:1.2rem">
+          <div style="font-family:'Nunito',sans-serif;font-size:.65rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:var(--bleu);margin-bottom:.8rem">🍽️ Repas</div>
+          <div style="display:flex;flex-direction:column;gap:.4rem;font-size:.82rem;line-height:1.5">
+            <div style="display:flex;gap:.5rem"><span style="color:var(--bleu);font-weight:900;flex-shrink:0">▸</span>Resto UTT 4€, cantine MJC</div>
+            <div style="display:flex;gap:.5rem"><span style="color:var(--bleu);font-weight:900;flex-shrink:0">▸</span>Épicerie solidaire mardi 17h</div>
+            <div style="display:flex;gap:.5rem"><span style="color:var(--bleu);font-weight:900;flex-shrink:0">▸</span>Tickets resto jeunes</div>
+            <div style="display:flex;gap:.5rem"><span style="color:var(--bleu);font-weight:900;flex-shrink:0">▸</span>Budget journalier estimé</div>
+            <div style="display:flex;gap:.5rem"><span style="color:var(--bleu);font-weight:900;flex-shrink:0">▸</span>Option fait maison si besoin</div>
+          </div>
+        </div>
+        <div style="background:rgba(40,151,213,.15);border:1.5px solid rgba(40,151,213,.4);padding:1.2rem">
+          <div style="font-family:'Nunito',sans-serif;font-size:.65rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:#0a5d8a;margin-bottom:.8rem">📋 Papiers & Aides</div>
+          <div style="display:flex;flex-direction:column;gap:.4rem;font-size:.82rem;line-height:1.5">
+            <div style="display:flex;gap:.5rem"><span style="color:#0a5d8a;font-weight:900;flex-shrink:0">▸</span>CAF — adresse exacte</div>
+            <div style="display:flex;gap:.5rem"><span style="color:#0a5d8a;font-weight:900;flex-shrink:0">▸</span>Point Info Jeunesse</div>
+            <div style="display:flex;gap:.5rem"><span style="color:#0a5d8a;font-weight:900;flex-shrink:0">▸</span>Secours Pop local</div>
+            <div style="display:flex;gap:.5rem"><span style="color:#0a5d8a;font-weight:900;flex-shrink:0">▸</span>Mission Logement</div>
+            <div style="display:flex;gap:.5rem"><span style="color:#0a5d8a;font-weight:900;flex-shrink:0">▸</span>Démarches en cours</div>
+          </div>
+        </div>
+      </div>
+      <div class="mlpb-grid mlpb-grid-3 mt1">
+        <div class="qli">⏰ <span><strong>Stage 8h :</strong> quel bus exact ? Combien le mois ? Plan B si retard ?</span></div>
+        <div class="qli">🍱 <span><strong>Pause déjeuner :</strong> où ? Combien ? Gratuit où ?</span></div>
+        <div class="qli">📄 <span><strong>CAF/Attestation :</strong> adresse exacte ? RDV comment ?</span></div>
+      </div>
+      <div class="result" style="background:rgba(40,151,213,.08);border:1.5px solid rgba(40,151,213,.3)">
+        <span class="result-icon">✅</span>
+        <div><div class="result-title">Résultat attendu</div><div class="result-text">Tu as ton <strong>plan TRAJET + REPAS + PAPIERS</strong> avec adresses précises.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ S16 — ATELIER 3 Plan ══════════ -->
+<section class="slide" id="s16">
+  <div class="sbody">
+    <div class="atelier-header">
+      <div class="at-num" style="background:var(--bleu)">A3</div>
+      <div class="at-info"><div class="at-eyebrow">Atelier 3 / 4</div><div class="at-name" style="color:var(--bleu)">Règle des post-its BLEUS</div></div>
+    </div>
+    <div class="scontent">
+      <div class="highlight">Pour chaque point bleu : note l'adresse précise OU le nom du lieu + "je connais". Sans adresse, ça ne compte pas !</div>
+      <div class="mlpb-grid mlpb-grid-2 mt2">
+        <div style="background:var(--blanc);padding:1.2rem">
+          <div style="font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.65rem">Étapes pratiques</div>
+          <div class="step-list">
+            <div class="sli"><div class="sli-num" style="background:var(--bleu)">1</div><div><div class="sli-title">Continue sur la carte — post-its BLEUS</div><div class="sli-text">Deux nuances : bleu clair (transport/repas), bleu foncé (papiers/aides).</div></div></div>
+            <div class="sli"><div class="sli-num" style="background:var(--bleu)">2</div><div><div class="sli-title">Pour chaque moyen de transport</div><div class="sli-text">Ligne, arrêt, horaires, coût, plan B.</div></div></div>
+            <div class="sli"><div class="sli-num" style="background:var(--bleu)">3</div><div><div class="sli-title">Pour chaque solution repas</div><div class="sli-text">Lieu, adresse, horaires, coût, conditions d'accès.</div></div></div>
+            <div class="sli"><div class="sli-num" style="background:var(--bleu)">4</div><div><div class="sli-title">Pour chaque démarche admin</div><div class="sli-text">Structure, adresse, prise de RDV, documents à préparer.</div></div></div>
+          </div>
+        </div>
+        <div style="background:var(--noir);padding:1.3rem;color:var(--blanc)">
+          <div style="font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.3);margin-bottom:.75rem">Pourquoi c'est critique</div>
+          <p style="font-size:.85rem;line-height:1.7;color:rgba(255,255,255,.78)">Ces solutions pratiques sont les <strong style="color:var(--bleu)">premiers freins</strong> qui bloquent les jeunes dans leur insertion. Sans transport ni repas organisé, même le meilleur projet s'arrête.<br><br>Ton plan pratique complet montre à ton conseiller ML que tu as <strong style="color:var(--vert)">anticipé les obstacles</strong>.</p>
+          <div style="margin-top:1rem;padding:.75rem;background:rgba(40,151,213,.15);border:1px solid rgba(40,151,213,.3);border-radius:3px">
+            <div style="font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:var(--bleu);margin-bottom:.3rem">💡 Aide mobilité</div>
+            <div style="font-size:.82rem;color:rgba(255,255,255,.8)">Pense à demander à ton conseiller les aides à la mobilité disponibles dans ton territoire (PACEA, CEJ, aides locales…)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ S17 — ATELIER 4 ══════════ -->
+<section class="slide" id="s17">
+  <div class="sbody">
+    <div class="atelier-header">
+      <div class="at-num" style="background:var(--orange)">A4</div>
+      <div class="at-info"><div class="at-eyebrow">Atelier 4 / 4 · Post-its JAUNES</div><div class="at-name" style="color:var(--orange)">Là où je vais quand ça ne va pas — Mes appuis pour tenir</div><div class="at-dur">Mon système de sécurité personnel</div></div>
+    </div>
+    <div class="scontent">
+      <div class="mlpb-grid mlpb-grid-2">
+        <div style="background:var(--blanc);padding:1.2rem;display:flex;flex-direction:column;gap:.55rem">
+          <div style="font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:rgba(23,23,24,.4);margin-bottom:.2rem">Pourquoi c'est important</div>
+          <div class="mlpb-card" style="border-left:4px solid var(--orange)"><div style="display:flex;gap:.7rem"><span style="font-size:1.1rem;flex-shrink:0">🏥</span><div><div class="mlpb-card-title">Les structures existent autour de toi</div><div class="mlpb-card-text">CMP à 10min, Point Santé Jeunes, psy référent Mission Locale... tu n'es pas seul(e).</div></div></div></div>
+          <div class="mlpb-card" style="border-left:4px solid var(--orange)"><div style="display:flex;gap:.7rem"><span style="font-size:1.1rem;flex-shrink:0">🛡️</span><div><div class="mlpb-card-title">Prévenir le décrochage</div><div class="mlpb-card-text">Savoir où aller en cas de stress = moins de risques d'abandonner ta formation/job.</div></div></div></div>
+          <div class="mlpb-card" style="border-left:4px solid var(--orange)"><div style="display:flex;gap:.7rem"><span style="font-size:1.1rem;flex-shrink:0">💪</span><div><div class="mlpb-card-title">La durabilité de ton projet</div><div class="mlpb-card-text">Un employeur veut quelqu'un de stable. Ta carte montre que tu as prévu le coup.</div></div></div></div>
+          <div class="highlight orange">Connaître son territoire = savoir où chercher de l'aide avant que ça parte en vrille.</div>
+        </div>
+        <div style="background:var(--blanc);padding:1.2rem">
+          <div style="font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.65rem">Ce que tu fais — 3 catégories</div>
+          <div style="display:flex;flex-direction:column;gap:.6rem">
+            <div style="background:rgba(243,146,0,.07);border:1.5px solid rgba(243,146,0,.2);padding:.85rem;border-radius:4px">
+              <div style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:var(--orange);margin-bottom:.4rem">🏥 Santé / Écoute</div>
+              <div style="font-size:.8rem;color:rgba(23,23,24,.65);line-height:1.55">Médecin, CMP, Point Santé Jeunes, psy Mission Locale, addictologie…</div>
+            </div>
+            <div style="background:rgba(243,146,0,.07);border:1.5px solid rgba(243,146,0,.2);padding:.85rem;border-radius:4px">
+              <div style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:var(--orange);margin-bottom:.4rem">🌿 Ressourcement</div>
+              <div style="font-size:.8rem;color:rgba(23,23,24,.65);line-height:1.55">Parc, salle sport (à 2€), spot plage, atelier dessin, bibliothèque, salle de répet…</div>
+            </div>
+            <div style="background:rgba(243,146,0,.07);border:1.5px solid rgba(243,146,0,.2);padding:.85rem;border-radius:4px">
+              <div style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:var(--orange);margin-bottom:.4rem">🤝 Personnes de confiance</div>
+              <div style="font-size:.8rem;color:rgba(23,23,24,.65);line-height:1.55">"Mon grand frère", "l'éduc de l'asso", "ma copine X" — Relie en ligne JAUNE épaisse</div>
+            </div>
+          </div>
+          <div class="result mt2" style="background:rgba(243,146,0,.08);border:1.5px solid rgba(243,146,0,.3)">
+            <span class="result-icon">✅</span>
+            <div><div class="result-title">Résultat attendu</div><div class="result-text">Tu as ton <strong>plan B bien-être</strong> avec 3 solutions immédiates.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ S18 — ATELIER 4 Questions ══════════ -->
+<section class="slide" id="s18">
+  <div class="sbody">
+    <div class="atelier-header">
+      <div class="at-num" style="background:var(--orange)">A4</div>
+      <div class="at-info"><div class="at-eyebrow">Atelier 4 / 4</div><div class="at-name" style="color:var(--orange)">Questions clés & lieux de respiration</div></div>
+    </div>
+    <div class="scontent">
+      <div class="mlpb-grid mlpb-grid-2">
+        <div style="background:var(--blanc);padding:1.2rem">
+          <div style="font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.65rem">Questions à se poser</div>
+          <div class="q-list">
+            <div class="qli">🆘 <span>En galère/stress/fatigué, je vais où direct ?</span></div>
+            <div class="qli">📞 <span>Qui j'appelle quand ça bloque vraiment ?</span></div>
+            <div class="qli">⚡ <span>Y a quoi autour de moi pour me rebooster ?</span></div>
+          </div>
+          <div style="margin-top:1rem;background:rgba(243,146,0,.06);border:1.5px solid rgba(243,146,0,.2);padding:.9rem;border-radius:4px">
+            <div style="font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:var(--orange);margin-bottom:.35rem">Pour te rebooster sans te ruiner</div>
+            <div style="font-size:.82rem;line-height:1.55">Connaître <strong>au moins 3 solutions immédiates</strong> disponibles dans ton territoire, accessibles aujourd'hui.</div>
+          </div>
+        </div>
+        <div style="background:var(--noir);padding:1.3rem;color:var(--blanc)">
+          <div style="font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.3);margin-bottom:.75rem">Tes lieux de respiration accessibles</div>
+          <div class="drow">🌳 Le parc du quartier ou spot nature</div>
+          <div class="drow">🏋️ Salle de muscu à 2€ / gymnase</div>
+          <div class="drow">🏖️ Ton spot plage à 20min</div>
+          <div class="drow">🎨 Atelier créatif, FabLab, bibliothèque</div>
+          <div class="drow">⛪ Lieu de culte ou de méditation</div>
+          <div class="drow">🎵 Studio musique, salle de répet</div>
+          <div style="margin-top:.85rem;padding:.75rem;background:rgba(243,146,0,.12);border:1px solid rgba(243,146,0,.25);border-radius:3px">
+            <div style="font-size:.82rem;color:rgba(255,255,255,.88);line-height:1.55">Relie chaque personne et lieu avec une <strong style="color:var(--orange)">ligne JAUNE épaisse</strong>. C'est ton filet de sécurité visible sur la carte.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ S-MAP — MA CARTE TERRITOIRE ══════════ -->
+<section class="slide" id="s-map">
+  <div style="display:flex;flex-direction:column;height:100%;overflow:hidden;">
+    <!-- Banner -->
+    <div class="slide-banner" style="background:var(--noir);flex-shrink:0;padding:.75rem 1.2rem;flex-wrap:wrap;gap:.5rem;">
+      <div class="sb-left">
+        <div class="sb-module">Carte interactive · Tous les ateliers</div>
+        <div class="sb-title" style="font-size:1.2rem;">🗺️ Ma carte territoire</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;margin-left:auto;">
+        <button class="map-filter-btn active" data-cat="all" onclick="filterMap('all',this)">Tout voir</button>
+        <button class="map-filter-btn" data-cat="reseau" style="background:var(--rose);" onclick="filterMap('reseau',this)"><span class="mfb-dot"></span>Réseau</button>
+        <button class="map-filter-btn" data-cat="competences" style="background:var(--vert);" onclick="filterMap('competences',this)"><span class="mfb-dot"></span>Compétences</button>
+        <button class="map-filter-btn" data-cat="solutions" style="background:var(--bleu);" onclick="filterMap('solutions',this)"><span class="mfb-dot"></span>Solutions</button>
+        <button class="map-filter-btn" data-cat="ressources" style="background:var(--orange);" onclick="filterMap('ressources',this)"><span class="mfb-dot"></span>Ressources</button>
+        <button onclick="openAddPin()" style="background:var(--vert);color:var(--blanc);border:none;border-radius:5px;padding:.38rem .9rem;font-family:'Nunito',sans-serif;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;display:flex;align-items:center;gap:.3rem;margin-left:.3rem;">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>Ajouter
+        </button>
+      </div>
+    </div>
+    <!-- Map + sidebar -->
+    <div style="flex:1;display:grid;grid-template-columns:1fr 260px;overflow:hidden;min-height:0;">
+      <div id="map-container" style="position:relative;z-index:1;"></div>
+      <div style="background:var(--gris-clair);border-left:2px solid var(--gris-border);overflow-y:auto;display:flex;flex-direction:column;min-height:0;">
+        <div style="padding:.65rem .9rem;background:var(--blanc);border-bottom:1.5px solid var(--gris-border);font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:rgba(23,23,24,.4);flex-shrink:0;">Mes lieux ajoutés</div>
+        <div id="pin-list" style="padding:.5rem;display:flex;flex-direction:column;gap:.35rem;flex:1;">
+          <div id="pin-empty" style="padding:1.5rem .8rem;text-align:center;color:rgba(23,23,24,.35);font-size:.8rem;font-family:'Nunito Sans',sans-serif;font-style:italic;">Aucun lieu ajouté.<br>Clique sur la carte ou<br>sur "Ajouter" pour démarrer !</div>
+        </div>
+        <!-- Légende -->
+        <div style="padding:.7rem .9rem;border-top:1.5px solid var(--gris-border);background:var(--blanc);flex-shrink:0;">
+          <div style="font-family:'Nunito',sans-serif;font-size:.6rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:rgba(23,23,24,.3);margin-bottom:.4rem;">Légende</div>
+          <div style="display:flex;flex-direction:column;gap:.3rem;">
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.72rem;"><div style="width:9px;height:9px;border-radius:50%;background:var(--rose);flex-shrink:0;"></div>Réseau — qui je connais</div>
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.72rem;"><div style="width:9px;height:9px;border-radius:50%;background:var(--vert);flex-shrink:0;"></div>Compétences — où j'ai appris</div>
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.72rem;"><div style="width:9px;height:9px;border-radius:50%;background:var(--bleu);flex-shrink:0;"></div>Solutions — transport, repas…</div>
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.72rem;"><div style="width:9px;height:9px;border-radius:50%;background:var(--orange);flex-shrink:0;"></div>Ressources — me ressourcer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- WIZARD AJOUT PIN : étape 1 = formulaire, étape 2 = clic carte -->
+  <div id="pin-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(23,23,24,.72);align-items:flex-start;justify-content:center;padding-top:70px;">
+    <div style="background:var(--blanc);border-radius:12px;width:380px;max-width:94vw;box-shadow:0 24px 64px rgba(0,0,0,.4);overflow:hidden;">
+
+      <!-- Étapes indicator -->
+      <div style="display:flex;background:var(--gris-clair);border-bottom:2px solid var(--gris-border);">
+        <div id="wiz-step1-tab" style="flex:1;padding:.6rem;text-align:center;font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;border-bottom:3px solid var(--bleu);color:var(--bleu);margin-bottom:-2px;">
+          1 · Info du lieu
+        </div>
+        <div id="wiz-step2-tab" style="flex:1;padding:.6rem;text-align:center;font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;border-bottom:3px solid transparent;color:rgba(23,23,24,.3);">
+          2 · Poser sur la carte
+        </div>
       </div>
 
-      <footer class="eu" aria-label="Mentions UE">
-        <div class="eu-top">
-          <img src="https://www.immigration.interieur.gouv.fr/var/miomcti/storage/images/media/mi/images/logos-pictos/cofinance-par-l-union-europeenne-v/1060317-1-fre-FR/Cofinance-par-l-Union-europeenne-V.png" alt="Cofinancé par l'Union européenne" class="eu-logo" loading="lazy">
+      <!-- ÉTAPE 1 : Formulaire -->
+      <div id="wiz-step1" style="padding:1.4rem;">
+        <div style="font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;margin-bottom:1.1rem;display:flex;align-items:center;gap:.5rem;">
+          <span style="background:var(--bleu);color:white;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0;">1</span>
+          Quel lieu veux-tu ajouter ?
         </div>
-        <div class="copyright">© 2026 LS4YOU Project Nr. 2023-2-FR02-KA220-YOU-000175417</div>
-        <p>Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the Agence Erasmus+ France Jeunesse &amp; Sport (Agence du Service Civique). Neither the European Union nor the granting authority can be held responsible for them.</p>
-        <a class="link" href="#" onclick="return false;">Data Privacy Statement &amp; Imprint</a>
-      </footer>
+        <div style="display:flex;flex-direction:column;gap:.9rem;">
 
-    </section>
-  </main>
+          <div>
+            <label style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:rgba(23,23,24,.4);display:block;margin-bottom:.32rem;">Nom du lieu *</label>
+            <input id="pin-name" type="text" placeholder="Ex : Mission Locale, Spar, Arrêt Bus Gare…"
+              style="width:100%;border:2px solid var(--gris-border);border-radius:6px;padding:.55rem .8rem;font-family:'Nunito Sans',sans-serif;font-size:.9rem;outline:none;transition:border .18s;"
+              onfocus="this.style.borderColor='var(--bleu)'" onblur="this.style.borderColor='var(--gris-border)'"/>
+          </div>
 
-  <script>
-    const KEY="mls4you_territoire_v1";
-    function readState(){ try{return JSON.parse(localStorage.getItem(KEY))||{} }catch{return{}} }
-    function writeState(s){ localStorage.setItem(KEY, JSON.stringify(s)); }
-    function ensure(){
-      const s=readState();
-      s.badges=s.badges||{relieur:false,createur:false,ancre:false,robuste:false};
-      s.done=s.done||{accueillir:false,creer:false,habiter:false,soin:false};
-      s.profile=s.profile||{};
-      s.accueillir=s.accueillir||{};
-      s.accueillir.cards = s.accueillir.cards || { done:{1:false,2:false,3:false,4:false,5:false,6:false,7:false}, current:1 };
-      s.accueillir.miroir = s.accueillir.miroir || { self:[], s1:null, s2:null, s3:null, result:null, action:null };
-      writeState(s); return s;
+          <div>
+            <label style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:rgba(23,23,24,.4);display:block;margin-bottom:.32rem;">Dans quel axe ? *</label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;" id="cat-select">
+              <div class="cat-opt" data-val="reseau" onclick="selectCat(this)" style="border-color:var(--rose);">
+                <div style="width:9px;height:9px;border-radius:50%;background:var(--rose);flex-shrink:0;"></div>
+                <div><div style="font-weight:900;font-size:.78rem;">Réseau</div><div style="font-size:.68rem;opacity:.6;">Qui je connais</div></div>
+              </div>
+              <div class="cat-opt" data-val="competences" onclick="selectCat(this)" style="border-color:var(--vert);">
+                <div style="width:9px;height:9px;border-radius:50%;background:var(--vert);flex-shrink:0;"></div>
+                <div><div style="font-weight:900;font-size:.78rem;">Compétences</div><div style="font-size:.68rem;opacity:.6;">Où j'ai appris</div></div>
+              </div>
+              <div class="cat-opt" data-val="solutions" onclick="selectCat(this)" style="border-color:var(--bleu);">
+                <div style="width:9px;height:9px;border-radius:50%;background:var(--bleu);flex-shrink:0;"></div>
+                <div><div style="font-weight:900;font-size:.78rem;">Solutions</div><div style="font-size:.68rem;opacity:.6;">Transport, repas…</div></div>
+              </div>
+              <div class="cat-opt" data-val="ressources" onclick="selectCat(this)" style="border-color:var(--orange);">
+                <div style="width:9px;height:9px;border-radius:50%;background:var(--orange);flex-shrink:0;"></div>
+                <div><div style="font-weight:900;font-size:.78rem;">Ressources</div><div style="font-size:.68rem;opacity:.6;">Me ressourcer</div></div>
+              </div>
+            </div>
+            <div id="cat-error" style="display:none;color:var(--rose);font-size:.72rem;margin-top:.3rem;font-family:'Nunito',sans-serif;font-weight:700;">Choisis un axe pour continuer.</div>
+          </div>
+
+          <div>
+            <label style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:rgba(23,23,24,.4);display:block;margin-bottom:.32rem;">Note rapide <span style="font-weight:400;text-transform:none;letter-spacing:0;">(optionnel)</span></label>
+            <input id="pin-note" type="text" placeholder="Ex : contact, horaires, prix, à faire…"
+              style="width:100%;border:2px solid var(--gris-border);border-radius:6px;padding:.55rem .8rem;font-family:'Nunito Sans',sans-serif;font-size:.9rem;outline:none;transition:border .18s;"
+              onfocus="this.style.borderColor='var(--bleu)'" onblur="this.style.borderColor='var(--gris-border)'"/>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:.5rem;margin-top:1.2rem;">
+          <button onclick="closeAddPin()" style="flex:1;background:var(--gris-clair);border:2px solid var(--gris-border);border-radius:6px;padding:.6rem;font-family:'Nunito',sans-serif;font-size:.78rem;font-weight:800;cursor:pointer;">Annuler</button>
+          <button onclick="wizNext()" style="flex:2;background:var(--bleu);color:white;border:none;border-radius:6px;padding:.6rem;font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.4rem;">
+            Suivant — Poser sur la carte
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 2 : Localiser le lieu -->
+      <div id="wiz-step2" style="display:none;padding:1.4rem;">
+        <div style="font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem;">
+          <span style="background:var(--vert);color:white;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0;">2</span>
+          Où se trouve ce lieu ?
+        </div>
+
+        <!-- Résumé du lieu -->
+        <div id="wiz-resume" style="display:flex;align-items:center;gap:.6rem;padding:.65rem .9rem;border-radius:7px;margin-bottom:1rem;border:2px solid;">
+          <div id="wiz-resume-dot" style="width:11px;height:11px;border-radius:50%;flex-shrink:0;"></div>
+          <div>
+            <div id="wiz-resume-name" style="font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;"></div>
+            <div id="wiz-resume-cat" style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;opacity:.7;"></div>
+          </div>
+        </div>
+
+        <!-- RECHERCHE ADRESSE -->
+        <div style="margin-bottom:.75rem;">
+          <label style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:rgba(23,23,24,.4);display:block;margin-bottom:.32rem;">
+            🔍 Cherche l'adresse
+          </label>
+          <div style="display:flex;gap:.4rem;">
+            <input id="addr-search" type="text" placeholder="Ex : 3 rue de la Paix, Bayonne"
+              style="flex:1;border:2px solid var(--gris-border);border-radius:6px;padding:.55rem .8rem;font-family:'Nunito Sans',sans-serif;font-size:.88rem;outline:none;transition:border .18s;"
+              onfocus="this.style.borderColor='var(--bleu)'" onblur="this.style.borderColor='var(--gris-border)'"
+              onkeydown="if(event.key==='Enter'){event.preventDefault();searchAddress();}"
+            />
+            <button onclick="searchAddress()" style="background:var(--bleu);color:white;border:none;border-radius:6px;padding:.55rem .85rem;cursor:pointer;font-size:.9rem;flex-shrink:0;" title="Rechercher">
+              🔍
+            </button>
+          </div>
+          <!-- Résultats suggestions -->
+          <div id="addr-results" style="display:none;margin-top:.35rem;border:1.5px solid var(--gris-border);border-radius:6px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.1);background:white;max-height:180px;overflow-y:auto;"></div>
+          <div id="addr-error" style="display:none;color:var(--rose);font-size:.75rem;margin-top:.3rem;font-family:'Nunito',sans-serif;font-weight:700;"></div>
+        </div>
+
+        <!-- Séparateur OU -->
+        <div style="display:flex;align-items:center;gap:.6rem;margin:.6rem 0;">
+          <div style="flex:1;height:1px;background:var(--gris-border);"></div>
+          <span style="font-family:'Nunito',sans-serif;font-size:.7rem;font-weight:800;color:rgba(23,23,24,.3);text-transform:uppercase;letter-spacing:.1em;">ou</span>
+          <div style="flex:1;height:1px;background:var(--gris-border);"></div>
+        </div>
+
+        <!-- Clic carte -->
+        <div style="background:var(--gris-clair);border-radius:8px;padding:.85rem 1rem;border:2px dashed var(--gris-border);display:flex;align-items:center;gap:.75rem;">
+          <span style="font-size:1.3rem;flex-shrink:0;">👆</span>
+          <div>
+            <div style="font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:800;color:var(--noir);">Clique directement sur la carte</div>
+            <div style="font-size:.72rem;color:rgba(23,23,24,.45);margin-top:.1rem;">Le pin se posera exactement là où tu cliques</div>
+          </div>
+        </div>
+
+        <div id="wiz-pos-confirm" style="display:none;margin-top:.6rem;padding:.6rem .9rem;background:rgba(149,193,31,.1);border:1.5px solid rgba(149,193,31,.4);border-radius:6px;font-size:.78rem;color:var(--vert);font-family:'Nunito',sans-serif;font-weight:800;"></div>
+
+        <div style="display:flex;gap:.5rem;margin-top:.9rem;">
+          <button onclick="wizBack()" style="flex:1;background:var(--gris-clair);border:2px solid var(--gris-border);border-radius:6px;padding:.6rem;font-family:'Nunito',sans-serif;font-size:.78rem;font-weight:800;cursor:pointer;">← Retour</button>
+          <button id="wiz-confirm-btn" onclick="confirmAddPin()" style="flex:2;background:var(--vert);color:white;border:none;border-radius:6px;padding:.6rem;font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:900;cursor:pointer;">
+            Poser le pin ici ✓
+          </button>
+        </div>
+        <div style="margin-top:.5rem;text-align:center;">
+          <button onclick="confirmAddPin()" style="background:none;border:none;font-family:'Nunito',sans-serif;font-size:.7rem;color:rgba(23,23,24,.3);cursor:pointer;text-decoration:underline;">Poser au centre de la carte</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ S19 — BILAN ══════════ -->
+<section class="slide" id="s19">
+  <div class="sbody">
+    <div class="slide-banner" style="background:var(--vert)">
+      <div class="sb-left"><div class="sb-module">Bilan · Parcours Cartographique</div><div class="sb-title">À la fin des 4 ateliers : ta carte projet</div></div>
+    </div>
+    <div class="scontent">
+      <div class="bilan-grid">
+        <div class="bilan-cell"><div class="bc-num" style="background:var(--vert)">1</div><div><div class="bc-title">Ta carte complète</div><div class="bc-text">Photo ou scan pour ton dossier Mission Locale. À conserver précieusement et à mettre à jour.</div></div></div>
+        <div class="bilan-cell"><div class="bc-num" style="background:var(--bleu)">2</div><div><div class="bc-title">Un plan d'action en 3 étapes</div><div class="bc-text">Co-construit avec ton conseiller Mission Locale dès la fin des ateliers.</div></div></div>
+        <div class="bilan-cell"><div class="bc-num" style="background:var(--orange)">3</div><div><div class="bc-title">Ton réseau activé</div><div class="bc-text">Tes compétences mises en lumière et documentées pour tes entretiens.</div></div></div>
+      </div>
+      <div class="mlpb-grid mlpb-grid-2 mt1">
+        <div style="background:var(--noir);padding:1.3rem;color:var(--blanc)">
+          <div style="font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.3);margin-bottom:.75rem">Plan d'action type co-construit</div>
+          <div class="drow"><span style="font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:var(--vert);flex-shrink:0;width:55px">Sem. 1</span>Contacter X pour Y (recontact réseau)</div>
+          <div class="drow"><span style="font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:var(--bleu);flex-shrink:0;width:55px">Sem. 2</span>Tester le lieu Z (exploration terrain)</div>
+          <div class="drow"><span style="font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);flex-shrink:0;width:55px">Sem. 3</span>Démarche admin W (CAF, mobilité…)</div>
+        </div>
+        <div style="background:rgba(149,193,31,.07);border:1.5px solid rgba(149,193,31,.25);padding:1.2rem">
+          <div style="font-family:'Nunito',sans-serif;font-size:.65rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:var(--vert);margin-bottom:.5rem">💡 Conseil pro</div>
+          <div style="font-size:.85rem;line-height:1.65;color:rgba(23,23,24,.72)">Garde ta carte sous la main pour tes entretiens <strong>Mission Locale, CEJ, PACEA</strong>, immersions entreprises.<br><br>C'est un outil vivant qui évolue avec toi !</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ S20 — FINALE ══════════ -->
+<section class="slide" id="s20">
+  <div class="final-inner">
+    <div class="f-bg-geo"><div class="fbg1"></div><div class="fbg2"></div></div>
+    <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center">
+      <div style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.2em;color:var(--vert);background:rgba(149,193,31,.12);border:1.5px solid rgba(149,193,31,.25);padding:.3rem 1rem;border-radius:4px;margin-bottom:1.2rem">Parcours LS4YOU · Mission Locale Pays Basque</div>
+      <h2 style="font-family:'Nunito',sans-serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:900;color:var(--blanc);text-align:center;line-height:1.08;margin-bottom:.5rem">Bienvenue dans la<br><span style="color:var(--vert)">compétence Territoire</span></h2>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.4);text-align:center;margin-bottom:1.5rem;font-style:italic">De quoi parle-t-on ? (8 modules) + Parcours Cartographique (4 ateliers) · LS4YOU</p>
+      <div style="display:flex;flex-direction:column;gap:.5rem;max-width:500px;text-align:left;margin-bottom:1.5rem">
+        <div style="display:flex;align-items:center;gap:.85rem;padding:.65rem .9rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:4px">
+          <div style="width:10px;height:10px;border-radius:50%;background:var(--rose);flex-shrink:0"></div>
+          <div style="font-size:.82rem;color:rgba(255,255,255,.75)"><strong style="color:rgba(255,255,255,.9)">Atelier 1</strong> — Réseau & lieux de légitimité (post-its ROUGES)</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:.85rem;padding:.65rem .9rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:4px">
+          <div style="width:10px;height:10px;border-radius:50%;background:var(--vert);flex-shrink:0"></div>
+          <div style="font-size:.82rem;color:rgba(255,255,255,.75)"><strong style="color:rgba(255,255,255,.9)">Atelier 2</strong> — Compétences localisées, CV géographique (post-its VERTS)</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:.85rem;padding:.65rem .9rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:4px">
+          <div style="width:10px;height:10px;border-radius:50%;background:var(--bleu);flex-shrink:0"></div>
+          <div style="font-size:.82rem;color:rgba(255,255,255,.75)"><strong style="color:rgba(255,255,255,.9)">Atelier 3</strong> — Solutions concrètes transport/repas/papiers (post-its BLEUS)</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:.85rem;padding:.65rem .9rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:4px">
+          <div style="width:10px;height:10px;border-radius:50%;background:var(--orange);flex-shrink:0"></div>
+          <div style="font-size:.82rem;color:rgba(255,255,255,.75)"><strong style="color:rgba(255,255,255,.9)">Atelier 4</strong> — Appuis bien-être pour tenir dans la durée (post-its JAUNES)</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:.65rem;flex-wrap:wrap;justify-content:center">
+        <button class="fbtn prev" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.1)" onclick="goTo(0)">↩ Accueil</button>
+        <button class="fbtn next" onclick="goTo(10)">🗺 Parcours carto</button>
+      </div>
+    </div>
+  </div>
+  <!-- MLPB color row -->
+  <div class="color-row color-row-4" style="flex-shrink:0">
+    <div class="cblock" style="background:var(--bleu)" onclick="goTo(1)"><div class="cblock-icon">📚</div><div class="cblock-title">De quoi parle-t-on ?</div><div class="cblock-text">8 modules pour comprendre le territoire</div></div>
+    <div class="cblock" style="background:var(--rose)" onclick="goTo(11)"><div class="cblock-icon">👥</div><div class="cblock-title">Atelier Réseau</div><div class="cblock-text">Qui je connais, qui me connaît</div></div>
+    <div class="cblock" style="background:var(--vert)" onclick="goTo(13)"><div class="cblock-icon">💡</div><div class="cblock-title">Atelier Compétences</div><div class="cblock-text">Mon CV géographique</div></div>
+    <div class="cblock" style="background:var(--orange)" onclick="goTo(19)"><div class="cblock-icon">🎯</div><div class="cblock-title">Bilan & Plan</div><div class="cblock-text">Ta carte projet finale</div></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="fp" id="fp"></div>
+  <span class="f-lbl" id="flbl">Introduction</span>
+  <div class="fnav">
+    <button class="fbtn prev" onclick="prevSlide()">← Retour</button>
+    <button class="fbtn next" id="fbnext" onclick="nextSlide()">Suivant →</button>
+  </div>
+</footer>
+
+<script>
+const TOTAL=22;
+let cur=0;
+
+const labels=["Accueil","Définition du territoire","Pourquoi c'est central","Plusieurs échelles","Territoire vécu","Connaître un territoire","La compétence","Les 4 axes LS4YOU","À retenir — Conclusion","Parcours cartographique","Vue d'ensemble carto","Atelier 1 — Réseau","A1 Questions & Résultat","Atelier 2 — Savoir-faire","A2 CV Géographique","Atelier 3 — Solutions","A3 Plan mobilité","Atelier 4 — Appuis","A4 Lieux de respiration","Ma carte territoire","Bilan — Ta carte projet","Fin — Compétence Territoire"];
+
+const dotColor=i=>{
+  if(i===0)return'var(--vert)';
+  if(i<=8)return'var(--bleu)';
+  if(i<=10)return'var(--vert)';
+  if(i<=12)return'var(--rose)';
+  if(i<=14)return'var(--vert)';
+  if(i<=16)return'var(--bleu)';
+  if(i<=18)return'var(--orange)';
+  if(i===19)return'var(--vert)';
+  return'var(--vert)';
+};
+
+function goTo(n){
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===n));
+  cur=n;
+  updateUI();
+}
+function nextSlide(){if(cur<TOTAL-1)goTo(cur+1);}
+function prevSlide(){if(cur>0)goTo(cur-1);}
+
+function updateUI(){
+  const fp=document.getElementById('fp');
+  fp.innerHTML='';
+  for(let j=0;j<TOTAL;j++){
+    const b=document.createElement('button');
+    b.className='pdot';
+    b.title=labels[j];
+    b.style.background=j===cur?dotColor(j):j<cur?dotColor(j):'var(--gris-border)';
+    if(j===cur)b.classList.add('active');
+    if(j<cur)b.classList.add('done');
+    b.onclick=()=>goTo(j);
+    fp.appendChild(b);
+  }
+  document.getElementById('flbl').textContent=labels[cur];
+  document.getElementById('sctr').textContent=String(cur+1).padStart(2,'0')+' / '+String(TOTAL).padStart(2,'0');
+  const nb=document.getElementById('fbnext');
+  if(cur===TOTAL-1){nb.textContent='↩ Accueil';nb.onclick=()=>goTo(0);}
+  else{nb.textContent='Suivant →';nb.onclick=nextSlide;}
+  // nav tabs
+  const sections=[0,1,9,11,13,15,17,19,20,21];
+  document.querySelectorAll('.ntab').forEach((t,i)=>{
+    const s=sections[i],e=sections[i+1]??TOTAL;
+    t.classList.toggle('active',cur>=s&&cur<e);
+  });
+}
+
+// checklist
+const ckCounts={};
+function tck(el,id){
+  el.classList.toggle('chkd');
+  const items=el.closest('.check-list').querySelectorAll('.cli');
+  let c=0;items.forEach(it=>{if(it.classList.contains('chkd'))c++;});
+  ckCounts[id]=c;
+  const f=document.getElementById('pf'+id);
+  const l=document.getElementById('pl'+id);
+  if(f)f.style.width=(c/items.length*100)+'%';
+  if(l)l.textContent=c+' / '+items.length+' compétences identifiées';
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown')nextSlide();
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp')prevSlide();
+});
+
+updateUI();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+// ════════ MAP LOGIC ════════
+const CAT_COLORS = {
+  reseau:      '#d60b52',
+  competences: '#95c11f',
+  solutions:   '#2897d5',
+  ressources:  '#f39200'
+};
+const CAT_LABELS = {
+  reseau:'Réseau', competences:'Compétences', solutions:'Solutions', ressources:'Ressources'
+};
+
+var map = null;
+var pins = [];
+var pendingLatLng = null;
+var selectedCat = null;
+var activeFilter = 'all';
+var mapInitialized = false;
+var wizardStep = 1;
+
+function initMap() {
+  if (mapInitialized) return;
+  var container = document.getElementById('map-container');
+  if (!container || container.offsetWidth === 0) return;
+
+  map = L.map('map-container', { center: [43.29, -1.32], zoom: 12, zoomControl: true });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© OpenStreetMap © CARTO',
+    subdomains: 'abcd', maxZoom: 19
+  }).addTo(map);
+
+  map.on('click', function(e) {
+    var modal = document.getElementById('pin-modal');
+    // If wizard is open on step 2, record position
+    if (modal.style.display === 'flex' && wizardStep === 2) {
+      pendingLatLng = e.latlng;
+      var conf = document.getElementById('wiz-pos-confirm');
+      conf.style.display = 'block';
+      conf.textContent = 'Position choisie ! Clique sur "Ajouter le pin ici" pour confirmer.';
+      return;
     }
-    const S=ensure();
+    // Otherwise open wizard step 1 with this position pre-set
+    pendingLatLng = e.latlng;
+    openAddPin();
+  });
 
-    function setProgress(){
-      const cardsDone = Object.values(S.accueillir.cards.done).filter(Boolean).length; // /7
-      const mirrorDone = !!(S.accueillir.miroir.action && S.accueillir.miroir.action.trim());
-      const steps = cardsDone + (mirrorDone ? 1 : 0);
-      const total = 8;
-      const pct = Math.round((steps/total)*100);
+  // Add cursor crosshair on map when in step-2 mode
+  map.getContainer().style.cursor = '';
+  mapInitialized = true;
 
-      document.getElementById("progress").style.width = pct + "%";
-      document.getElementById("pct").textContent = pct + "%";
+  var demos = [
+    { name: 'Mission Locale Pays Basque', cat: 'reseau',      note: 'Mon conseiller référent', lat: 43.2951, lng: -1.3216 },
+    { name: 'Lycée René Cassin',          cat: 'competences', note: 'Bac obtenu ici',           lat: 43.3020, lng: -1.3100 },
+    { name: 'Arrêt Bus Gare',             cat: 'solutions',   note: 'Ligne 14 - départ 8h12',   lat: 43.2900, lng: -1.3150 },
+    { name: 'Parc de Xanadou',            cat: 'ressources',  note: 'Pour me vider la tête',    lat: 43.2980, lng: -1.3350 }
+  ];
+  demos.forEach(function(d) { addPin(d.name, d.cat, d.note, L.latLng(d.lat, d.lng)); });
+}
 
-      const b=document.getElementById("b-relieur");
-      b.dataset.on = (S.badges.relieur || S.done.accueillir) ? "1" : "0";
-    }
+function makeIcon(cat) {
+  var color = CAT_COLORS[cat] || '#666';
+  var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="42" viewBox="0 0 32 42">'
+    + '<ellipse cx="16" cy="40" rx="5" ry="2.5" fill="rgba(0,0,0,.2)"/>'
+    + '<path d="M16 2C9.37 2 4 7.37 4 14c0 9 12 26 12 26s12-17 12-26c0-6.63-5.37-12-12-12z" fill="' + color + '"/>'
+    + '<circle cx="16" cy="14" r="5.5" fill="white" opacity=".9"/>'
+    + '</svg>';
+  return L.divIcon({ html: svg, iconSize: [32,42], iconAnchor: [16,42], popupAnchor: [0,-42], className: '' });
+}
 
-    // ----------------- 7 CARTES (MICROLEARNING) -----------------
-    const ACCUEILLIR_CARDS = {
-      1: {
-        title: "CARTE 1 : Pourquoi l'accueil change tout",
-        visual: "Un contact visuel franc et une posture ouverte lors d'une rencontre.",
-        audio: "Écoute bien : chaque inconnu est une porte fermée à double tour par la méfiance. Ton super-pouvoir, c’est l’accueil. En envoyant les bons signaux dès les premières secondes, tu ne fais pas que dire bonjour, tu dis : “Je connais les codes, tu peux me faire confiance”. Ce n'est pas être soumis, c'est être stratège. C’est toi qui décides que la rencontre va bien se passer. C'est ta force pour entrer dans n'importe quelle équipe.",
-        action: "Ton défi : salue et souris à trois personnes inconnues aujourd'hui (boulangerie, bus, Mission Locale). Observe comment leur visage change."
-      },
-      2: {
-        title: "CARTE 2 : La magie de la RELIANCE",
-        visual: "Deux maillons de fer qui se soudent pour former une chaîne indestructible.",
-        audio: "En Iparralde, on bouge tout le temps. Entre ceux qui s'installent et ceux qui ne font que passer, le risque c'est que tout le monde reste dans son coin. La reliance, c'est ton antenne sociale. C'est transformer cette foule en communauté. Si tu sais parler à quelqu'un qui ne te ressemble pas, tu deviens indispensable. Les entreprises cherchent des gens qui “font du lien”. Ne reste pas spectateur de ce changement, sois celui qui soude le groupe.",
-        action: "Entre dans un commerce ou un lieu de ton quartier où tu ne vas jamais. Regarde, puis dis un “Bonjour” clair en partant."
-      },
-      3: {
-        title: "CARTE 3 : La posture d'Accueil Réciproque",
-        visual: "Un échange équilibré entre un professionnel et un client, dos droit, regard horizontal.",
-        audio: "Ne confonds pas accueil et servilité. Accueillir, c'est prendre les commandes. Quand tu reçois quelqu'un, c'est toi qui diriges l'échange avec dignité. Et quand c'est toi qui arrives, montre que tu respectes le lieu et les gens qui y sont déjà. C'est ça la réciprocité : j'accepte qui tu es, tu acceptes qui je suis. C'est une question de respect mutuel, et c'est toi qui donnes le ton.",
-        action: "Dans un commerce : “Bonjour, est-ce que vous auriez un conseil pour ce produit ?” ou un “Bonne journée” bien senti en regardant la personne."
-      },
-      4: {
-        title: "CARTE 4 : Prendre SA place (Plaza Hartzea)",
-        visual: "Un jeune qui s'avance au centre d'un cercle de discussion lors d'un atelier.",
-        audio: "En Iparralde, la place appartient à ceux qui l'occupent. “Plaza Hartzea”, c'est oser dire : “Je suis là”. Ne demande pas la permission d'exister dans un groupe. En apportant ta voix, tu accueilles le collectif et tu lui donnes de la force. Le silence est un mur, la parole est une porte. Prends ce courage : c'est en prenant ta place que tu deviens un membre reconnu de la communauté.",
-        action: "Lors de ta prochaine réunion/atelier, sois le premier à prendre la parole pour poser une question ou valider l'idée d'un autre."
-      },
-      5: {
-        title: "CARTE 5 : Les 3 rituels d'Accueil",
-        visual: "Trois icônes : un œil (regard), une bulle (nom), un point d'interrogation (question).",
-        audio: "Voici ton kit de survie social en trois étapes. Rituel 1 : le regard. Fixe les yeux sans provoquer : signal “je suis en confiance”. Rituel 2 : le nom. Donne ton prénom et retiens celui de l'autre : on n'est plus des inconnus. Rituel 3 : la question ouverte. Demande “Comment ?” ou “Quoi ?” pour lancer la discussion. En 30 secondes, tu as cassé la glace et tu maîtrises le terrain.",
-        action: "Applique Regard / Nom / Question dès ton prochain rendez-vous (conseiller, voisin, commerce)."
-      },
-      6: {
-        title: "CARTE 6 : Ton 1er réseau solidaire",
-        visual: "Une carte reliant un jeune à un commerçant, un voisin âgé et un acteur local.",
-        audio: "Ton réseau, c'est ton filet de sécurité. En Iparralde, la solidarité n'est pas un vain mot. Accueillir les besoins d'un voisin âgé ou s'intéresser au travail d'un ancien, c'est poser des briques pour ton propre avenir. Un jour, c'est ce réseau qui te donnera le bon tuyau pour un job ou un logement. Ne reste pas dans ton coin : crée des liens avec ceux qui t'ont précédé. C'est ça, préparer 2040.",
-        action: "Micro-conversation avec une personne d'une autre génération dans ton quartier : demande son avis sur un sujet local."
-      },
-      7: {
-        title: "CARTE 7 : Ton badge RELIEUR",
-        visual: "Un badge “RELIEUR” avec cases cochées : Rituels, Place, Reliance.",
-        audio: "Tu as les clés en main. Ton badge de Relieur est activé dès que tu oses aller vers l'autre. C'est cette force qui te fera sortir du lot en entretien. Tu n'es pas juste un candidat : tu es celui qui sait souder une équipe. Partage tes succès avec ton conseiller. N'oublie jamais : en 2040, ce sont les relieurs qui mèneront la danse dans un monde qui change. À toi de jouer !",
-        action: "Prends rendez-vous avec ton conseiller Mission Locale : raconte comment tu as utilisé ton pouvoir de “Relieur” pour ton prochain stage/emploi."
-      }
-    };
+function buildPopup(name, cat, note) {
+  var color = CAT_COLORS[cat];
+  var label = CAT_LABELS[cat];
+  var noteHtml = note ? '<div style="font-size:.75rem;color:rgba(23,23,24,.55);margin-top:.2rem;">' + note + '</div>' : '';
+  return '<div style="font-family:Arial,sans-serif;min-width:160px;">'
+    + '<div style="display:flex;align-items:center;gap:.4rem;margin-bottom:.3rem;">'
+    + '<div style="width:9px;height:9px;border-radius:50%;background:' + color + ';flex-shrink:0;"></div>'
+    + '<span style="font-size:.65rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:' + color + ';">' + label + '</span>'
+    + '</div>'
+    + '<div style="font-size:.92rem;font-weight:800;line-height:1.3;">' + name + '</div>'
+    + noteHtml
+    + '</div>';
+}
 
-    function showCard(n){
-      S.accueillir.cards.current = n;
-      writeState(S);
+function addPin(name, cat, note, latlng) {
+  var id = Date.now() + Math.random();
+  var marker = L.marker(latlng, { icon: makeIcon(cat), draggable: true }).addTo(map);
+  marker.bindPopup(buildPopup(name, cat, note), { maxWidth: 220 });
+  var pin = { id: id, name: name, cat: cat, note: note, latlng: latlng, marker: marker };
+  marker.on('dragend', function(e) { pin.latlng = e.target.getLatLng(); });
+  pins.push(pin);
+  renderPinList();
+  applyFilter(activeFilter);
+  document.getElementById('pin-empty').style.display = 'none';
+  return pin;
+}
 
-      document.getElementById("cardTitle").textContent = ACCUEILLIR_CARDS[n].title;
-      document.getElementById("cardVisual").innerHTML = "<strong>Visuel :</strong> " + ACCUEILLIR_CARDS[n].visual;
-      document.getElementById("cardAudio").innerHTML = "<strong>Audio (45–60s) :</strong> “" + ACCUEILLIR_CARDS[n].audio + "”";
-      document.getElementById("cardAction").innerHTML = "<strong>Action flash :</strong> " + ACCUEILLIR_CARDS[n].action;
+function removePin(id) {
+  var pin = pins.find(function(p) { return p.id == id; });
+  if (pin) {
+    map.removeLayer(pin.marker);
+    pins = pins.filter(function(p) { return p.id != id; });
+    renderPinList();
+    if (pins.length === 0) document.getElementById('pin-empty').style.display = 'block';
+  }
+}
 
-      // highlight selected card
-      document.querySelectorAll("#cards7 .opt").forEach(x=>x.dataset.on="0");
-      const btn = document.querySelector(`#cards7 .opt[data-card="${n}"]`);
-      if(btn) btn.dataset.on="1";
+function buildPinItem(pin) {
+  var color = CAT_COLORS[pin.cat];
+  var label = CAT_LABELS[pin.cat];
+  var noteHtml = pin.note ? '<div class="pli-note">' + pin.note + '</div>' : '';
+  var catHtml = '<div style="font-size:.65rem;color:' + color + ';font-weight:900;text-transform:uppercase;letter-spacing:.08em;margin-top:.15rem;">' + label + '</div>';
+  return '<div class="pli-dot" style="background:' + color + ';"></div>'
+    + '<div style="flex:1;min-width:0;">'
+    + '<div class="pli-name">' + pin.name + '</div>'
+    + noteHtml + catHtml
+    + '</div>'
+    + '<button class="pli-del" onclick="removePin(' + pin.id + ')" title="Supprimer">✕</button>';
+}
 
-      refreshCardsDone();
-    }
-
-    function refreshCardsDone(){
-      const done = Object.values(S.accueillir.cards.done).filter(Boolean).length;
-      document.getElementById("cardsDone").textContent = done;
-      setProgress();
-    }
-
-    function validateCurrentCard(){
-      const n = S.accueillir.cards.current || 1;
-      S.accueillir.cards.done[n] = true;
-      writeState(S);
-      refreshCardsDone();
-      alert("✅ Carte " + n + " validée.");
-    }
-
-    function markAsDoneLater(){
-      alert("Ok. Reviens valider quand tu as fait l’action flash 🙂");
-    }
-
-    // ----------------- MIROIR PRO -----------------
-    function wireMirror(){
-      // multi select self (max 3)
-      const selfBox = document.getElementById("selfCards");
-      if(selfBox){
-        selfBox.addEventListener("click", (e)=>{
-          const el = e.target.closest(".opt"); if(!el) return;
-          const v = el.getAttribute("data-v");
-          const cur = S.accueillir.miroir.self || [];
-
-          if(el.dataset.on === "1"){
-            el.dataset.on = "0";
-            S.accueillir.miroir.self = cur.filter(x=>x!==v);
-          }else{
-            if(cur.length >= 3){
-              const first = cur[0];
-              const firstEl = selfBox.querySelector(`.opt[data-v="${first}"]`);
-              if(firstEl) firstEl.dataset.on = "0";
-              S.accueillir.miroir.self = cur.slice(1);
-            }
-            el.dataset.on = "1";
-            S.accueillir.miroir.self = [...S.accueillir.miroir.self, v];
-          }
-
-          writeState(S);
-          renderSelfPickInfo();
-          renderMirror();
-        });
-      }
-
-      wireScenePick("scene1","s1");
-      wireScenePick("scene2","s2");
-      wireScenePick("scene3","s3");
-    }
-
-    function wireScenePick(boxId, key){
-      const box = document.getElementById(boxId);
-      if(!box) return;
-      box.addEventListener("click",(e)=>{
-        const el=e.target.closest(".opt"); if(!el) return;
-        [...box.querySelectorAll(".opt")].forEach(x=>x.dataset.on="0");
-        el.dataset.on="1";
-        S.accueillir.miroir[key] = el.getAttribute("data-v");
-        writeState(S);
-        renderMirror();
+function renderPinList() {
+  var list = document.getElementById('pin-list');
+  list.querySelectorAll('.pin-list-item').forEach(function(el) { el.remove(); });
+  var filtered = activeFilter === 'all' ? pins : pins.filter(function(p) { return p.cat === activeFilter; });
+  filtered.forEach(function(pin) {
+    var item = document.createElement('div');
+    item.className = 'pin-list-item';
+    item.innerHTML = buildPinItem(pin);
+    (function(p) {
+      item.addEventListener('click', function(e) {
+        if (e.target.classList.contains('pli-del')) return;
+        map.setView(p.latlng, 15, { animate: true });
+        p.marker.openPopup();
       });
-    }
+    })(pin);
+    list.appendChild(item);
+  });
+  if (filtered.length === 0 && pins.length > 0) {
+    var empty = document.createElement('div');
+    empty.style.cssText = 'padding:1rem .8rem;text-align:center;color:rgba(23,23,24,.35);font-size:.78rem;font-style:italic;';
+    empty.textContent = 'Aucun lieu dans cet axe.';
+    list.appendChild(empty);
+  }
+}
 
-    function renderSelfPickInfo(){
-      const info = document.getElementById("selfPickInfo");
-      const picks = S.accueillir.miroir.self || [];
-      if(!info) return;
-      if(picks.length === 0){
-        info.style.display = "none";
+function filterMap(cat, btn) {
+  activeFilter = cat;
+  document.querySelectorAll('.map-filter-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  applyFilter(cat);
+  renderPinList();
+}
+
+function applyFilter(cat) {
+  pins.forEach(function(pin) {
+    if (cat === 'all' || pin.cat === cat) {
+      if (!map.hasLayer(pin.marker)) pin.marker.addTo(map);
+    } else {
+      if (map.hasLayer(pin.marker)) map.removeLayer(pin.marker);
+    }
+  });
+}
+
+// ── WIZARD ───────────────────────────────────────────────
+// ── ADDRESS SEARCH (Nominatim / OpenStreetMap) ──
+function searchAddress() {
+  var q = document.getElementById('addr-search').value.trim();
+  if (!q) return;
+  var errEl = document.getElementById('addr-error');
+  var resEl = document.getElementById('addr-results');
+  errEl.style.display = 'none';
+  resEl.style.display = 'none';
+  resEl.innerHTML = '<div style="padding:.6rem .9rem;font-size:.78rem;color:rgba(23,23,24,.45);font-style:italic;">Recherche en cours…</div>';
+  resEl.style.display = 'block';
+
+  var url = 'https://nominatim.openstreetmap.org/search?format=json&limit=5&countrycodes=fr&q=' + encodeURIComponent(q);
+  fetch(url, { headers: { 'Accept-Language': 'fr' } })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      resEl.innerHTML = '';
+      if (!data || data.length === 0) {
+        resEl.innerHTML = '<div style="padding:.6rem .9rem;font-size:.78rem;color:var(--rose);font-family:Nunito,sans-serif;font-weight:700;">Aucun résultat. Essaie avec une adresse plus précise.</div>';
         return;
       }
-      info.style.display = "block";
-      info.innerHTML = "<strong>Tu veux renvoyer :</strong> " + picks.map(labelFr).join(" • ") + (picks.length<3 ? "<br><em>Encore " + (3-picks.length) + " choix</em>" : "");
-    }
-
-    function perceivedFromScenes(s1,s2,s3){
-      const tags = [];
-
-      // Scène 1 (rituels)
-      if(s1==="rituel"){ tags.push("ouvert","fiable"); }
-      if(s1==="faible"){ tags.push("timide","fermé"); }
-      if(s1==="tel"){ tags.push("distant","désengagé"); }
-      if(s1==="trop_familier"){ tags.push("sympa","risque"); }
-
-      // Scène 2 (réciprocité)
-      if(s2==="question_active"){ tags.push("respect","curieux"); }
-      if(s2==="subit"){ tags.push("passif","timide"); }
-      if(s2==="sec"){ tags.push("tendu"); }
-      if(s2==="trop_efface"){ tags.push("invisible","passif"); }
-
-      // Scène 3 (place)
-      if(s3==="prise_parole"){ tags.push("place","ouvert"); }
-      if(s3==="silence"){ tags.push("invisible","fermé"); }
-      if(s3==="valide"){ tags.push("place","coop"); }
-      if(s3==="ironique"){ tags.push("risque","distant"); }
-
-      return [...new Set(tags)];
-    }
-
-    function labelFr(tag){
-      const m = {
-        fiable:"fiable",
-        calme:"calme",
-        ouvert:"ouvert",
-        respect:"digne / respectueux",
-        curieux:"curieux",
-        place:"je prends ma place",
-        coop:"je renforce le collectif",
-
-        timide:"timide",
-        fermé:"fermé",
-        distant:"distant",
-        désengagé:"désengagé",
-        sympa:"sympa",
-        risque:"trop familier / risqué",
-        passif:"passif",
-        tendu:"tendu",
-        invisible:"invisible"
-      };
-      return m[tag] || tag;
-    }
-
-    function renderMirror(){
-      const box = document.getElementById("mirrorBox");
-      if(!box) return;
-
-      const self = S.accueillir.miroir.self || [];
-      const s1 = S.accueillir.miroir.s1;
-      const s2 = S.accueillir.miroir.s2;
-      const s3 = S.accueillir.miroir.s3;
-
-      if(self.length<3 || !s1 || !s2 || !s3){
-        box.style.display="none";
-        return;
-      }
-
-      const perceived = perceivedFromScenes(s1,s2,s3);
-      const selfLabels = self.map(labelFr);
-      const perceivedLabels = perceived.map(labelFr);
-
-      const gap1 = self.filter(x=>!perceived.includes(x)).map(labelFr);
-      const gap2 = perceived.filter(x=>!self.includes(x)).map(labelFr);
-
-      S.accueillir.miroir.result = { self, perceived };
-      writeState(S);
-
-      box.style.display="block";
-      box.innerHTML = `
-        <div><strong>Image que tu veux donner :</strong> ${selfLabels.join(" • ")}</div>
-        <div style="margin-top:6px;"><strong>Image renvoyée par tes choix :</strong> ${perceivedLabels.join(" • ")}</div>
-        <div style="margin-top:10px;">
-          <strong>Le miroir (écart) :</strong><br>
-          • <em>Tu veux montrer mais on ne le voit pas assez</em> : ${gap1.length?gap1.join(" • "):"—"}<br>
-          • <em>On peut croire (sans vouloir)</em> : ${gap2.length?gap2.join(" • "):"—"}
-        </div>
-        <div style="margin-top:10px;"><strong>Objectif :</strong> choisis 1 micro-ajustement pour recoller à l’image voulue.</div>
-      `;
-      setProgress();
-    }
-
-    function autoSuggestMirror(){
-      document.getElementById("mirrorAction").value =
-        "À chaque rencontre : Regard (calme) → Prénom (moi + lui) → 1 question ouverte (Comment/Quoi).";
-    }
-
-    function saveMirror(){
-      const action = document.getElementById("mirrorAction").value.trim();
-      if(!action){ alert("Écris 1 ajustement concret (1 phrase), puis enregistre."); return; }
-      S.accueillir.miroir.action = action;
-      S.profile.ajustementAccueil = action;
-      writeState(S);
-      setProgress();
-      alert("✅ Miroir enregistré.");
-    }
-
-    // ----------------- FIN PILIER -----------------
-    function finishAccueillir(){
-      const cardsOk = Object.values(S.accueillir.cards.done).every(Boolean);
-      const mirrorOk = !!(S.accueillir.miroir && S.accueillir.miroir.action && S.accueillir.miroir.action.trim());
-
-      if(!cardsOk){ alert("Il te manque au moins une carte à valider (7/7)."); return; }
-      if(!mirrorOk){ alert("Il te manque ton micro-ajustement dans le Miroir Pro."); return; }
-
-      S.done.accueillir = true;
-      S.badges.relieur = true;
-      writeState(S);
-
-      setProgress();
-      alert("✅ Badge RELIEUR activé !");
-      window.location.href="./synthese.html";
-    }
-
-    // ----------------- RESTORE UI -----------------
-    function restoreUI(){
-      // restore selected card and done count
-      const cur = S.accueillir.cards.current || 1;
-      showCard(cur);
-      refreshCardsDone();
-
-      // restore mirror self
-      const ms = S.accueillir.miroir || {};
-      if(ms.self){
-        ms.self.forEach(v=>{
-          const el = document.querySelector(`#selfCards .opt[data-v="${v}"]`);
-          if(el) el.dataset.on="1";
+      data.forEach(function(place) {
+        var row = document.createElement('div');
+        row.style.cssText = 'padding:.6rem .9rem;cursor:pointer;border-bottom:1px solid #eee;font-size:.82rem;line-height:1.4;font-family:Nunito Sans,sans-serif;transition:background .15s;';
+        row.textContent = place.display_name;
+        row.addEventListener('mouseenter', function() { this.style.background = 'rgba(40,151,213,.07)'; });
+        row.addEventListener('mouseleave', function() { this.style.background = ''; });
+        row.addEventListener('click', function() {
+          var lat = parseFloat(place.lat);
+          var lng = parseFloat(place.lon);
+          pendingLatLng = L.latLng(lat, lng);
+          map.setView(pendingLatLng, 16, { animate: true });
+          resEl.style.display = 'none';
+          document.getElementById('addr-search').value = place.display_name.split(',').slice(0,2).join(',');
+          var conf = document.getElementById('wiz-pos-confirm');
+          conf.style.display = 'block';
+          conf.textContent = 'Adresse trouvée ! Clique sur "Poser le pin ici" pour confirmer.';
         });
-        renderSelfPickInfo();
-      }
-
-      // restore scenes
-      const map = { s1:"scene1", s2:"scene2", s3:"scene3" };
-      Object.keys(map).forEach(k=>{
-        const val = ms[k];
-        if(!val) return;
-        const el = document.querySelector(`#${map[k]} .opt[data-v="${val}"]`);
-        if(el) el.dataset.on="1";
+        resEl.appendChild(row);
       });
-
-      if(ms.action) document.getElementById("mirrorAction").value = ms.action;
-      renderMirror();
-      setProgress();
-    }
-
-    window.addEventListener('load', function() {
-      if (typeof lucide !== 'undefined') lucide.createIcons();
-
-      // click cards
-      document.getElementById("cards7")?.addEventListener("click",(e)=>{
-        const el = e.target.closest(".opt"); if(!el) return;
-        const n = parseInt(el.getAttribute("data-card"),10);
-        if(!n) return;
-        showCard(n);
-      });
-
-      wireMirror();
-      restoreUI();
+    })
+    .catch(function() {
+      resEl.innerHTML = '<div style="padding:.6rem .9rem;font-size:.78rem;color:var(--rose);">Erreur de connexion. Clique directement sur la carte.</div>';
     });
-  </script>
+}
+
+function openAddPin() {
+  wizardStep = 1;
+  document.getElementById('pin-name').value = '';
+  document.getElementById('pin-note').value = '';
+  document.getElementById('addr-search').value = '';
+  document.getElementById('addr-results').style.display = 'none';
+  document.getElementById('addr-error').style.display = 'none';
+  document.querySelectorAll('.cat-opt').forEach(function(o) { o.classList.remove('selected'); });
+  document.getElementById('cat-error').style.display = 'none';
+  document.getElementById('wiz-pos-confirm').style.display = 'none';
+  selectedCat = null;
+  showStep(1);
+  document.getElementById('pin-modal').style.display = 'flex';
+  setTimeout(function() { document.getElementById('pin-name').focus(); }, 80);
+}
+
+function closeAddPin() {
+  document.getElementById('pin-modal').style.display = 'none';
+  pendingLatLng = null;
+  wizardStep = 1;
+  map.getContainer().style.cursor = '';
+}
+
+function showStep(n) {
+  wizardStep = n;
+  document.getElementById('wiz-step1').style.display = n === 1 ? 'block' : 'none';
+  document.getElementById('wiz-step2').style.display = n === 2 ? 'block' : 'none';
+  // Tab highlight
+  document.getElementById('wiz-step1-tab').style.borderBottomColor = n === 1 ? 'var(--bleu)' : 'transparent';
+  document.getElementById('wiz-step1-tab').style.color = n === 1 ? 'var(--bleu)' : 'rgba(23,23,24,.3)';
+  document.getElementById('wiz-step2-tab').style.borderBottomColor = n === 2 ? 'var(--vert)' : 'transparent';
+  document.getElementById('wiz-step2-tab').style.color = n === 2 ? 'var(--vert)' : 'rgba(23,23,24,.3)';
+  // Update crosshair on map
+  map.getContainer().style.cursor = n === 2 ? 'crosshair' : '';
+}
+
+function wizNext() {
+  var name = document.getElementById('pin-name').value.trim();
+  if (!name) {
+    var inp = document.getElementById('pin-name');
+    inp.style.borderColor = '#d60b52';
+    inp.focus();
+    return;
+  }
+  if (!selectedCat) {
+    document.getElementById('cat-error').style.display = 'block';
+    return;
+  }
+  // Populate step-2 résumé
+  var color = CAT_COLORS[selectedCat];
+  var label = CAT_LABELS[selectedCat];
+  document.getElementById('wiz-resume-dot').style.background = color;
+  document.getElementById('wiz-resume-name').textContent = name;
+  document.getElementById('wiz-resume-cat').textContent = label;
+  document.getElementById('wiz-resume').style.borderColor = color;
+  document.getElementById('wiz-resume').style.background = 'rgba(0,0,0,.02)';
+  document.getElementById('wiz-pos-confirm').style.display = 'none';
+  // Pre-fill search with pin name
+  var addrInput = document.getElementById('addr-search');
+  if (!addrInput.value) addrInput.value = name;
+  showStep(2);
+  setTimeout(function() { addrInput.select(); addrInput.focus(); }, 80);
+}
+
+function wizBack() {
+  showStep(1);
+}
+
+function selectCat(el) {
+  document.querySelectorAll('.cat-opt').forEach(function(o) { o.classList.remove('selected'); });
+  el.classList.add('selected');
+  selectedCat = el.dataset.val;
+  document.getElementById('cat-error').style.display = 'none';
+}
+
+function confirmAddPin() {
+  var name = document.getElementById('pin-name').value.trim();
+  var note = document.getElementById('pin-note').value.trim();
+  if (!name || !selectedCat) return;
+  var latlng = pendingLatLng || map.getCenter();
+  addPin(name, selectedCat, note, latlng);
+  closeAddPin();
+  map.setView(latlng, Math.max(map.getZoom(), 14), { animate: true });
+}
+
+var origGoTo = window.goTo;
+window.goTo = function(n) {
+  origGoTo(n);
+  var slides = document.querySelectorAll('.slide');
+  var mapIdx = -1;
+  slides.forEach(function(s, i) { if (s.id === 's-map') mapIdx = i; });
+  if (n === mapIdx) {
+    setTimeout(function() {
+      initMap();
+      if (map) map.invalidateSize();
+    }, 100);
+  }
+};
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeAddPin();
+});
+</script>
+
 </body>
 </html>
