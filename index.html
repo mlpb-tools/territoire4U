@@ -664,60 +664,80 @@ footer{
 <section class="slide" id="s1">
   <div class="sbody">
     <div class="slide-banner" style="background:var(--bleu)">
-      <div class="sb-left"><div class="sb-module">Module 01 / 08 · De quoi parle-t-on ?</div><div class="sb-title">Le territoire : bien plus qu'une carte</div></div>
+      <div class="sb-left"><div class="sb-module">Module 01 / 08 · De quoi parle-t-on ?</div><div class="sb-title">Un Territoire = Un Système Vivant</div></div>
       <div class="sb-right">De quoi parle-t-on ?<br>LS4YOU</div>
     </div>
-    <div class="scontent">
-      <div class="mlpb-grid mlpb-grid-2">
+    <div class="scontent" style="display:flex;flex-direction:column;gap:.8rem;padding:1rem 1.3rem">
 
-        <!-- Colonne gauche : idée reçue vs réalité + 5 composantes -->
-        <div style="background:var(--blanc);padding:1.3rem;display:flex;flex-direction:column;gap:.85rem">
+      <!-- Bandeau équation -->
+      <div style="background:rgba(40,151,213,.08);border-left:4px solid var(--bleu);border-radius:0 4px 4px 0;padding:.5rem 1rem;font-family:'Nunito',sans-serif;font-size:.92rem;color:rgba(23,23,24,.87)">
+        <strong style="color:rgba(23,23,24,.9)">Territoire ≠</strong> <span style="text-decoration:line-through;color:#171718">Ville / Carte / Frontière</span>
+        &nbsp;&nbsp;
+        <strong style="color:var(--bleu)">Territoire =</strong> Espace + Acteurs + Règles + Ressources + Usages
+      </div>
 
-          <div style="display:flex;flex-direction:column;gap:.4rem">
-            <div style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:rgba(23,23,24,.35)">On pourrait croire que c'est juste…</div>
-            <div style="display:flex;gap:.5rem;flex-wrap:wrap">
-              <span style="background:rgba(23,23,24,.06);border-radius:4px;padding:.28rem .7rem;font-size:.8rem;color:rgba(23,23,24,.45);text-decoration:line-through;">Une ville</span>
-              <span style="background:rgba(23,23,24,.06);border-radius:4px;padding:.28rem .7rem;font-size:.8rem;color:rgba(23,23,24,.45);text-decoration:line-through;">Une carte</span>
-              <span style="background:rgba(23,23,24,.06);border-radius:4px;padding:.28rem .7rem;font-size:.8rem;color:rgba(23,23,24,.45);text-decoration:line-through;">Une frontière</span>
-            </div>
-          </div>
+      <!-- 5 icônes rondes en ligne -->
+      <div style="display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.4rem 0">
 
-          <div class="highlight" style="margin:0">
-            En réalité : un territoire = un espace + des acteurs + des règles + des ressources + des usages.<br>
-            <span style="font-weight:400;font-size:.82rem">Ce n'est pas un décor. C'est un <strong>système vivant</strong>.</span>
-          </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.35rem">
+          <div style="width:54px;height:54px;border-radius:50%;background:var(--vert);display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 3px 10px rgba(149,193,31,.35)">📍</div>
+          <div style="font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;color:var(--vert)">Espace</div>
+        </div>
 
-          <!-- 5 composantes en grille compacte -->
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem">
-            <div class="mlpb-card"><div class="mcard-top" style="background:var(--bleu)"></div><div class="mlpb-card-icon">📍</div><div class="mlpb-card-title">Un espace</div><div class="mlpb-card-text">Physique ET symbolique — les lieux que tu fréquentes, mais aussi ceux que tu évites</div></div>
-            <div class="mlpb-card"><div class="mcard-top" style="background:var(--vert)"></div><div class="mlpb-card-icon">👥</div><div class="mlpb-card-title">Des acteurs</div><div class="mlpb-card-text">Employeurs, asso, structures, réseaux — sans eux, un espace ne produit rien</div></div>
-            <div class="mlpb-card"><div class="mcard-top" style="background:var(--orange)"></div><div class="mlpb-card-icon">📋</div><div class="mlpb-card-title">Des règles</div><div class="mlpb-card-text">Dispositifs, codes implicites, logiques de recrutement locales</div></div>
-            <div class="mlpb-card"><div class="mcard-top" style="background:var(--rose)"></div><div class="mlpb-card-icon">💡</div><div class="mlpb-card-title">Des ressources</div><div class="mlpb-card-text">Utiles seulement si tu sais qu'elles existent — formations, aides, services</div></div>
-            <div class="mlpb-card" style="grid-column:span 2"><div class="mcard-top" style="background:var(--violet)"></div><div class="mlpb-card-icon">🔄</div><div class="mlpb-card-title">Des usages</div><div class="mlpb-card-text">Ce que les gens font réellement : un parc, une asso, une entreprise — ça dépend de comment tu t'en saisis</div></div>
+        <div style="font-size:1.3rem;font-weight:900;color:rgba(23,23,24,.2);margin-bottom:1rem">+</div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.35rem">
+          <div style="width:54px;height:54px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 3px 10px rgba(243,146,0,.35)">👥</div>
+          <div style="font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;color:var(--orange)">Acteurs</div>
+        </div>
+
+        <div style="font-size:1.3rem;font-weight:900;color:rgba(23,23,24,.2);margin-bottom:1rem">+</div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.35rem">
+          <div style="width:54px;height:54px;border-radius:50%;background:var(--bleu);display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 3px 10px rgba(40,151,213,.35)">⚖️</div>
+          <div style="font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;color:var(--bleu)">Règles</div>
+        </div>
+
+        <div style="font-size:1.3rem;font-weight:900;color:rgba(23,23,24,.2);margin-bottom:1rem">+</div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.35rem">
+          <div style="width:54px;height:54px;border-radius:50%;background:var(--rose);display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 3px 10px rgba(214,11,82,.35)">💡</div>
+          <div style="font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;color:var(--rose)">Ressources</div>
+        </div>
+
+        <div style="font-size:1.3rem;font-weight:900;color:rgba(23,23,24,.2);margin-bottom:1rem">+</div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.35rem">
+          <div style="width:54px;height:54px;border-radius:50%;background:var(--violet);display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 3px 10px rgba(163,25,91,.35)">🔄</div>
+          <div style="font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;color:var(--violet)">Usages</div>
+        </div>
+
+      </div>
+
+      <!-- Bas : objectifs (gauche) + rappels clés (droite) -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;flex:1">
+
+        <!-- Objectifs -->
+        <div style="background:rgba(40,151,213,.06);border:1.5px solid rgba(40,151,213,.2);border-radius:4px;padding:.9rem 1rem">
+          <div style="font-family:'Nunito',sans-serif;font-size:.84rem;font-weight:900;color:var(--bleu);margin-bottom:.55rem">Ce que tu vas faire (Objectifs du module)</div>
+          <div style="display:flex;flex-direction:column;gap:.3rem">
+            <div style="display:flex;align-items:flex-start;gap:.5rem;font-size:.92rem;color:rgba(23,23,24,.9)"><span style="color:var(--bleu);font-size:.6rem;margin-top:.25rem">●</span>Comprendre ce qu'est vraiment un "territoire"</div>
+            <div style="display:flex;align-items:flex-start;gap:.5rem;font-size:.92rem;color:rgba(23,23,24,.9)"><span style="color:var(--bleu);font-size:.6rem;margin-top:.25rem">●</span>Identifier les composantes du territoire</div>
+            <div style="display:flex;align-items:flex-start;gap:.5rem;font-size:.92rem;color:rgba(23,23,24,.9)"><span style="color:var(--bleu);font-size:.6rem;margin-top:.25rem">●</span>Relier ton projet professionnel à ton environnement réel</div>
+            <div style="display:flex;align-items:flex-start;gap:.5rem;font-size:.92rem;color:rgba(23,23,24,.9)"><span style="color:var(--bleu);font-size:.6rem;margin-top:.25rem">●</span>Commencer à transformer le territoire en compétence</div>
           </div>
         </div>
 
-        <!-- Colonne droite : objectifs + conclusion -->
-        <div style="display:flex;flex-direction:column;gap:3px">
-          <div class="dark-pane pane" style="flex:1">
-            <div class="pane-title" style="color:rgba(255,255,255,.35)">🎯 Ce que tu vas être capable de faire</div>
-            <div class="drow"><span class="ck">✓</span>Comprendre ce qu'est vraiment un territoire</div>
-            <div class="drow"><span class="ck">✓</span>Identifier ses 5 composantes</div>
-            <div class="drow"><span class="ck">✓</span>Relier ton projet pro à ton environnement réel</div>
-            <div class="drow"><span class="ck">✓</span>Commencer à transformer le territoire en compétence</div>
+        <!-- Rappels clés -->
+        <div style="background:rgba(23,23,24,.88);border-radius:4px;padding:.9rem 1rem;display:flex;flex-direction:column;gap:.5rem">
+          <div style="font-family:'Nunito',sans-serif;font-size:.84rem;font-weight:900;color:white;margin-bottom:.1rem">Rappels clés</div>
+          <div style="display:flex;align-items:flex-start;gap:.6rem">
+            <span style="font-size:1rem;flex-shrink:0;margin-top:.05rem">❝</span>
+            <div style="font-size:.92rem;color:#ffffff;line-height:1.55">Le territoire n'est pas un "décor", c'est un "système"</div>
           </div>
-          <div style="background:var(--bleu);padding:1.1rem 1.3rem;display:flex;flex-direction:column;gap:.5rem">
-            <div style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5)">La distinction clé</div>
-            <div style="display:flex;flex-direction:column;gap:.35rem">
-              <div style="display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:rgba(255,255,255,.55)">
-                <span style="font-size:1rem">🗺️</span>
-                <span>Tu vois le territoire comme <strong style="color:rgba(255,255,255,.7)">une carte</strong> → tu te déplaces</span>
-              </div>
-              <div style="display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:var(--blanc)">
-                <span style="font-size:1rem">⚡</span>
-                <span>Tu vois le territoire comme <strong>un système</strong> → tu <strong>stratégies</strong></span>
-              </div>
-            </div>
+          <div style="display:flex;align-items:flex-start;gap:.6rem">
+            <span style="font-size:1rem;flex-shrink:0;color:var(--vert);margin-top:.05rem">→</span>
+            <div style="font-size:.92rem;color:rgba(255,255,255,.92);line-height:1.55">Pour avancer dans ce système, tu dois comprendre comment il fonctionne</div>
           </div>
         </div>
 
@@ -726,20 +746,111 @@ footer{
   </div>
 </section>
 
-<!-- ══════════ S2 — Pourquoi central ══════════ -->
+<!-- ══════════ S2 — Les 5 composantes ══════════ -->
 <section class="slide" id="s2">
   <div class="sbody">
-    <div class="slide-banner" style="background:var(--orange)">
-      <div class="sb-left"><div class="sb-module">Module 02 / 08 · De quoi parle-t-on ?</div><div class="sb-title">Un espace — physique et symbolique</div></div>
+    <div class="slide-banner" style="background:var(--bleu)">
+      <div class="sb-left"><div class="sb-module">Module 02 / 08 · De quoi parle-t-on ?</div><div class="sb-title">Les 5 Composantes du Territoire</div></div>
+      <div class="sb-right">De quoi parle-t-on ?<br>LS4YOU</div>
     </div>
-    <div class="scontent">
-      <div class="mlpb-grid mlpb-grid-4">
-        <div class="mlpb-card colored" style="background:var(--bleu)"><div class="mcard-top" style="background:rgba(255,255,255,.2)"></div><div class="mlpb-card-icon">🏢</div><div class="mlpb-card-title">Secteurs qui recrutent</div><div class="mlpb-card-text">Les débouchés varient fortement selon la zone et l'économie locale.</div><div class="mlpb-card-link" style="color:rgba(255,255,255,.5)">Impact direct ›</div></div>
-        <div class="mlpb-card colored" style="background:var(--vert)"><div class="mlpb-card-icon">🚌</div><div class="mlpb-card-title">Mobilité & transports</div><div class="mlpb-card-text">Les options conditionnent ton accès à l'emploi et à la formation.</div><div class="mlpb-card-link" style="color:rgba(255,255,255,.5)">Impact direct ›</div></div>
-        <div class="mlpb-card colored" style="background:var(--rose)"><div class="mlpb-card-icon">🏠</div><div class="mlpb-card-title">Logement & coût</div><div class="mlpb-card-text">Les loyers influencent ta capacité à accepter un emploi éloigné.</div><div class="mlpb-card-link" style="color:rgba(255,255,255,.5)">Impact direct ›</div></div>
-        <div class="mlpb-card colored" style="background:var(--violet)"><div class="mlpb-card-icon">💶</div><div class="mlpb-card-title">Dispositifs d'aide</div><div class="mlpb-card-text">Les aides disponibles diffèrent selon les territoires locaux.</div><div class="mlpb-card-link" style="color:rgba(255,255,255,.5)">Impact direct ›</div></div>
+    <div class="scontent" style="padding:.7rem 1rem;display:flex;flex-direction:column;gap:.55rem">
+
+      <!-- Grille 3 colonnes ligne du haut -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem">
+
+        <!-- 01 Un Espace -->
+        <div style="border:1.5px solid rgba(149,193,31,.35);border-radius:4px;padding:.75rem .85rem;display:flex;flex-direction:column;gap:.3rem">
+          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.15rem">
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--vert);display:flex;align-items:center;justify-content:center;font-size:.96rem;flex-shrink:0">📍</div>
+            <div style="font-family:'Nunito',sans-serif;font-size:.84rem;font-weight:900;color:var(--vert)">01 Un Espace</div>
+          </div>
+          <div style="font-size:.86rem;color:rgba(23,23,24,.87);line-height:1.55">
+            <strong style="color:#171718">Composé :</strong> Les lieux physiques / distances / transports / zones d'activité. Lieux que tu fréquentes ; mais aussi les lieux où tu te sens légitime, des zones que tu évites, les zones que tu abordes, les endroits où tu te sens fort(e)
+          </div>
+          <div style="font-size:.84rem;color:rgba(149,193,31,.9);font-weight:700;margin-top:.15rem">Pourquoi c'est important :</div>
+          <div style="font-size:.84rem;color:#171718;line-height:1.5">Les emplois / formations / opportunités / contraintes sont localisés — comprendre l'espace = comprendre où agir</div>
+          <div style="margin-top:.2rem;border-top:1px solid rgba(149,193,31,.2);padding-top:.3rem">
+            <div style="font-size:.92rem;color:rgba(23,23,24,.87);font-style:italic">Questions :</div>
+            <div style="font-size:.94rem;color:#171718">Où sont les zones d'emploi ? Combien de temps pour y aller ? Quels lieux tu n'as jamais explorés ?</div>
+          </div>
+        </div>
+
+        <!-- 02 Des Acteurs -->
+        <div style="border:1.5px solid rgba(243,146,0,.35);border-radius:4px;padding:.75rem .85rem;display:flex;flex-direction:column;gap:.3rem">
+          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.15rem">
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:.96rem;flex-shrink:0">👥</div>
+            <div style="font-family:'Nunito',sans-serif;font-size:.84rem;font-weight:900;color:var(--orange)">02 Des Acteurs</div>
+          </div>
+          <div style="font-size:.86rem;color:rgba(23,23,24,.87);line-height:1.55">
+            <strong style="color:#171718">Composé :</strong> Employeurs, associations, structures publiques, conseillers, réseaux, clubs, centres de formation
+          </div>
+          <div style="font-size:.84rem;color:rgba(243,146,0,.9);font-weight:700;margin-top:.15rem">Pourquoi c'est stratégique :</div>
+          <div style="font-size:.84rem;color:#171718;line-height:1.5">Les infos / opportunités / décisions circulent par les gens — connaître les acteurs = savoir qui peut aider</div>
+          <div style="margin-top:.2rem;border-top:1px solid rgba(243,146,0,.2);padding-top:.3rem">
+            <div style="font-size:.92rem;color:rgba(23,23,24,.87);font-style:italic">Questions :</div>
+            <div style="font-size:.94rem;color:#171718">Si tu cherches un stage demain, qui peut t'aider ? Qui connaît des employeurs ? Qui peut te recommander ?</div>
+          </div>
+        </div>
+
+        <!-- 03 Des Règles -->
+        <div style="border:1.5px solid rgba(40,151,213,.35);border-radius:4px;padding:.75rem .85rem;display:flex;flex-direction:column;gap:.3rem">
+          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.15rem">
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--bleu);display:flex;align-items:center;justify-content:center;font-size:.96rem;flex-shrink:0">⚖️</div>
+            <div style="font-family:'Nunito',sans-serif;font-size:.84rem;font-weight:900;color:var(--bleu)">03 Des Règles</div>
+          </div>
+          <div style="font-size:.86rem;color:rgba(23,23,24,.87);line-height:1.55">
+            <strong style="color:#171718">Composé :</strong> Règles administratives / dispositifs d'aide / horaires / logiques de recrutement / codes implicites locaux : ici ça recrute par réseau, l'industrie est forte, le logement est tendu, les transports sont limités
+          </div>
+          <div style="font-size:.84rem;color:rgba(40,151,213,.9);font-weight:700;margin-top:.15rem">Pourquoi c'est important :</div>
+          <div style="font-size:.84rem;color:#171718;line-height:1.5">Ne pas connaître les règles = perdre du temps / faire des erreurs / rater des aides / stresser → connaître les règles = éviter les pièges</div>
+          <div style="margin-top:.2rem;border-top:1px solid rgba(40,151,213,.2);padding-top:.3rem">
+            <div style="font-size:.92rem;color:rgba(23,23,24,.87);font-style:italic">Questions :</div>
+            <div style="font-size:.94rem;color:#171718">Quelles sont les "règles du jeu" pour travailler ici ? Les employeurs recrutent plutôt en ligne ou par contact ?</div>
+          </div>
+        </div>
+
       </div>
-      <div class="highlight orange">Les opportunités ne sont pas identiques partout. Connaître le territoire = comprendre ton environnement pour faire des choix stratégiques.</div>
+
+      <!-- Grille ligne du bas : 04 + 05 + bloc "Ce que ça change" -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem">
+
+        <!-- 04 Des Ressources -->
+        <div style="border:1.5px solid rgba(214,11,82,.3);border-radius:4px;padding:.75rem .85rem;display:flex;flex-direction:column;gap:.3rem">
+          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.15rem">
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--rose);display:flex;align-items:center;justify-content:center;font-size:.96rem;flex-shrink:0">💡</div>
+            <div style="font-family:'Nunito',sans-serif;font-size:.84rem;font-weight:900;color:var(--rose)">04 Des Ressources</div>
+          </div>
+          <div style="font-size:.86rem;color:rgba(23,23,24,.87);line-height:1.55">
+            <strong style="color:#171718">Composé :</strong> Entreprises, formations, aides, dispositifs, services, lieux de soutien. Une ressource n'est utile que si tu sais qu'elle existe
+          </div>
+          <div style="font-size:.84rem;color:rgba(214,11,82,.9);font-weight:700;margin-top:.15rem">Pourquoi c'est clé :</div>
+          <div style="font-size:.84rem;color:#171718;line-height:1.5">Connaître les ressources = anticiper son projet / trouver des solutions — ignorer les ressources = <em>subir</em></div>
+          <div style="margin-top:.2rem;border-top:1px solid rgba(214,11,82,.2);padding-top:.3rem">
+            <div style="font-size:.92rem;color:rgba(23,23,24,.87);font-style:italic">Questions :</div>
+            <div style="font-size:.94rem;color:#171718">Où aller si tu as un problème administratif ? Où trouver une aide au permis ? Où demander un accompagnement santé ?</div>
+          </div>
+        </div>
+
+        <!-- 05 Des Usages -->
+        <div style="border:1.5px solid rgba(163,25,91,.3);border-radius:4px;padding:.75rem .85rem;display:flex;flex-direction:column;gap:.3rem">
+          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.15rem">
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--violet);display:flex;align-items:center;justify-content:center;font-size:.96rem;flex-shrink:0">🔄</div>
+            <div style="font-family:'Nunito',sans-serif;font-size:.84rem;font-weight:900;color:var(--violet)">05 Des Usages</div>
+          </div>
+          <div style="font-size:.86rem;color:rgba(23,23,24,.87);line-height:1.55">
+            <strong style="color:#171718">L'essentiel :</strong> Un territoire, ce n'est pas seulement ce qui existe, c'est ce que les gens en font !
+          </div>
+          <div style="background:rgba(163,25,91,.07);border-radius:3px;padding:.4rem .55rem;font-size:.84rem;color:rgba(163,25,91,.8);font-style:italic;margin-top:.1rem">
+            Le territoire dépend de ton usage
+          </div>
+          <div style="margin-top:auto;border-top:1px solid rgba(163,25,91,.15);padding-top:.3rem">
+            <div style="font-size:.94rem;color:rgba(23,23,24,.9)">Un parc, une asso, une entreprise — les usages diffèrent selon les personnes</div>
+          </div>
+        </div>
+
+
+
+      </div>
     </div>
   </div>
 </section>
@@ -1008,91 +1119,93 @@ footer{
 
 <!-- ══════════ S11 — ATELIER 1 Intro ══════════ -->
 <section class="slide" id="s11">
-  <div class="sbody">
-    <div class="atelier-header">
-      <div class="at-num" style="background:var(--rose)">A1</div>
-      <div class="at-info">
-        <div class="at-eyebrow">Réseau · Post-its ROUGES</div>
-        <div class="at-name" style="color:var(--rose)">Qui je connais / Qui me connaît</div>
-        <div class="at-dur">Ton premier levier d'insertion — transformer tes relations en compétence territoriale</div>
-      </div>
+  <div class="sbody" style="display:flex;flex-direction:column">
+
+    <!-- Titre grand style -->
+    <div style="padding:1rem 1.4rem .4rem;border-bottom:3px solid var(--rose)">
+      <div style="font-family:'Nunito',sans-serif;font-size:1.6rem;font-weight:900;color:#171718;line-height:1.1">Ton Réseau : Mode d'Emploi</div>
     </div>
-    <div class="scontent">
-      <div class="mlpb-grid mlpb-grid-2">
 
-        <!-- Colonne gauche : point de départ + deux piliers -->
-        <div style="background:var(--blanc);padding:1.2rem;display:flex;flex-direction:column;gap:.6rem">
+    <div class="scontent" style="padding:.7rem 1rem;display:flex;flex-direction:column;gap:.6rem">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem">
 
-          <div style="display:flex;flex-direction:column;gap:.3rem">
-            <div style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:rgba(23,23,24,.35)">On pense souvent au territoire comme…</div>
-            <div style="display:flex;gap:.45rem;flex-wrap:wrap">
-              <span style="background:rgba(23,23,24,.06);border-radius:4px;padding:.22rem .6rem;font-size:.78rem;color:rgba(23,23,24,.4);text-decoration:line-through">Des rues</span>
-              <span style="background:rgba(23,23,24,.06);border-radius:4px;padding:.22rem .6rem;font-size:.78rem;color:rgba(23,23,24,.4);text-decoration:line-through">Des entreprises</span>
-              <span style="background:rgba(23,23,24,.06);border-radius:4px;padding:.22rem .6rem;font-size:.78rem;color:rgba(23,23,24,.4);text-decoration:line-through">Des bâtiments</span>
-            </div>
+        <!-- 01 Réseau = Sécurité + Opportunité -->
+        <div style="border:2px solid var(--bleu);border-radius:4px;overflow:hidden">
+          <div style="background:var(--bleu);padding:.45rem .85rem;display:flex;align-items:center;gap:.5rem">
+            <span style="background:white;color:var(--bleu);font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0">01</span>
+            <span style="font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;color:white">Réseau = Sécurité + Opportunité</span>
           </div>
-
-          <div class="highlight rose" style="margin:0">
-            Ton vrai point de départ, ce sont les <strong>personnes</strong>.<br>
-            <span style="font-weight:400;font-size:.82rem">Les opportunités ne tombent pas du ciel. Elles circulent entre humains.</span>
-          </div>
-
-          <!-- Les 2 piliers -->
-          <div style="display:flex;flex-direction:column;gap:.4rem">
-            <div class="mlpb-card" style="border-left:4px solid var(--rose)">
-              <div style="display:flex;gap:.7rem">
-                <span style="font-size:1.1rem;flex-shrink:0">🏠</span>
-                <div>
-                  <div class="mlpb-card-title">Un lieu où tu es à l'aise</div>
-                  <div class="mlpb-card-text">Tu sais comment ça fonctionne, à qui parler, tu te sens légitime. Ce ne sont pas juste des adresses — ce sont des <strong>points d'appui</strong>.<br><span style="color:rgba(23,23,24,.4);font-size:.75rem">Ex : Mission Locale, ancien stage, club sportif, asso…</span></div>
-                </div>
-              </div>
+          <div style="padding:.7rem .85rem;background:rgba(40,151,213,.04);display:grid;grid-template-columns:1fr 1fr;gap:.5rem">
+            <div>
+              <div style="font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:900;color:var(--bleu);margin-bottom:.35rem">Lieu de confiance</div>
+              <div style="font-size:.84rem;color:#171718;line-height:1.6">Tu sais comment ça fonctionne<br>Tu n'as pas peur d'y retourner<br>Tu te sens légitime<br><em style="color:rgba(23,23,24,.55)">Ex: Mission Locale, stage, asso</em></div>
             </div>
-            <div class="mlpb-card" style="border-left:4px solid var(--rose)">
-              <div style="display:flex;gap:.7rem">
-                <span style="font-size:1.1rem;flex-shrink:0">🤝</span>
-                <div>
-                  <div class="mlpb-card-title">Une personne qui te connaît</div>
-                  <div class="mlpb-card-text">Elle peut parler positivement de toi, te prévenir d'une opportunité, te recommander.<br><span style="font-style:italic;color:rgba(214,11,82,.7);font-size:.8rem">Une personne qui te connaît vaut plus que 10 CV envoyés au hasard.</span></div>
-                </div>
-              </div>
+            <div style="border-left:2px solid rgba(40,151,213,.2);padding-left:.6rem">
+              <div style="font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:900;color:var(--bleu);margin-bottom:.35rem">Personne clé</div>
+              <div style="font-size:.84rem;color:#171718;line-height:1.6">Elle sait qui tu es<br>Elle peut te recommander<br>Elle rassure si ça bloque<br><strong style="color:var(--bleu)">Vaut plus que 10 CV !</strong></div>
             </div>
-          </div>
-
-          <div style="background:rgba(214,11,82,.07);border-radius:4px;padding:.6rem .85rem;font-size:.8rem;line-height:1.55;color:rgba(23,23,24,.7)">
-            👉 Si quelqu'un peut dire <em>"Oui, je le/la connais, il/elle est sérieux(se)"</em> — tu passes d'<strong>anonyme</strong> à <strong>crédible</strong>.
           </div>
         </div>
 
-        <!-- Colonne droite : pourquoi stratégique + ce qu'il faut retenir -->
-        <div style="display:flex;flex-direction:column;gap:3px">
-          <div style="background:var(--blanc);padding:1.2rem;flex:1;display:flex;flex-direction:column;gap:.5rem">
-            <div style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:rgba(23,23,24,.35)">Pourquoi c'est stratégique</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.35rem">
-              <div style="background:rgba(23,23,24,.04);border-radius:4px;padding:.6rem .7rem">
-                <div style="font-size:.72rem;font-weight:900;color:rgba(23,23,24,.4);margin-bottom:.3rem">❌ Chercher seul(e)</div>
-                <div style="font-size:.78rem;color:rgba(23,23,24,.5);line-height:1.55">CV dans le vide · attente · stress · recommencer</div>
+        <!-- 02 Pourquoi c'est stratégique -->
+        <div style="border:2px solid rgba(23,23,24,.12);border-radius:4px;overflow:hidden">
+          <div style="background:rgba(23,23,24,.08);padding:.45rem .85rem;display:flex;align-items:center;gap:.5rem">
+            <span style="background:#171718;color:white;font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0">02</span>
+            <span style="font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;color:#171718">Pourquoi c'est stratégique</span>
+          </div>
+          <div style="padding:.7rem .85rem;display:flex;flex-direction:column;gap:.5rem">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;align-items:stretch">
+              <div style="background:rgba(23,23,24,.06);border-radius:4px;padding:.55rem .7rem">
+                <div style="font-size:.8rem;font-weight:900;color:rgba(23,23,24,.5);margin-bottom:.25rem">Chercher seul(e)</div>
+                <div style="font-size:.82rem;color:#171718;line-height:1.5">CV + Attente + Stress</div>
               </div>
-              <div style="background:rgba(214,11,82,.07);border-radius:4px;padding:.6rem .7rem">
-                <div style="font-size:.72rem;font-weight:900;color:var(--rose);margin-bottom:.3rem">✅ Activer son réseau</div>
-                <div style="font-size:.78rem;color:rgba(23,23,24,.65);line-height:1.55">Info concrète · intro · recommandation · gain de temps</div>
+              <div style="background:var(--rose);border-radius:4px;padding:.55rem .7rem">
+                <div style="font-size:.8rem;font-weight:900;color:rgba(255,255,255,.7);margin-bottom:.25rem">Activer ton réseau</div>
+                <div style="font-size:.82rem;color:white;line-height:1.5">Info + Conseil + Intro</div>
               </div>
             </div>
-            <div style="font-size:.8rem;line-height:1.6;color:rgba(23,23,24,.6);border-top:1px solid rgba(23,23,24,.07);padding-top:.5rem">
-              Dans beaucoup de petites structures, on recrute <strong>par confiance, par bouche-à-oreille, par recommandation</strong>. Un employeur préfèrera toujours quelqu'un recommandé à un CV parfait venu de nulle part.
-            </div>
-            <div style="background:rgba(23,23,24,.04);border-radius:4px;padding:.55rem .8rem;font-size:.78rem;line-height:1.55">
-              ⚠️ <strong>Réseau ≠ piston</strong> — c'est demander un conseil, une info, un contact. Ça marche dans les deux sens : on peut aussi <em>rendre service, partager, aider</em>.
+            <div style="background:rgba(149,193,31,.12);border-radius:4px;padding:.45rem .7rem;font-size:.84rem;color:#171718;text-align:center;font-weight:700">
+              Gain de temps · Moins de stress · Infos concrètes
             </div>
           </div>
-          <div style="background:var(--rose);padding:1rem 1.2rem;display:flex;flex-direction:column;gap:.4rem">
-            <div style="font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.55)">La compétence derrière tout ça</div>
-            <div style="font-size:.82rem;color:white;line-height:1.65">
-              Ce n'est pas "je sais où est la mairie."<br>
-              C'est : <strong>je sais qui contacter · à qui poser la bonne question · où je suis déjà légitime · comment activer mes points d'appui.</strong>
+        </div>
+
+        <!-- 03 Le regard des employeurs -->
+        <div style="border:2px solid rgba(23,23,24,.12);border-radius:4px;overflow:hidden">
+          <div style="background:rgba(23,23,24,.06);padding:.45rem .85rem;display:flex;align-items:center;gap:.5rem">
+            <span style="background:#171718;color:white;font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0">03</span>
+            <span style="font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;color:#171718">Le regard des employeurs</span>
+          </div>
+          <div style="padding:.7rem .85rem;display:flex;gap:.7rem;align-items:flex-start">
+            <div style="flex:1">
+              <div style="font-size:.86rem;color:#171718;margin-bottom:.5rem">Dans beaucoup de petites structures, on recrute par :</div>
+              <div style="display:flex;gap:.4rem;flex-wrap:wrap">
+                <span style="background:rgba(243,146,0,.12);color:var(--orange);border-radius:20px;padding:.2rem .65rem;font-size:.82rem;font-weight:700">Confiance</span>
+                <span style="background:rgba(243,146,0,.12);color:var(--orange);border-radius:20px;padding:.2rem .65rem;font-size:.82rem;font-weight:700">Bouche-à-oreille</span>
+                <span style="background:rgba(243,146,0,.12);color:var(--orange);border-radius:20px;padding:.2rem .65rem;font-size:.82rem;font-weight:700">Recommandation</span>
+              </div>
             </div>
-            <div style="font-size:.78rem;color:rgba(255,255,255,.7);margin-top:.2rem;font-style:italic">
-              Savoir naviguer dans un système humain.
+            <div style="background:#171718;border-radius:4px;padding:.6rem .75rem;max-width:160px;flex-shrink:0">
+              <div style="font-size:.82rem;color:white;line-height:1.55;font-style:italic">"Un candidat recommandé vaut mieux qu'un CV inconnu parfait."</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 La Compétence Territoriale -->
+        <div style="border:2px solid rgba(149,193,31,.4);border-radius:4px;overflow:hidden">
+          <div style="background:rgba(149,193,31,.15);padding:.45rem .85rem;display:flex;align-items:center;gap:.5rem">
+            <span style="background:var(--vert);color:white;font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0">04</span>
+            <span style="font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;color:#171718">La Compétence Territoriale</span>
+          </div>
+          <div style="padding:.7rem .85rem;background:rgba(23,23,24,.92);display:flex;flex-direction:column;gap:.4rem">
+            <div style="font-size:.84rem;color:rgba(255,255,255,.7)">Ce n'est pas savoir où est la mairie.</div>
+            <div style="display:flex;flex-direction:column;gap:.25rem">
+              <div style="font-size:.88rem;color:white;font-weight:700">Savoir qui contacter</div>
+              <div style="font-size:.88rem;color:white;font-weight:700">Poser la bonne question</div>
+              <div style="font-size:.88rem;color:white;font-weight:700">Activer ses points d'appui</div>
+            </div>
+            <div style="margin-top:.3rem;border-top:1px solid rgba(255,255,255,.15);padding-top:.4rem;font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--vert)">
+              = SAVOIR NAVIGUER DANS UN SYSTÈME HUMAIN
             </div>
           </div>
         </div>
@@ -1104,66 +1217,67 @@ footer{
 
 <!-- ══════════ S12 — ATELIER 1 Exercice ══════════ -->
 <section class="slide" id="s12">
-  <div class="sbody">
-    <div class="atelier-header">
-      <div class="at-num" style="background:var(--rose)">A1</div>
-      <div class="at-info">
-        <div class="at-eyebrow">Réseau · 10–15 min</div>
-        <div class="at-name" style="color:var(--rose)">Exercice — Cartographie de tes appuis</div>
-        <div class="at-dur">Identifier, analyser, activer</div>
+  <div class="sbody" style="display:flex;flex-direction:column">
+
+    <!-- Titre grand style -->
+    <div style="padding:.8rem 1.4rem .35rem;border-bottom:3px solid var(--rose)">
+      <div style="font-family:'Nunito',sans-serif;font-size:1.5rem;font-weight:900;color:#171718;line-height:1.1;text-transform:uppercase;letter-spacing:.03em">QUI JE CONNAIS / QUI ME CONNAÎT</div>
+      <div style="display:flex;align-items:center;gap:.5rem;margin-top:.3rem">
+        <div style="width:28px;height:3px;background:var(--rose);border-radius:2px"></div>
+        <div style="font-size:.88rem;color:#171718;font-style:italic">Ton premier levier d'insertion</div>
       </div>
     </div>
-    <div class="scontent">
-      <div class="mlpb-grid mlpb-grid-2">
 
-        <!-- Étapes de l'exercice -->
-        <div style="background:var(--blanc);padding:1.2rem;display:flex;flex-direction:column;gap:.5rem">
-          <div style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:rgba(23,23,24,.35);margin-bottom:.15rem">L'exercice en 2 temps</div>
-          <div class="step-list">
-            <div class="sli"><div class="sli-num" style="background:var(--rose)">1</div><div>
-              <div class="sli-title">Liste rapide</div>
-              <div class="sli-text">Écris <strong>3 lieux où tu es à l'aise</strong> (Mission Locale, ancien stage, club, asso…)<br>Puis <strong>5 personnes qui te connaissent vraiment</strong>. Même si ça paraît petit.</div>
-            </div></div>
-            <div class="sli"><div class="sli-num" style="background:var(--rose)">2</div><div>
-              <div class="sli-title">Pour chaque personne, analyse</div>
-              <div class="sli-text">Peut-elle me donner une <strong>info</strong> ? Connaît-elle quelqu'un dans un secteur ? Peut-elle me <strong>recommander</strong> ?<br><span style="color:rgba(214,11,82,.7);font-style:italic">Tu verras que ton réseau est souvent plus large que tu ne le crois.</span></div>
-            </div></div>
-            <div class="sli"><div class="sli-num" style="background:var(--rose)">3</div><div>
-              <div class="sli-title">Relie chaque personne à son lieu</div>
-              <div class="sli-text">Trace une flèche entre chaque personne et l'endroit où elle opère. Ta carte d'appuis prend forme.</div>
-            </div></div>
+    <div class="scontent" style="padding:.7rem 1rem;display:grid;grid-template-columns:1fr 1.6fr;gap:.7rem">
+
+      <!-- Colonne gauche : Objectifs -->
+      <div style="border:2px solid var(--orange);border-radius:4px;overflow:hidden">
+        <div style="background:var(--orange);padding:.45rem .85rem;display:flex;align-items:center;gap:.5rem">
+          <span style="font-size:.9rem">🎯</span>
+          <span style="font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;color:white">Objectif du module</span>
+        </div>
+        <div style="padding:.7rem .85rem;display:flex;flex-direction:column;gap:.3rem">
+          <div style="display:flex;align-items:flex-start;gap:.5rem;font-size:.88rem;color:#171718"><span style="color:var(--orange);font-weight:900;flex-shrink:0">✓</span>Identifier ton réseau réel (même si tu penses ne pas en avoir)</div>
+          <div style="display:flex;align-items:flex-start;gap:.5rem;font-size:.88rem;color:#171718"><span style="color:var(--orange);font-weight:900;flex-shrink:0">✓</span>Comprendre pourquoi il est stratégique</div>
+          <div style="display:flex;align-items:flex-start;gap:.5rem;font-size:.88rem;color:#171718"><span style="color:var(--orange);font-weight:900;flex-shrink:0">✓</span>Savoir comment l'activer intelligemment</div>
+          <div style="display:flex;align-items:flex-start;gap:.5rem;font-size:.88rem;color:#171718"><span style="color:var(--orange);font-weight:900;flex-shrink:0">✓</span>Transformer tes relations en compétence territoriale</div>
+        </div>
+      </div>
+
+      <!-- Colonne droite : Ton premier territoire + idées reçues + citation -->
+      <div style="display:flex;flex-direction:column;gap:.5rem">
+
+        <div style="border:1.5px solid rgba(23,23,24,.15);border-radius:4px;padding:.65rem .85rem">
+          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem">
+            <span style="font-size:.9rem">🧭</span>
+            <span style="font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:900;color:#171718">Ton premier territoire, ce sont les personnes</span>
           </div>
-          <div class="result" style="background:rgba(149,193,31,.08);border:1.5px solid rgba(149,193,31,.3)">
-            <span class="result-icon">✅</span>
-            <div><div class="result-title">Résultat attendu</div><div class="result-text">Tu identifies <strong>3 personnes ou lieux prioritaires</strong> à recontacter cette semaine.</div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;align-items:start">
+            <div>
+              <div style="font-size:.84rem;color:#171718;margin-bottom:.4rem">Quand on parle de territoire, on pense :</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:.2rem">
+                <div style="display:flex;align-items:center;gap:.35rem;font-size:.82rem;color:rgba(23,23,24,.5)"><span style="color:var(--bleu);font-size:.7rem">⊕</span>aux rues</div>
+                <div style="display:flex;align-items:center;gap:.35rem;font-size:.82rem;color:rgba(23,23,24,.5)"><span style="color:var(--bleu);font-size:.7rem">⊕</span>aux entreprises</div>
+                <div style="display:flex;align-items:center;gap:.35rem;font-size:.82rem;color:rgba(23,23,24,.5)"><span style="color:var(--bleu);font-size:.7rem">⊕</span>aux transports</div>
+                <div style="display:flex;align-items:center;gap:.35rem;font-size:.82rem;color:rgba(23,23,24,.5)"><span style="color:var(--bleu);font-size:.7rem">⊕</span>aux bâtiments</div>
+              </div>
+            </div>
+            <div style="background:rgba(40,151,213,.07);border-radius:4px;padding:.55rem .7rem;border-left:3px solid var(--bleu)">
+              <div style="font-size:.88rem;color:#171718;font-weight:700;line-height:1.5">Mais ton vrai point de départ, ce sont les personnes.</div>
+            </div>
+          </div>
+          <div style="margin-top:.5rem;padding-top:.45rem;border-top:1px solid rgba(23,23,24,.08)">
+            <div style="font-size:.9rem;color:#171718;font-weight:700">• Un territoire fonctionne par relations.</div>
+            <div style="font-size:.86rem;color:#171718;margin-top:.2rem">Les opportunités ne tombent pas du ciel. Elles circulent entre humains.</div>
           </div>
         </div>
 
-        <!-- Questions + message clé -->
-        <div style="display:flex;flex-direction:column;gap:3px">
-          <div style="background:var(--blanc);padding:1.1rem;flex:1">
-            <div style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:rgba(23,23,24,.35);margin-bottom:.55rem">🔴 Questions à se poser — post-its ROUGES</div>
-            <div class="q-list">
-              <div class="qli">💭 <span>Où je peux retourner demain sans stress ?</span></div>
-              <div class="qli">🤝 <span>Qui pourrait me recommander pour un stage ou un job ?</span></div>
-              <div class="qli">📞 <span>Qui appeler si j'ai besoin d'une info rapide ?</span></div>
-              <div class="qli">🏪 <span>Dans quels lieux suis-je déjà connu(e) ?</span></div>
-              <div class="qli">👨‍👩‍👧 <span>Dans mon entourage, qui a un réseau pro à activer ?</span></div>
-            </div>
-          </div>
-          <div style="background:rgba(23,23,24,.92);padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.4rem">
-            <div style="font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.4)">Message clé</div>
-            <div style="font-size:.85rem;color:white;line-height:1.65">
-              Tu n'es pas seul(e) sur ton territoire.<br>
-              Tu as déjà des <strong>points d'appui</strong>, des <strong>zones de confiance</strong>, des personnes qui savent qui tu es.
-            </div>
-            <div style="font-size:.8rem;color:rgba(255,255,255,.6);line-height:1.55;margin-top:.1rem">
-              La compétence, ce n'est pas d'avoir 500 contacts.<br>
-              C'est : <strong style="color:rgba(255,255,255,.85)">identifier les bons appuis et savoir les activer intelligemment.</strong>
-            </div>
-            <div style="font-size:.78rem;color:var(--rose);font-weight:900;margin-top:.2rem">
-              Ton territoire commence là où tu es déjà reconnu(e).
-            </div>
+        <!-- Citation clé -->
+        <div style="background:var(--vert);border-radius:4px;padding:.75rem 1rem;display:flex;align-items:flex-start;gap:.6rem">
+          <span style="font-size:1.1rem;flex-shrink:0;margin-top:.05rem">💬</span>
+          <div>
+            <div style="font-size:.9rem;color:white;line-height:1.55">Si quelqu'un peut dire : <strong>"Oui, je le/la connais, il/elle est sérieux(se)"</strong> tu passes d'anonyme à crédible.</div>
+            <div style="font-size:.92rem;color:white;font-weight:900;margin-top:.3rem">Et ça change tout.</div>
           </div>
         </div>
 
@@ -1174,411 +1288,573 @@ footer{
 
 <!-- ══════════ S13 — ATELIER 2 ══════════ -->
 <section class="slide" id="s13">
-  <div class="sbody">
-    <div class="atelier-header">
-      <div class="at-num" style="background:var(--vert)">A2</div>
-      <div class="at-info"><div class="at-eyebrow">Compétences · Post-its VERTS</div><div class="at-name" style="color:var(--vert)">Ce que je sais faire — Mon CV géographique</div><div class="at-dur">Mes compétences et expériences posées sur le territoire</div></div>
+  <div class="sbody" style="display:flex;flex-direction:column">
+
+    <div style="padding:.7rem 1.4rem .3rem">
+      <div style="font-family:'Nunito',sans-serif;font-size:.78rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem">Transformer ton vécu en compétence territoriale</div>
+      <div style="font-family:'Nunito',sans-serif;font-size:1.45rem;font-weight:900;color:#171718;line-height:1.1">Ce Que Je Fais Ici — Ce Que Je Sais Faire Ici</div>
     </div>
-    <div class="scontent">
-      <div class="mlpb-grid mlpb-grid-2">
-        <div style="background:var(--blanc);padding:1.2rem;display:flex;flex-direction:column;gap:.55rem">
-          <div style="font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:rgba(23,23,24,.4);margin-bottom:.2rem">Pourquoi c'est important</div>
-          <div class="mlpb-card" style="border-left:4px solid var(--vert)"><div style="display:flex;gap:.7rem"><span style="font-size:1.1rem;flex-shrink:0">📍</span><div><div class="mlpb-card-title">Compétences non abstraites</div><div class="mlpb-card-text">Elles sont nées dans des lieux précis (l'usine du coin, le resto du quartier, l'asso du centre-ville).</div></div></div></div>
-          <div class="mlpb-card" style="border-left:4px solid var(--vert)"><div style="display:flex;gap:.7rem"><span style="font-size:1.1rem;flex-shrink:0">🤝</span><div><div class="mlpb-card-title">Le territoire reconnaît tes savoir-faire</div><div class="mlpb-card-text">Les patrons locaux savent que tu as bossé "chez X", "à la MJC", "sur le chantier Y".</div></div></div></div>
-          <div class="mlpb-card" style="border-left:4px solid var(--vert)"><div style="display:flex;gap:.7rem"><span style="font-size:1.1rem;flex-shrink:0">🗺️</span><div><div class="mlpb-card-title">Ton CV géographique</div><div class="mlpb-card-text">Au lieu d'un papier, tu montres une carte vivante qui raconte ton histoire pro sur TON territoire.</div></div></div></div>
-          <div class="highlight green">Tu passes de "j'ai travaillé quelque part" à "je connais les acteurs et les codes du boulot local".</div>
+
+    <div class="scontent" style="padding:.55rem 1rem;display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:.55rem">
+
+      <!-- 1 Stop au mythe du CV vide -->
+      <div style="border:2px solid var(--rose);border-radius:4px;overflow:hidden">
+        <div style="background:var(--rose);padding:.4rem .8rem;display:flex;align-items:center;gap:.5rem">
+          <span style="background:white;color:var(--rose);font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</span>
+          <span style="font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;color:white">Stop au mythe du "CV vide"</span>
         </div>
-        <div style="background:var(--blanc);padding:1.2rem">
-          <div style="font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:rgba(23,23,24,.4);margin-bottom:.65rem">Ce que tu fais — Exemples de transformation</div>
-          <div style="display:flex;flex-direction:column;gap:.4rem">
-            <div class="transfo"><div class="transfo-from">"J'ai servi en caisse à Spar"</div><div class="transfo-arr" style="color:var(--vert)">→</div><div class="transfo-to">Gestion caisse, relation client, travail sous pression</div></div>
-            <div class="transfo"><div class="transfo-from">"J'ai animé les juniors au foot"</div><div class="transfo-arr" style="color:var(--vert)">→</div><div class="transfo-to">Animation de groupe, leadership, pédagogie</div></div>
-            <div class="transfo"><div class="transfo-from">"J'ai aidé mon oncle à livrer"</div><div class="transfo-arr" style="color:var(--vert)">→</div><div class="transfo-to">Logistique, conduite, organisation tournées</div></div>
-            <div class="transfo"><div class="transfo-from">"Baby-sitting de mes cousins"</div><div class="transfo-arr" style="color:var(--vert)">→</div><div class="transfo-to">Prise en charge, responsabilité, patience</div></div>
-          </div>
-          <div class="result mt2" style="background:rgba(149,193,31,.08);border:1.5px solid rgba(149,193,31,.3)">
-            <span class="result-icon">✅</span>
-            <div><div class="result-title">Résultat attendu</div><div class="result-text"><strong>5 compétences CV</strong> à mettre dans ton dossier Mission Locale.</div></div>
+        <div style="padding:.65rem .8rem;display:flex;flex-direction:column;gap:.3rem">
+          <div style="font-size:.88rem;color:#171718;font-weight:700;margin-bottom:.1rem">Beaucoup de jeunes pensent :</div>
+          <div style="font-size:.86rem;color:#171718;line-height:1.5"><span style="color:var(--rose);font-weight:900">✗</span> "Je n'ai pas d'expérience."</div>
+          <div style="font-size:.86rem;color:#171718;line-height:1.5"><span style="color:var(--rose);font-weight:900">✗</span> "Je n'ai pas assez travaillé."</div>
+          <div style="font-size:.86rem;color:#171718;line-height:1.5"><span style="color:var(--rose);font-weight:900">✗</span> "Je n'ai pas le bon diplôme."</div>
+          <div style="background:rgba(214,11,82,.08);border-radius:4px;padding:.55rem .7rem;margin-top:.3rem;border-left:3px solid var(--rose)">
+            <div style="font-size:.84rem;color:#171718;margin-bottom:.2rem"><strong>En réalité :</strong></div>
+            <div style="font-size:.84rem;color:#171718;line-height:1.55">Tu as déjà fait des choses. Et ce que tu as fait = <strong style="color:var(--rose)">compétences</strong></div>
+            <div style="font-size:.82rem;color:#171718;margin-top:.3rem">La différence, c'est que tu ne les vois pas encore comme telles.</div>
           </div>
         </div>
       </div>
+
+      <!-- 2 Une compétence n'est jamais abstraite -->
+      <div style="border:2px solid rgba(23,23,24,.12);border-radius:4px;overflow:hidden">
+        <div style="background:rgba(23,23,24,.07);padding:.4rem .8rem;display:flex;align-items:center;gap:.5rem">
+          <span style="background:#171718;color:white;font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</span>
+          <span style="font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;color:#171718">Une compétence n'est jamais abstraite</span>
+        </div>
+        <div style="padding:.65rem .8rem;display:flex;flex-direction:column;gap:.35rem">
+          <div style="font-size:.84rem;color:#171718;line-height:1.55">Tes compétences ne tombent pas du ciel. Elles sont nées : <strong>dans un lieu, avec des personnes, dans un contexte réel.</strong></div>
+          <div style="display:flex;flex-direction:column;gap:.25rem;margin-top:.1rem">
+            <div style="background:rgba(40,151,213,.07);border-radius:3px;padding:.35rem .6rem">
+              <span style="font-size:.88rem;color:#171718;font-weight:700">Service en caisse</span>
+              <span style="font-size:.82rem;color:rgba(23,23,24,.6)"> — dans un supermarché local</span>
+            </div>
+            <div style="background:rgba(149,193,31,.09);border-radius:3px;padding:.35rem .6rem">
+              <span style="font-size:.88rem;color:#171718;font-weight:700">Bénévolat</span>
+              <span style="font-size:.82rem;color:rgba(23,23,24,.6)"> — dans une association du quartier</span>
+            </div>
+            <div style="background:rgba(243,146,0,.09);border-radius:3px;padding:.35rem .6rem">
+              <span style="font-size:.88rem;color:#171718;font-weight:700">Chantier</span>
+              <span style="font-size:.82rem;color:rgba(23,23,24,.6)"> — chez un artisan du coin</span>
+            </div>
+            <div style="background:rgba(214,11,82,.07);border-radius:3px;padding:.35rem .6rem">
+              <span style="font-size:.88rem;color:#171718;font-weight:700">Animation</span>
+              <span style="font-size:.82rem;color:rgba(23,23,24,.6)"> — dans un centre de loisirs</span>
+            </div>
+          </div>
+          <div style="margin-top:.25rem;text-align:center;font-size:.86rem;color:var(--bleu);font-weight:900">
+            🔵 Tes compétences ont une adresse.<br>
+            <span style="font-weight:400;color:#171718;font-size:.82rem">Et ça, c'est puissant.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Pourquoi c'est stratégique + Objectif -->
+      <div style="display:flex;flex-direction:column;gap:.45rem">
+        <div style="border:2px solid rgba(23,23,24,.12);border-radius:4px;overflow:hidden;flex:1">
+          <div style="background:rgba(23,23,24,.07);padding:.4rem .8rem;display:flex;align-items:center;gap:.5rem">
+            <span style="background:#171718;color:white;font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</span>
+            <span style="font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;color:#171718">Pourquoi c'est stratégique</span>
+          </div>
+          <div style="padding:.65rem .8rem;display:flex;flex-direction:column;gap:.3rem">
+            <div style="font-size:.84rem;color:rgba(23,23,24,.5);font-style:italic">Vague :</div>
+            <div style="font-size:.84rem;color:rgba(23,23,24,.55);padding-left:.5rem">"J'ai travaillé en restauration."</div>
+            <div style="font-size:.84rem;color:rgba(23,23,24,.5);font-style:italic;margin-top:.1rem">Concret :</div>
+            <div style="font-size:.86rem;color:#171718;font-weight:700;padding-left:.5rem">"J'ai travaillé au restaurant X du centre-ville pendant la saison."</div>
+            <div style="margin-top:.2rem">
+              <div style="font-size:.84rem;color:#171718;font-weight:700;margin-bottom:.2rem">Pourquoi ?</div>
+              <div style="font-size:.83rem;color:#171718;line-height:1.55"><span style="color:var(--vert);font-weight:900">✓</span> Les employeurs locaux connaissent ces lieux<br><span style="color:var(--vert);font-weight:900">✓</span> Les acteurs savent ce que ça représente<br><span style="color:var(--vert);font-weight:900">✓</span> Tu montres que tu connais les codes</div>
+            </div>
+          </div>
+        </div>
+        <div style="background:rgba(40,151,213,.08);border:1.5px solid rgba(40,151,213,.25);border-radius:4px;padding:.55rem .8rem">
+          <div style="font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;color:var(--bleu);margin-bottom:.25rem">🎯 Objectif du module</div>
+          <div style="font-size:.83rem;color:#171718;line-height:1.55">Identifier les compétences réelles (même les petites) · Les relier à des lieux précis du territoire · Comprendre pourquoi ça rassure un employeur · Les formuler clairement dans ton CV et à l'oral</div>
+        </div>
+        <div style="background:#171718;border-radius:4px;padding:.55rem .8rem;text-align:center">
+          <div style="font-size:.86rem;color:white;line-height:1.5">Tu ne viens pas de nulle part.<br><strong style="color:var(--vert)">Tu fais déjà partie du paysage.</strong></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ══════════ S14 — ATELIER 2 Questions ══════════ -->
+<!-- ══════════ S14 — ATELIER 2 suite ══════════ -->
 <section class="slide" id="s14">
-  <div class="sbody">
-    <div class="atelier-header">
-      <div class="at-num" style="background:var(--vert)">A2</div>
-      <div class="at-info"><div class="at-eyebrow">Compétences</div><div class="at-name" style="color:var(--vert)">Questions & étapes pratiques</div></div>
+  <div class="sbody" style="display:flex;flex-direction:column">
+
+    <div style="padding:.7rem 1.4rem .3rem">
+      <div style="font-family:'Nunito',sans-serif;font-size:.78rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem">Transformer ton vécu en compétence territoriale</div>
+      <div style="font-family:'Nunito',sans-serif;font-size:1.45rem;font-weight:900;color:#171718;line-height:1.1">Transformer Ton Vécu en Compétence</div>
     </div>
-    <div class="scontent">
-      <div class="mlpb-grid mlpb-grid-2">
-        <div style="background:var(--blanc);padding:1.2rem">
-          <div style="font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.65rem">Étapes pratiques</div>
-          <div class="step-list">
-            <div class="sli"><div class="sli-num" style="background:var(--vert)">1</div><div><div class="sli-title">Continue sur la même carte</div><div class="sli-text">Utilise des post-its VERTS uniquement pour cet atelier.</div></div></div>
-            <div class="sli"><div class="sli-num" style="background:var(--vert)">2</div><div><div class="sli-title">Marque tes lieux de travail/apprentissage</div><div class="sli-text">Jobs saisonniers, stages, intérim, bénévolat, projet scolaire, animation, sport compétitif…</div></div></div>
-            <div class="sli"><div class="sli-num" style="background:var(--vert)">3</div><div><div class="sli-title">Décris ce que tu as fait et su faire</div><div class="sli-text">"Servi en caisse" → "gestion caisse", "relation client", "travail rapide"…</div></div></div>
-            <div class="sli"><div class="sli-num" style="background:var(--vert)">4</div><div><div class="sli-title">Ajoute les entreprises que tu connais</div><div class="sli-text">Via famille, amis — des lieux où tu pourrais postuler.</div></div></div>
-          </div>
+
+    <div class="scontent" style="padding:.55rem 1rem;display:grid;grid-template-columns:1fr 1fr;gap:.6rem">
+
+      <!-- 4 Ce que ça rassure chez un employeur -->
+      <div style="border:2px solid rgba(23,23,24,.12);border-radius:4px;overflow:hidden">
+        <div style="background:rgba(23,23,24,.07);padding:.4rem .8rem;display:flex;align-items:center;gap:.5rem">
+          <span style="background:#171718;color:white;font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0">4</span>
+          <span style="font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;color:#171718">Ce que ça rassure chez un employeur</span>
         </div>
-        <div style="background:var(--blanc);padding:1.1rem">
-          <div style="font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.65rem">Questions clés</div>
-          <div class="q-list">
-            <div class="qli">🔨 <span>Qu'est-ce que j'ai fait de concret dans chaque lieu ?</span></div>
-            <div class="qli">👔 <span>Quelles compétences un patron verrait sur mon CV ?</span></div>
-            <div class="qli">🔄 <span>Où je pourrais refaire ça (ou presque) demain ?</span></div>
+        <div style="padding:.65rem .85rem;display:flex;flex-direction:column;gap:.35rem">
+          <div style="font-size:.88rem;color:#171718;font-weight:700">Un employeur se demande toujours :</div>
+          <div style="display:flex;flex-direction:column;gap:.2rem;margin:.1rem 0">
+            <div style="font-size:.86rem;color:#171718">? Est-ce qu'il/elle tiendra ?</div>
+            <div style="font-size:.86rem;color:#171718">? Est-ce qu'il/elle comprend comment ça fonctionne ici ?</div>
+            <div style="font-size:.86rem;color:#171718">? Est-ce qu'il/elle saura s'adapter ?</div>
           </div>
-          <div style="margin-top:.85rem;padding:.9rem;background:rgba(149,193,31,.08);border:1.5px solid rgba(149,193,31,.3);border-radius:4px">
-            <div style="font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:var(--vert);margin-bottom:.3rem">Crée des ponts directs</div>
-            <div style="font-size:.82rem;line-height:1.55">"Tu connais déjà l'entreprise Z", "Tu as bossé au même endroit que le fils du patron", "Ton expérience à 500m colle pile au job."</div>
+          <div style="background:rgba(40,151,213,.07);border-radius:4px;padding:.55rem .75rem;border:1px solid rgba(40,151,213,.2)">
+            <div style="font-size:.83rem;color:#171718;font-weight:700;margin-bottom:.3rem">Si tu as déjà travaillé dans le secteur local :</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.2rem">
+              <div style="font-size:.82rem;color:#171718">🔵 Tu connais les rythmes</div>
+              <div style="font-size:.82rem;color:#171718">🔵 Tu connais les exigences</div>
+              <div style="font-size:.82rem;color:#171718">🔵 Tu connais la clientèle</div>
+              <div style="font-size:.82rem;color:#171718">🔵 Tu connais les codes</div>
+            </div>
+          </div>
+          <div style="background:#171718;border-radius:4px;padding:.5rem .75rem;text-align:center">
+            <div style="font-size:.88rem;color:white;font-weight:700">Tu réduis son risque.</div>
+            <div style="font-size:.82rem;color:rgba(255,255,255,.7)">Et réduire le risque = augmenter tes chances.</div>
           </div>
         </div>
       </div>
+
+      <!-- 5 Exemples concrets -->
+      <div style="border:2px solid rgba(23,23,24,.12);border-radius:4px;overflow:hidden">
+        <div style="background:rgba(23,23,24,.07);padding:.4rem .8rem;display:flex;align-items:center;gap:.5rem">
+          <span style="background:#171718;color:white;font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0">5</span>
+          <span style="font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;color:#171718">Exemples concrets (traduction compétence)</span>
+        </div>
+        <div style="padding:.65rem .85rem;display:flex;flex-direction:column;gap:.45rem">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.4rem">
+            <div style="border-top:3px solid var(--bleu);padding:.45rem .5rem">
+              <div style="font-size:.84rem;color:#171718;font-weight:700;margin-bottom:.3rem">"J'ai aidé mon oncle sur des chantiers."</div>
+              <div style="display:flex;flex-direction:column;gap:.15rem">
+                <div style="font-size:.82rem;color:#171718">→ Travail en équipe</div>
+                <div style="font-size:.82rem;color:#171718">→ Respect des consignes</div>
+                <div style="font-size:.82rem;color:#171718">→ Utilisation d'outils</div>
+                <div style="font-size:.82rem;color:#171718">→ Résistance physique</div>
+              </div>
+            </div>
+            <div style="border-top:3px solid var(--vert);padding:.45rem .5rem">
+              <div style="font-size:.84rem;color:#171718;font-weight:700;margin-bottom:.3rem">"J'ai gardé des enfants."</div>
+              <div style="display:flex;flex-direction:column;gap:.15rem">
+                <div style="font-size:.82rem;color:#171718">→ Responsabilité</div>
+                <div style="font-size:.82rem;color:#171718">→ Gestion de conflits</div>
+                <div style="font-size:.82rem;color:#171718">→ Organisation</div>
+                <div style="font-size:.82rem;color:#171718">→ Communication</div>
+              </div>
+            </div>
+            <div style="border-top:3px solid var(--orange);padding:.45rem .5rem">
+              <div style="font-size:.84rem;color:#171718;font-weight:700;margin-bottom:.3rem">"Je fais du sport en club."</div>
+              <div style="display:flex;flex-direction:column;gap:.15rem">
+                <div style="font-size:.82rem;color:#171718">→ Engagement</div>
+                <div style="font-size:.82rem;color:#171718">→ Discipline</div>
+                <div style="font-size:.82rem;color:#171718">→ Travail collectif</div>
+                <div style="font-size:.82rem;color:#171718">→ Gestion de pression</div>
+              </div>
+            </div>
+          </div>
+          <div style="background:#171718;border-radius:4px;padding:.65rem 1rem;margin-top:.1rem">
+            <div style="font-family:'Nunito',sans-serif;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.45);margin-bottom:.25rem">Message clé</div>
+            <div style="font-size:1.1rem;color:var(--vert);font-weight:900">Tout est transformable.</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- ══════════ S15 — ATELIER 3 ══════════ -->
 <section class="slide" id="s15">
-  <div class="sbody">
-    <div class="atelier-header">
-      <div class="at-num" style="background:var(--bleu)">A3</div>
-      <div class="at-info"><div class="at-eyebrow">Solutions · Post-its BLEUS</div><div class="at-name" style="color:var(--bleu)">Mes solutions concrètes — Transport, Repas, Papiers</div><div class="at-dur">Lever les premiers freins qui bloquent les jeunes</div></div>
+  <div class="sbody" style="display:flex;flex-direction:column">
+
+    <div style="padding:.7rem 1.4rem .3rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem">
+      <div>
+        <div style="font-family:'Nunito',sans-serif;font-size:.78rem;font-weight:700;color:var(--bleu);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem">Transport · Repas · Papiers</div>
+        <div style="font-family:'Nunito',sans-serif;font-size:1.45rem;font-weight:900;color:#171718;line-height:1.1">Mes Solutions Concrètes</div>
+        <div style="font-size:.86rem;color:rgba(23,23,24,.55);margin-top:.2rem;font-style:italic">Sécuriser ton projet dans la vraie vie</div>
+      </div>
+      <div style="width:38px;height:38px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;margin-top:.2rem">🔵</div>
     </div>
-    <div class="scontent">
-      <p style="font-size:.85rem;color:rgba(23,23,24,.6)">Ces solutions pratiques sont les <strong>premiers freins</strong> qui bloquent les jeunes. Sans elles, même le meilleur projet ne tient pas.</p>
-      <div class="mlpb-grid mlpb-grid-3 mt2">
-        <div style="background:rgba(40,151,213,.07);border:1.5px solid rgba(40,151,213,.25);padding:1.2rem">
-          <div style="font-family:'Nunito',sans-serif;font-size:.65rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:var(--bleu);margin-bottom:.8rem">🚌 Transport</div>
-          <div style="display:flex;flex-direction:column;gap:.4rem;font-size:.82rem;line-height:1.5">
-            <div style="display:flex;gap:.5rem"><span style="color:var(--bleu);font-weight:900;flex-shrink:0">▸</span>Bus ligne + arrêt exact</div>
-            <div style="display:flex;gap:.5rem"><span style="color:var(--bleu);font-weight:900;flex-shrink:0">▸</span>TER, BlaBlaCar Daily</div>
-            <div style="display:flex;gap:.5rem"><span style="color:var(--bleu);font-weight:900;flex-shrink:0">▸</span>"Papa me dépose", Vélib 1€</div>
-            <div style="display:flex;gap:.5rem"><span style="color:var(--bleu);font-weight:900;flex-shrink:0">▸</span>Coût mensuel estimé</div>
-            <div style="display:flex;gap:.5rem"><span style="color:var(--bleu);font-weight:900;flex-shrink:0">▸</span>Plan B si retard ou grève</div>
+
+    <div class="scontent" style="padding:.55rem 1rem;display:grid;grid-template-columns:1fr 1.2fr;gap:.6rem">
+
+      <!-- Colonne gauche : objectif + vérité qu'on ne dit pas assez -->
+      <div style="display:flex;flex-direction:column;gap:.5rem">
+
+        <div style="background:rgba(243,146,0,.08);border:1.5px solid rgba(243,146,0,.3);border-radius:4px;padding:.65rem .85rem">
+          <div style="display:flex;align-items:center;gap:.45rem;margin-bottom:.4rem">
+            <span style="font-size:.9rem">🎯</span>
+            <span style="font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;color:var(--orange)">Objectif du module</span>
+          </div>
+          <div style="font-size:.84rem;color:#171718;margin-bottom:.3rem">À la fin de ce module, tu seras capable de :</div>
+          <div style="display:flex;flex-direction:column;gap:.2rem">
+            <div style="display:flex;gap:.45rem;font-size:.84rem;color:#171718"><span style="color:var(--orange);font-weight:900">✓</span>Vérifier si ton projet tient dans la réalité</div>
+            <div style="display:flex;gap:.45rem;font-size:.84rem;color:#171718"><span style="color:var(--orange);font-weight:900">✓</span>Identifier les freins pratiques avant qu'ils deviennent des problèmes</div>
+            <div style="display:flex;gap:.45rem;font-size:.84rem;color:#171718"><span style="color:var(--orange);font-weight:900">✓</span>Mettre en place un plan sécurisé</div>
+            <div style="display:flex;gap:.45rem;font-size:.84rem;color:#171718"><span style="color:var(--orange);font-weight:900">✓</span>Montrer à un employeur que tu es organisé(e)</div>
           </div>
         </div>
-        <div style="background:rgba(40,151,213,.07);border:1.5px solid rgba(40,151,213,.25);padding:1.2rem">
-          <div style="font-family:'Nunito',sans-serif;font-size:.65rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:var(--bleu);margin-bottom:.8rem">🍽️ Repas</div>
-          <div style="display:flex;flex-direction:column;gap:.4rem;font-size:.82rem;line-height:1.5">
-            <div style="display:flex;gap:.5rem"><span style="color:var(--bleu);font-weight:900;flex-shrink:0">▸</span>Resto UTT 4€, cantine MJC</div>
-            <div style="display:flex;gap:.5rem"><span style="color:var(--bleu);font-weight:900;flex-shrink:0">▸</span>Épicerie solidaire mardi 17h</div>
-            <div style="display:flex;gap:.5rem"><span style="color:var(--bleu);font-weight:900;flex-shrink:0">▸</span>Tickets resto jeunes</div>
-            <div style="display:flex;gap:.5rem"><span style="color:var(--bleu);font-weight:900;flex-shrink:0">▸</span>Budget journalier estimé</div>
-            <div style="display:flex;gap:.5rem"><span style="color:var(--bleu);font-weight:900;flex-shrink:0">▸</span>Option fait maison si besoin</div>
+
+        <div style="border:2px solid rgba(214,11,82,.3);border-radius:4px;overflow:hidden">
+          <div style="background:rgba(214,11,82,.08);padding:.4rem .8rem;display:flex;align-items:center;gap:.5rem">
+            <span style="background:var(--rose);color:white;font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</span>
+            <span style="font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;color:#171718">La vérité qu'on ne dit pas assez</span>
+          </div>
+          <div style="padding:.65rem .85rem;display:grid;grid-template-columns:1fr 1fr;gap:.5rem">
+            <div>
+              <div style="font-size:.84rem;color:var(--rose);font-weight:700;margin-bottom:.3rem">Un projet tombe rarement à cause du métier.</div>
+              <div style="font-size:.84rem;color:#171718;margin-bottom:.25rem">Il tombe à cause de :</div>
+              <div style="display:flex;flex-direction:column;gap:.15rem">
+                <div style="font-size:.83rem;color:#171718">• Retards répétés</div>
+                <div style="font-size:.83rem;color:#171718">• Problèmes de transport</div>
+                <div style="font-size:.83rem;color:#171718">• Budget mal calculé</div>
+                <div style="font-size:.83rem;color:#171718">• Démarches non faites</div>
+                <div style="font-size:.83rem;color:#171718">• Fatigue mal anticipée</div>
+              </div>
+            </div>
+            <div style="background:var(--rose);border-radius:4px;padding:.6rem .7rem;display:flex;flex-direction:column;justify-content:center;text-align:center">
+              <div style="font-size:.78rem;color:rgba(255,255,255,.8);margin-bottom:.2rem">⚠️</div>
+              <div style="font-size:.86rem;color:white;font-weight:900;line-height:1.4;margin-bottom:.3rem">Ce n'est pas un manque de motivation.</div>
+              <div style="font-size:.82rem;color:rgba(255,255,255,.9);line-height:1.4">C'est un manque d'organisation.</div>
+              <div style="font-size:.82rem;color:white;font-weight:900;margin-top:.25rem;text-transform:uppercase;letter-spacing:.05em">ET L'ORGANISATION, C'EST UNE COMPÉTENCE.</div>
+            </div>
           </div>
         </div>
-        <div style="background:rgba(40,151,213,.15);border:1.5px solid rgba(40,151,213,.4);padding:1.2rem">
-          <div style="font-family:'Nunito',sans-serif;font-size:.65rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:#0a5d8a;margin-bottom:.8rem">📋 Papiers & Aides</div>
-          <div style="display:flex;flex-direction:column;gap:.4rem;font-size:.82rem;line-height:1.5">
-            <div style="display:flex;gap:.5rem"><span style="color:#0a5d8a;font-weight:900;flex-shrink:0">▸</span>CAF — adresse exacte</div>
-            <div style="display:flex;gap:.5rem"><span style="color:#0a5d8a;font-weight:900;flex-shrink:0">▸</span>Point Info Jeunesse</div>
-            <div style="display:flex;gap:.5rem"><span style="color:#0a5d8a;font-weight:900;flex-shrink:0">▸</span>Secours Pop local</div>
-            <div style="display:flex;gap:.5rem"><span style="color:#0a5d8a;font-weight:900;flex-shrink:0">▸</span>Mission Logement</div>
-            <div style="display:flex;gap:.5rem"><span style="color:#0a5d8a;font-weight:900;flex-shrink:0">▸</span>Démarches en cours</div>
+
+      </div>
+
+      <!-- Colonne droite : Pourquoi stratégique + "JE SUIS PRÊT(E)" -->
+      <div style="border:2px solid var(--bleu);border-radius:4px;overflow:hidden;display:flex;flex-direction:column">
+        <div style="background:var(--bleu);padding:.4rem .85rem;display:flex;align-items:center;gap:.5rem">
+          <span style="font-size:.9rem">🔵</span>
+          <span style="font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;color:white">Pourquoi c'est stratégique pour ton insertion</span>
+        </div>
+        <div style="padding:.7rem .9rem;display:flex;flex-direction:column;gap:.4rem;flex:1">
+          <div style="font-size:.88rem;color:#171718;font-weight:700;margin-bottom:.15rem">Un employeur cherche :</div>
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:#171718"><span style="width:22px;height:22px;border-radius:50%;background:var(--bleu);display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0">🔄</span>Quelqu'un de ponctuel</div>
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:#171718"><span style="width:22px;height:22px;border-radius:50%;background:var(--vert);display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0">↓</span>Quelqu'un de stable</div>
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:#171718"><span style="width:22px;height:22px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0">∞</span>Quelqu'un qui tient dans la durée</div>
+          <div style="margin-top:.3rem;font-size:.86rem;color:#171718">Quand tu montres que tu as déjà réfléchi à :</div>
+          <div style="display:flex;gap:.35rem;flex-wrap:wrap">
+            <span style="background:rgba(40,151,213,.1);color:var(--bleu);border-radius:20px;padding:.22rem .65rem;font-size:.82rem;font-weight:700">Ton trajet exact</span>
+            <span style="background:rgba(40,151,213,.1);color:var(--bleu);border-radius:20px;padding:.22rem .65rem;font-size:.82rem;font-weight:700">Ton budget repas</span>
+            <span style="background:rgba(40,151,213,.1);color:var(--bleu);border-radius:20px;padding:.22rem .65rem;font-size:.82rem;font-weight:700">Tes démarches administratives</span>
+          </div>
+          <div style="margin-top:auto;background:rgba(40,151,213,.06);border-radius:4px;padding:.7rem .9rem;text-align:center;border:1.5px solid rgba(40,151,213,.2)">
+            <div style="font-size:.82rem;color:rgba(23,23,24,.55);margin-bottom:.25rem">Tu envoies un message clair :</div>
+            <div style="font-family:'Nunito',sans-serif;font-size:1.2rem;font-weight:900;color:#171718">"JE SUIS PRÊT(E)."</div>
+            <div style="font-size:.84rem;color:var(--bleu);font-weight:700;margin-top:.15rem">Stabilité = Crédibilité.</div>
           </div>
         </div>
       </div>
-      <div class="mlpb-grid mlpb-grid-3 mt1">
-        <div class="qli">⏰ <span><strong>Stage 8h :</strong> quel bus exact ? Combien le mois ? Plan B si retard ?</span></div>
-        <div class="qli">🍱 <span><strong>Pause déjeuner :</strong> où ? Combien ? Gratuit où ?</span></div>
-        <div class="qli">📄 <span><strong>CAF/Attestation :</strong> adresse exacte ? RDV comment ?</span></div>
-      </div>
-      <div class="result" style="background:rgba(40,151,213,.08);border:1.5px solid rgba(40,151,213,.3)">
-        <span class="result-icon">✅</span>
-        <div><div class="result-title">Résultat attendu</div><div class="result-text">Tu as ton <strong>plan TRAJET + REPAS + PAPIERS</strong> avec adresses précises.</div></div>
-      </div>
+
     </div>
   </div>
 </section>
 
 <!-- ══════════ S16 — ATELIER 3 Plan ══════════ -->
 <section class="slide" id="s16">
-  <div class="sbody">
-    <div class="atelier-header">
-      <div class="at-num" style="background:var(--bleu)">A3</div>
-      <div class="at-info"><div class="at-eyebrow">Solutions</div><div class="at-name" style="color:var(--bleu)">Règle des post-its BLEUS</div></div>
+  <div class="sbody" style="display:flex;flex-direction:column">
+
+    <div style="padding:.7rem 1.4rem .3rem">
+      <div style="font-family:'Nunito',sans-serif;font-size:.78rem;font-weight:700;color:var(--bleu);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem">Mes Solutions Concrètes</div>
+      <div style="font-family:'Nunito',sans-serif;font-size:1.45rem;font-weight:900;color:#171718;line-height:1.1">Transport · Repas · Papiers</div>
+      <div style="font-size:.86rem;color:rgba(23,23,24,.55);margin-top:.2rem;font-style:italic">Sécuriser ton projet dans la vraie vie</div>
     </div>
-    <div class="scontent">
-      <div class="highlight">Pour chaque point bleu : note l'adresse précise OU le nom du lieu + "je connais". Sans adresse, ça ne compte pas !</div>
-      <div class="mlpb-grid mlpb-grid-2 mt2">
-        <div style="background:var(--blanc);padding:1.2rem">
-          <div style="font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.65rem">Étapes pratiques</div>
-          <div class="step-list">
-            <div class="sli"><div class="sli-num" style="background:var(--bleu)">1</div><div><div class="sli-title">Continue sur la carte — post-its BLEUS</div><div class="sli-text">Deux nuances : bleu clair (transport/repas), bleu foncé (papiers/aides).</div></div></div>
-            <div class="sli"><div class="sli-num" style="background:var(--bleu)">2</div><div><div class="sli-title">Pour chaque moyen de transport</div><div class="sli-text">Ligne, arrêt, horaires, coût, plan B.</div></div></div>
-            <div class="sli"><div class="sli-num" style="background:var(--bleu)">3</div><div><div class="sli-title">Pour chaque solution repas</div><div class="sli-text">Lieu, adresse, horaires, coût, conditions d'accès.</div></div></div>
-            <div class="sli"><div class="sli-num" style="background:var(--bleu)">4</div><div><div class="sli-title">Pour chaque démarche admin</div><div class="sli-text">Structure, adresse, prise de RDV, documents à préparer.</div></div></div>
+
+    <div class="scontent" style="padding:.55rem 1rem;display:flex;flex-direction:column;gap:.5rem">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.55rem">
+
+        <!-- Transport -->
+        <div style="border:2px solid rgba(40,151,213,.3);border-radius:4px;overflow:hidden;display:flex;flex-direction:column">
+          <div style="background:rgba(40,151,213,.1);padding:.4rem .8rem;display:flex;align-items:center;gap:.45rem">
+            <span style="font-size:.9rem">🚌</span>
+            <span style="font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;color:var(--bleu)">Transport : ta première preuve de sérieux</span>
+          </div>
+          <div style="padding:.6rem .8rem;display:flex;flex-direction:column;gap:.3rem;flex:1">
+            <div style="font-size:.83rem;color:#171718;font-style:italic">Un stage à 8h. Question simple : "À quelle heure tu pars ?" Par "je prends le bus" : Nao.</div>
+            <div style="display:flex;flex-direction:column;gap:.15rem;margin:.1rem 0">
+              <div style="font-size:.84rem;color:#171718"><span style="color:var(--vert);font-weight:700">✓</span> Quelle ligne ?</div>
+              <div style="font-size:.84rem;color:#171718"><span style="color:var(--vert);font-weight:700">✓</span> Quel arrêt ?</div>
+              <div style="font-size:.84rem;color:#171718"><span style="color:var(--vert);font-weight:700">✓</span> Quelles heures ?</div>
+              <div style="font-size:.84rem;color:#171718"><span style="color:var(--vert);font-weight:700">✓</span> Combien ça coûte ?</div>
+              <div style="font-size:.84rem;color:#171718"><span style="color:var(--vert);font-weight:700">✓</span> Combien de temps ça prend ?</div>
+            </div>
+            <div style="background:rgba(40,151,213,.08);border-radius:3px;padding:.4rem .6rem">
+              <div style="font-size:.83rem;color:#171718;font-weight:700">Et surtout :</div>
+              <div style="font-size:.83rem;color:#171718"><span style="color:var(--bleu)">◇</span> Plan B en cas de grève ?</div>
+              <div style="font-size:.83rem;color:#171718"><span style="color:var(--bleu)">◇</span> Plan B en cas de retard ?</div>
+            </div>
+            <div style="margin-top:auto;font-size:.82rem;color:rgba(23,23,24,.55);font-style:italic">Un jeune qui sait répondre à ça est perçu comme autonome.</div>
           </div>
         </div>
-        <div style="background:var(--noir);padding:1.3rem;color:var(--blanc)">
-          <div style="font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.3);margin-bottom:.75rem">Pourquoi c'est critique</div>
-          <p style="font-size:.85rem;line-height:1.7;color:rgba(255,255,255,.78)">Ces solutions pratiques sont les <strong style="color:var(--bleu)">premiers freins</strong> qui bloquent les jeunes dans leur insertion. Sans transport ni repas organisé, même le meilleur projet s'arrête.<br><br>Ton plan pratique complet montre à ton conseiller ML que tu as <strong style="color:var(--vert)">anticipé les obstacles</strong>.</p>
-          <div style="margin-top:1rem;padding:.75rem;background:rgba(40,151,213,.15);border:1px solid rgba(40,151,213,.3);border-radius:3px">
-            <div style="font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:var(--bleu);margin-bottom:.3rem">💡 Aide mobilité</div>
-            <div style="font-size:.82rem;color:rgba(255,255,255,.8)">Pense à demander à ton conseiller les aides à la mobilité disponibles dans ton territoire (PACEA, CEJ, aides locales…)</div>
+
+        <!-- Repas -->
+        <div style="border:2px solid rgba(243,146,0,.3);border-radius:4px;overflow:hidden;display:flex;flex-direction:column">
+          <div style="background:rgba(243,146,0,.1);padding:.4rem .8rem;display:flex;align-items:center;gap:.45rem">
+            <span style="font-size:.9rem">🍽️</span>
+            <span style="font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;color:var(--orange)">Repas : énergie = performance</span>
+          </div>
+          <div style="padding:.6rem .8rem;display:flex;flex-direction:column;gap:.3rem;flex:1">
+            <div style="font-size:.83rem;color:#171718;margin-bottom:.1rem">Beaucoup négligent ce point. Mais :</div>
+            <div style="display:flex;flex-direction:column;gap:.15rem">
+              <div style="background:rgba(243,146,0,.08);border-radius:3px;padding:.28rem .5rem;font-size:.83rem;color:#171718">🍞 Travailler sans manger → fatigue</div>
+              <div style="background:rgba(243,146,0,.12);border-radius:3px;padding:.28rem .5rem;font-size:.83rem;color:#171718">⚡ Fatigue → erreurs</div>
+              <div style="background:rgba(243,146,0,.16);border-radius:3px;padding:.28rem .5rem;font-size:.83rem;color:#171718">⚡ Erreurs → tension</div>
+            </div>
+            <div style="margin-top:.15rem">
+              <div style="font-size:.84rem;color:var(--orange);font-weight:700;margin-bottom:.2rem">Questions concrètes :</div>
+              <div style="font-size:.83rem;color:#171718;line-height:1.6">• Où je mange ?<br>• Combien ça coûte ?<br>• Est-ce que je peux préparer ?<br>• Est-il des aides ?</div>
+            </div>
+            <div style="margin-top:auto;font-size:.82rem;color:rgba(23,23,24,.55);font-style:italic">Un projet solide, c'est un projet qui tient physiquement.</div>
           </div>
         </div>
+
+        <!-- Papiers -->
+        <div style="border:2px solid rgba(214,11,82,.25);border-radius:4px;overflow:hidden;display:flex;flex-direction:column">
+          <div style="background:rgba(214,11,82,.07);padding:.4rem .8rem;display:flex;align-items:center;gap:.45rem">
+            <span style="font-size:.9rem">📋</span>
+            <span style="font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;color:var(--rose)">Papiers / Aides : éviter la panique</span>
+          </div>
+          <div style="padding:.6rem .8rem;display:flex;flex-direction:column;gap:.3rem;flex:1">
+            <div style="font-size:.84rem;color:#171718;font-weight:700;margin-bottom:.15rem">Les blocages classiques :</div>
+            <div style="display:flex;flex-direction:column;gap:.12rem">
+              <div style="font-size:.83rem;color:#171718">× Attestation CAF manquante</div>
+              <div style="font-size:.83rem;color:#171718">× Carte d'identité expirée</div>
+              <div style="font-size:.83rem;color:#171718">× Dossier logement incomplet</div>
+            </div>
+            <div style="font-size:.82rem;color:rgba(23,23,24,.55);font-style:italic;margin:.1rem 0">Ce sont souvent des détails qui bloquent.</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.3rem;margin-top:.1rem">
+              <div style="background:rgba(40,151,213,.07);border-radius:3px;padding:.4rem .55rem">
+                <div style="font-size:.8rem;font-weight:700;color:#171718;margin-bottom:.2rem">Savoir :</div>
+                <div style="font-size:.81rem;color:#171718;line-height:1.5">• Où aller<br>• À qui parler</div>
+              </div>
+              <div style="background:rgba(149,193,31,.09);border-radius:3px;padding:.4rem .55rem">
+                <div style="font-size:.8rem;font-weight:700;color:#171718;margin-bottom:.2rem"></div>
+                <div style="font-size:.81rem;color:#171718;line-height:1.5">• Quels rendez-vous<br>• Quels documents prévoir</div>
+              </div>
+            </div>
+            <div style="margin-top:auto;font-size:.82rem;color:rgba(23,23,24,.55);font-style:italic">C'est de l'anticipation.</div>
+          </div>
+        </div>
+
       </div>
+
+      <!-- Barre de conclusion -->
+      <div style="background:#171718;border-radius:4px;padding:.65rem 1.2rem;display:flex;align-items:center;gap:.7rem">
+        <span style="font-size:1.1rem;flex-shrink:0">💡</span>
+        <div style="font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;color:white">Et l'anticipation, c'est une compétence professionnelle.</div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- ══════════ S17 — ATELIER 4 ══════════ -->
 <section class="slide" id="s17">
-  <div class="sbody">
-    <div class="atelier-header">
-      <div class="at-num" style="background:var(--orange)">A4</div>
-      <div class="at-info"><div class="at-eyebrow">Ressources · Post-its JAUNES</div><div class="at-name" style="color:var(--orange)">Là où je vais quand ça ne va pas — Mes appuis pour tenir</div><div class="at-dur">Mon système de sécurité personnel</div></div>
+  <div class="sbody" style="display:flex;flex-direction:column">
+
+    <div style="padding:.7rem 1.4rem .3rem;display:flex;align-items:flex-start;justify-content:space-between">
+      <div>
+        <div style="font-family:'Nunito',sans-serif;font-size:1.5rem;font-weight:900;color:#171718;line-height:1.1">Là Où Je Me Ressource</div>
+        <div style="font-size:.86rem;color:var(--vert);font-weight:700;margin-top:.2rem">Bien être pour se maintenir dans la durée</div>
+      </div>
+      <div style="display:flex;gap:.3rem;margin-top:.3rem">
+        <div style="width:13px;height:13px;border-radius:50%;background:var(--vert)"></div>
+        <div style="width:13px;height:13px;border-radius:50%;background:var(--orange)"></div>
+        <div style="width:13px;height:13px;border-radius:50%;background:var(--rose)"></div>
+        <div style="width:13px;height:13px;border-radius:50%;background:var(--violet)"></div>
+      </div>
     </div>
-    <div class="scontent">
-      <div class="mlpb-grid mlpb-grid-2">
-        <div style="background:var(--blanc);padding:1.2rem;display:flex;flex-direction:column;gap:.55rem">
-          <div style="font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:rgba(23,23,24,.4);margin-bottom:.2rem">Pourquoi c'est important</div>
-          <div class="mlpb-card" style="border-left:4px solid var(--orange)"><div style="display:flex;gap:.7rem"><span style="font-size:1.1rem;flex-shrink:0">🏥</span><div><div class="mlpb-card-title">Les structures existent autour de toi</div><div class="mlpb-card-text">CMP à 10min, Point Santé Jeunes, psy référent Mission Locale... tu n'es pas seul(e).</div></div></div></div>
-          <div class="mlpb-card" style="border-left:4px solid var(--orange)"><div style="display:flex;gap:.7rem"><span style="font-size:1.1rem;flex-shrink:0">🛡️</span><div><div class="mlpb-card-title">Prévenir le décrochage</div><div class="mlpb-card-text">Savoir où aller en cas de stress = moins de risques d'abandonner ta formation/job.</div></div></div></div>
-          <div class="mlpb-card" style="border-left:4px solid var(--orange)"><div style="display:flex;gap:.7rem"><span style="font-size:1.1rem;flex-shrink:0">💪</span><div><div class="mlpb-card-title">La durabilité de ton projet</div><div class="mlpb-card-text">Un employeur veut quelqu'un de stable. Ta carte montre que tu as prévu le coup.</div></div></div></div>
-          <div class="highlight orange">Connaître son territoire = savoir où chercher de l'aide avant que ça parte en vrille.</div>
+
+    <div class="scontent" style="padding:.55rem 1rem;display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:.55rem">
+
+      <!-- Colonne gauche : Objectif + La réalité du monde du travail -->
+      <div style="display:flex;flex-direction:column;gap:.45rem">
+
+        <div style="background:rgba(40,151,213,.06);border:1.5px solid rgba(40,151,213,.2);border-radius:4px;padding:.65rem .8rem">
+          <div style="font-family:'Nunito',sans-serif;font-size:.84rem;font-weight:900;color:var(--bleu);margin-bottom:.35rem">Objectif du module</div>
+          <div style="display:flex;flex-direction:column;gap:.2rem">
+            <div style="display:flex;gap:.4rem;font-size:.84rem;color:#171718"><span style="color:var(--bleu)">●</span>Identifier les points d'appui en cas de difficulté</div>
+            <div style="display:flex;gap:.4rem;font-size:.84rem;color:#171718"><span style="color:var(--bleu)">●</span>Anticiper les moments de stress ou de fatigue</div>
+            <div style="display:flex;gap:.4rem;font-size:.84rem;color:#171718"><span style="color:var(--bleu)">●</span>Mettre en place un plan de maintien</div>
+            <div style="display:flex;gap:.4rem;font-size:.84rem;color:#171718"><span style="color:var(--bleu)">●</span>Comprendre que la stabilité est une compétence professionnelle</div>
+          </div>
         </div>
-        <div style="background:var(--blanc);padding:1.2rem">
-          <div style="font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.65rem">Ce que tu fais — 3 catégories</div>
-          <div style="display:flex;flex-direction:column;gap:.6rem">
-            <div style="background:rgba(243,146,0,.07);border:1.5px solid rgba(243,146,0,.2);padding:.85rem;border-radius:4px">
-              <div style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:var(--orange);margin-bottom:.4rem">🏥 Santé / Écoute</div>
-              <div style="font-size:.8rem;color:rgba(23,23,24,.65);line-height:1.55">Médecin, CMP, Point Santé Jeunes, psy Mission Locale, addictologie…</div>
+
+        <div style="border:2px solid rgba(214,11,82,.2);border-radius:4px;overflow:hidden;flex:1">
+          <div style="background:rgba(214,11,82,.07);padding:.4rem .8rem;display:flex;align-items:center;gap:.45rem">
+            <span style="background:var(--rose);color:white;font-family:'Nunito',sans-serif;font-size:.72rem;font-weight:900;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</span>
+            <span style="font-family:'Nunito',sans-serif;font-size:.86rem;font-weight:900;color:#171718">La réalité du monde du travail</span>
+          </div>
+          <div style="padding:.6rem .8rem;display:flex;flex-direction:column;gap:.3rem">
+            <div style="font-size:.84rem;color:#171718">Un employeur ne cherche pas seulement quelqu'un de motivé ou compétent. Il cherche surtout :</div>
+            <div style="background:var(--rose);border-radius:4px;padding:.45rem .7rem;text-align:center">
+              <div style="font-size:.86rem;color:white;font-weight:700">◇ Quelqu'un qui tient dans la durée.</div>
             </div>
-            <div style="background:rgba(243,146,0,.07);border:1.5px solid rgba(243,146,0,.2);padding:.85rem;border-radius:4px">
-              <div style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:var(--orange);margin-bottom:.4rem">🌿 Ressourcement</div>
-              <div style="font-size:.8rem;color:rgba(23,23,24,.65);line-height:1.55">Parc, salle sport (à 2€), spot plage, atelier dessin, bibliothèque, salle de répet…</div>
-            </div>
-            <div style="background:rgba(243,146,0,.07);border:1.5px solid rgba(243,146,0,.2);padding:.85rem;border-radius:4px">
-              <div style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:var(--orange);margin-bottom:.4rem">🤝 Personnes de confiance</div>
-              <div style="font-size:.8rem;color:rgba(23,23,24,.65);line-height:1.55">"Mon grand frère", "l'éduc de l'asso", "ma copine X" — Relie en ligne JAUNE épaisse</div>
+            <div style="font-size:.84rem;color:#171718">Beaucoup de parcours s'arrêtent non pas par manque de capacité, mais par :</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.3rem">
+              <div style="background:rgba(23,23,24,.05);border-radius:3px;padding:.35rem .5rem;font-size:.83rem;color:#171718;text-align:center">Stress accumulé</div>
+              <div style="background:rgba(23,23,24,.05);border-radius:3px;padding:.35rem .5rem;font-size:.83rem;color:#171718;text-align:center">Fatigue</div>
+              <div style="background:rgba(23,23,24,.05);border-radius:3px;padding:.35rem .5rem;font-size:.83rem;color:#171718;text-align:center">Isolement</div>
+              <div style="background:rgba(23,23,24,.05);border-radius:3px;padding:.35rem .5rem;font-size:.83rem;color:#171718;text-align:center">Problème perso</div>
             </div>
           </div>
-          <div class="result mt2" style="background:rgba(243,146,0,.08);border:1.5px solid rgba(243,146,0,.3)">
-            <span class="result-icon">✅</span>
-            <div><div class="result-title">Résultat attendu</div><div class="result-text">Tu as ton <strong>plan B bien-être</strong> avec 3 solutions immédiates.</div></div>
+        </div>
+
+      </div>
+
+      <!-- Colonne centre : La compétence santé -->
+      <div style="background:#171718;border-radius:4px;overflow:hidden;display:flex;flex-direction:column">
+        <div style="padding:.55rem .85rem;display:flex;align-items:center;gap:.45rem;border-bottom:1px solid rgba(255,255,255,.1)">
+          <span style="background:var(--orange);color:white;font-family:'Nunito',sans-serif;font-size:.72rem;font-weight:900;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</span>
+          <span style="font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;color:white">La compétence santé : c'est quoi ?</span>
+        </div>
+        <div style="padding:.65rem .85rem;display:flex;flex-direction:column;gap:.4rem;flex:1">
+          <div style="font-size:.84rem;color:rgba(255,255,255,.55);font-style:italic;margin-bottom:.1rem">Ce n'est pas :</div>
+          <div style="display:flex;flex-direction:column;gap:.15rem">
+            <div style="font-size:.84rem;color:rgba(255,255,255,.65)">□ Encaisser sans rien dire</div>
+            <div style="font-size:.84rem;color:rgba(255,255,255,.65)">□ Faire semblant que tout va bien</div>
+            <div style="font-size:.84rem;color:rgba(255,255,255,.65)">□ Se débrouiller seul</div>
+          </div>
+          <div style="margin-top:.25rem;font-size:.84rem;color:rgba(255,255,255,.7);font-style:italic">La bonne posture, c'est :</div>
+          <div style="display:flex;flex-direction:column;gap:.2rem">
+            <div style="display:flex;gap:.45rem;font-size:.86rem;color:white"><span style="color:var(--vert);font-weight:900">✓</span>Savoir repérer quand ça commence à déraper</div>
+            <div style="display:flex;gap:.45rem;font-size:.86rem;color:white"><span style="color:var(--vert);font-weight:900">✓</span>Savoir où aller avant que ça explose</div>
+            <div style="display:flex;gap:.45rem;font-size:.86rem;color:white"><span style="color:var(--vert);font-weight:900">✓</span>Savoir demander de l'aide au bon moment</div>
+          </div>
+          <div style="margin-top:auto;border-top:1px solid rgba(255,255,255,.1);padding-top:.5rem;text-align:center">
+            <div style="font-size:.9rem;color:var(--orange);font-weight:900;font-style:italic">Un pro solide sait activer des ressources.</div>
           </div>
         </div>
       </div>
+
+      <!-- Colonne droite : Pourquoi stratégique + Savoir se ressourcer -->
+      <div style="display:flex;flex-direction:column;gap:.45rem">
+
+        <div style="border:2px solid rgba(149,193,31,.3);border-radius:4px;overflow:hidden;flex:1">
+          <div style="background:rgba(149,193,31,.1);padding:.4rem .8rem;display:flex;align-items:center;gap:.45rem">
+            <span style="background:var(--vert);color:white;font-family:'Nunito',sans-serif;font-size:.72rem;font-weight:900;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</span>
+            <span style="font-family:'Nunito',sans-serif;font-size:.86rem;font-weight:900;color:#171718">Pourquoi c'est stratégique pour ton insertion</span>
+          </div>
+          <div style="padding:.6rem .8rem;display:flex;flex-direction:column;gap:.3rem">
+            <div style="font-size:.86rem;color:#171718;font-weight:700">Un employeur préfère :</div>
+            <div style="background:rgba(40,151,213,.07);border-radius:3px;padding:.4rem .6rem;border-left:3px solid var(--bleu)">
+              <div style="font-size:.84rem;color:#171718;margin-bottom:.1rem">❝</div>
+              <div style="font-size:.84rem;color:#171718;font-style:italic">Quelqu'un qui sait demander un jour d'adaptation</div>
+            </div>
+            <div style="font-size:.83rem;color:rgba(23,23,24,.55);text-align:center;font-style:italic">plutôt que</div>
+            <div style="background:rgba(214,11,82,.07);border-radius:3px;padding:.4rem .6rem;border-left:3px solid var(--rose)">
+              <div style="font-size:.84rem;color:#171718;margin-bottom:.1rem">❝</div>
+              <div style="font-size:.84rem;color:#171718;font-style:italic">Quelqu'un qui disparaît du jour au lendemain</div>
+            </div>
+            <div style="font-size:.84rem;color:#171718;font-weight:700;margin-top:.1rem">Savoir te ressourcer :</div>
+            <div style="display:flex;flex-direction:column;gap:.12rem">
+              <div style="font-size:.83rem;color:#171718">◯ </div>
+              <div style="font-size:.83rem;color:#171718">◯ </div>
+              <div style="font-size:.83rem;color:#171718">☰ </div>
+              <div style="font-size:.83rem;color:#171718">👤 </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:rgba(149,193,31,.1);border:1.5px solid rgba(149,193,31,.3);border-radius:4px;padding:.5rem .75rem;text-align:center">
+          <div style="font-size:.9rem;color:#171718;font-weight:900">◇ La stabilité rassure.</div>
+        </div>
+
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ══════════ S18 — ATELIER 4 Questions ══════════ -->
+<!-- ══════════ S18 — ATELIER 4 3 Piliers ══════════ -->
 <section class="slide" id="s18">
-  <div class="sbody">
-    <div class="atelier-header">
-      <div class="at-num" style="background:var(--orange)">A4</div>
-      <div class="at-info"><div class="at-eyebrow">Ressources</div><div class="at-name" style="color:var(--orange)">Questions clés & lieux de respiration</div></div>
-    </div>
-    <div class="scontent">
-      <div class="mlpb-grid mlpb-grid-2">
-        <div style="background:var(--blanc);padding:1.2rem">
-          <div style="font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.65rem">Questions à se poser</div>
-          <div class="q-list">
-            <div class="qli">🆘 <span>En galère/stress/fatigué, je vais où direct ?</span></div>
-            <div class="qli">📞 <span>Qui j'appelle quand ça bloque vraiment ?</span></div>
-            <div class="qli">⚡ <span>Y a quoi autour de moi pour me rebooster ?</span></div>
-          </div>
-          <div style="margin-top:1rem;background:rgba(243,146,0,.06);border:1.5px solid rgba(243,146,0,.2);padding:.9rem;border-radius:4px">
-            <div style="font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:var(--orange);margin-bottom:.35rem">Pour te rebooster sans te ruiner</div>
-            <div style="font-size:.82rem;line-height:1.55">Connaître <strong>au moins 3 solutions immédiates</strong> disponibles dans ton territoire, accessibles aujourd'hui.</div>
-          </div>
-        </div>
-        <div style="background:var(--noir);padding:1.3rem;color:var(--blanc)">
-          <div style="font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.3);margin-bottom:.75rem">Tes lieux de respiration accessibles</div>
-          <div class="drow">🌳 Le parc du quartier ou spot nature</div>
-          <div class="drow">🏋️ Salle de muscu à 2€ / gymnase</div>
-          <div class="drow">🏖️ Ton spot plage à 20min</div>
-          <div class="drow">🎨 Atelier créatif, FabLab, bibliothèque</div>
-          <div class="drow">⛪ Lieu de culte ou de méditation</div>
-          <div class="drow">🎵 Studio musique, salle de répet</div>
-          <div style="margin-top:.85rem;padding:.75rem;background:rgba(243,146,0,.12);border:1px solid rgba(243,146,0,.25);border-radius:3px">
-            <div style="font-size:.82rem;color:rgba(255,255,255,.88);line-height:1.55">Relie chaque personne et lieu avec une <strong style="color:var(--orange)">ligne JAUNE épaisse</strong>. C'est ton filet de sécurité visible sur la carte.</div>
-          </div>
-        </div>
+  <div class="sbody" style="display:flex;flex-direction:column">
+
+    <div style="padding:.7rem 1.4rem .3rem;display:flex;align-items:flex-start;justify-content:space-between">
+      <div>
+        <div style="font-family:'Nunito',sans-serif;font-size:1.5rem;font-weight:900;color:#171718;line-height:1.1">Tes 3 Piliers de Maintien</div>
+        <div style="font-size:.86rem;color:var(--orange);font-weight:700;margin-top:.2rem">Robustesse et maintien dans la durée</div>
+      </div>
+      <div style="display:flex;gap:.3rem;margin-top:.3rem">
+        <div style="width:13px;height:13px;border-radius:50%;background:var(--vert)"></div>
+        <div style="width:13px;height:13px;border-radius:50%;background:var(--orange)"></div>
+        <div style="width:13px;height:13px;border-radius:50%;background:var(--rose)"></div>
+        <div style="width:13px;height:13px;border-radius:50%;background:var(--violet)"></div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ══════════ S-MAP — MA CARTE TERRITOIRE ══════════ -->
-<section class="slide" id="s-map">
-  <div style="display:flex;flex-direction:column;height:100%;overflow:hidden;">
-    <!-- Banner -->
-    <div class="slide-banner" style="background:var(--noir);flex-shrink:0;padding:.75rem 1.2rem;flex-wrap:wrap;gap:.5rem;">
-      <div class="sb-left">
-        <div class="sb-module">Carte interactive · Tous les ateliers</div>
-        <div class="sb-title" style="font-size:1.2rem;">🗺️ Ma carte territoire</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;margin-left:auto;">
-        <button class="map-filter-btn active" data-cat="all" onclick="filterMap('all',this)">Tout voir</button>
-        <button class="map-filter-btn" data-cat="reseau" style="background:var(--rose);" onclick="filterMap('reseau',this)"><span class="mfb-dot"></span>Réseau</button>
-        <button class="map-filter-btn" data-cat="competences" style="background:var(--vert);" onclick="filterMap('competences',this)"><span class="mfb-dot"></span>Compétences</button>
-        <button class="map-filter-btn" data-cat="solutions" style="background:var(--bleu);" onclick="filterMap('solutions',this)"><span class="mfb-dot"></span>Solutions</button>
-        <button class="map-filter-btn" data-cat="ressources" style="background:var(--orange);" onclick="filterMap('ressources',this)"><span class="mfb-dot"></span>Ressources</button>
-        <button onclick="openAddPin()" style="background:var(--vert);color:var(--blanc);border:none;border-radius:5px;padding:.38rem .9rem;font-family:'Nunito',sans-serif;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;display:flex;align-items:center;gap:.3rem;margin-left:.3rem;">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>Ajouter
-        </button>
-      </div>
-    </div>
-    <!-- Map + sidebar -->
-    <div style="flex:1;display:grid;grid-template-columns:1fr 260px;overflow:hidden;min-height:0;">
-      <div id="map-container" style="position:relative;z-index:1;"></div>
-      <div style="background:var(--gris-clair);border-left:2px solid var(--gris-border);overflow-y:auto;display:flex;flex-direction:column;min-height:0;">
-        <div style="padding:.65rem .9rem;background:var(--blanc);border-bottom:1.5px solid var(--gris-border);font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:rgba(23,23,24,.4);flex-shrink:0;">Mes lieux ajoutés</div>
-        <div id="pin-list" style="padding:.5rem;display:flex;flex-direction:column;gap:.35rem;flex:1;">
-          <div id="pin-empty" style="padding:1.5rem .8rem;text-align:center;color:rgba(23,23,24,.35);font-size:.8rem;font-family:'Nunito Sans',sans-serif;font-style:italic;">Aucun lieu ajouté.<br>Clique sur la carte ou<br>sur "Ajouter" pour démarrer !</div>
+    <div class="scontent" style="padding:.55rem 1rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6rem">
+
+      <!-- 1 Santé / Écoute -->
+      <div style="border:2px solid rgba(243,146,0,.3);border-radius:4px;overflow:hidden;display:flex;flex-direction:column">
+        <div style="background:rgba(243,146,0,.1);padding:.45rem .85rem;display:flex;align-items:center;gap:.5rem">
+          <span style="background:var(--orange);color:white;font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</span>
+          <span style="font-family:'Nunito',sans-serif;font-size:.92rem;font-weight:900;color:#171718">Santé / Écoute</span>
         </div>
-        <!-- Légende -->
-        <div style="padding:.7rem .9rem;border-top:1.5px solid var(--gris-border);background:var(--blanc);flex-shrink:0;">
-          <div style="font-family:'Nunito',sans-serif;font-size:.6rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:rgba(23,23,24,.3);margin-bottom:.4rem;">Légende</div>
-          <div style="display:flex;flex-direction:column;gap:.3rem;">
-            <div style="display:flex;align-items:center;gap:.5rem;font-size:.72rem;"><div style="width:9px;height:9px;border-radius:50%;background:var(--rose);flex-shrink:0;"></div>Réseau — qui je connais</div>
-            <div style="display:flex;align-items:center;gap:.5rem;font-size:.72rem;"><div style="width:9px;height:9px;border-radius:50%;background:var(--vert);flex-shrink:0;"></div>Compétences — où j'ai appris</div>
-            <div style="display:flex;align-items:center;gap:.5rem;font-size:.72rem;"><div style="width:9px;height:9px;border-radius:50%;background:var(--bleu);flex-shrink:0;"></div>Solutions — transport, repas…</div>
-            <div style="display:flex;align-items:center;gap:.5rem;font-size:.72rem;"><div style="width:9px;height:9px;border-radius:50%;background:var(--orange);flex-shrink:0;"></div>Ressources — me ressourcer</div>
+        <div style="padding:.65rem .85rem;display:flex;flex-direction:column;gap:.3rem;flex:1">
+          <div style="font-size:.86rem;color:#171718;margin-bottom:.15rem">Ce sont les lieux où tu peux parler ou être accompagné(e) :</div>
+          <div style="display:flex;flex-direction:column;gap:.2rem">
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.86rem;color:#171718"><span style="font-size:.9rem">🏥</span>Médecin</div>
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.86rem;color:#171718"><span style="font-size:.9rem">🧠</span>CMP</div>
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.86rem;color:#171718"><span style="font-size:.9rem">🟠</span>Psy Mission Locale</div>
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.86rem;color:#171718"><span style="font-size:.9rem">🤝</span>Structure d'accompagnement</div>
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.86rem;color:#171718"><span style="font-size:.9rem">⚙️</span>Centre social</div>
+          </div>
+          <div style="margin-top:auto;border-top:1px solid rgba(243,146,0,.2);padding-top:.5rem;display:flex;flex-direction:column;gap:.15rem">
+            <div style="font-size:.82rem;color:rgba(23,23,24,.5);font-style:italic">Ce ne sont pas des "plans d'urgence".</div>
+            <div style="font-size:.84rem;color:var(--orange);font-weight:700">Ce sont des activités.</div>
+            <div style="font-size:.86rem;color:#171718;font-weight:900;text-transform:uppercase;letter-spacing:.03em">UN TERRITOIRE RICHE, C'EST UN TERRITOIRE OÙ IL EXISTE DES RELAIS.</div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <!-- WIZARD AJOUT PIN : étape 1 = formulaire, étape 2 = clic carte -->
-  <div id="pin-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(23,23,24,.72);align-items:flex-start;justify-content:center;padding-top:70px;">
-    <div style="background:var(--blanc);border-radius:12px;width:380px;max-width:94vw;box-shadow:0 24px 64px rgba(0,0,0,.4);overflow:hidden;">
 
-      <!-- Étapes indicator -->
-      <div style="display:flex;background:var(--gris-clair);border-bottom:2px solid var(--gris-border);">
-        <div id="wiz-step1-tab" style="flex:1;padding:.6rem;text-align:center;font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;border-bottom:3px solid var(--bleu);color:var(--bleu);margin-bottom:-2px;">
-          1 · Info du lieu
+      <!-- 2 ce que j'AIME -->
+      <div style="border:2px solid rgba(149,193,31,.3);border-radius:4px;overflow:hidden;display:flex;flex-direction:column">
+        <div style="background:rgba(149,193,31,.1);padding:.45rem .85rem;display:flex;align-items:center;gap:.5rem">
+          <span style="background:var(--vert);color:white;font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</span>
+          <span style="font-family:'Nunito',sans-serif;font-size:.92rem;font-weight:900;color:#171718">ce que j'AIME</span>
         </div>
-        <div id="wiz-step2-tab" style="flex:1;padding:.6rem;text-align:center;font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;border-bottom:3px solid transparent;color:rgba(23,23,24,.3);">
-          2 · Poser sur la carte
+        <div style="padding:.65rem .85rem;display:flex;flex-direction:column;gap:.3rem;flex:1">
+          <div style="font-size:.86rem;color:#171718;margin-bottom:.15rem">Ce sont les lieux ou activités qui te rechargent :</div>
+          <div style="display:flex;flex-direction:column;gap:.2rem">
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.86rem;color:#171718"><span style="color:var(--vert);font-size:.85rem">🌿</span>Parc / Nature</div>
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.86rem;color:#171718"><span style="color:var(--vert);font-size:.85rem">🏋️</span>Salle de sport</div>
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.86rem;color:#171718"><span style="color:var(--vert);font-size:.85rem">🎵</span>Musique</div>
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.86rem;color:#171718"><span style="color:var(--vert);font-size:.85rem">✏️</span>Création</div>
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.86rem;color:#171718"><span style="color:var(--vert);font-size:.85rem">📚</span>Lecture</div>
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.86rem;color:#171718"><span style="color:var(--vert);font-size:.85rem">⚽</span>Sport collectif</div>
+          </div>
+          <div style="margin-top:auto;border-top:1px solid rgba(149,193,31,.2);padding-top:.5rem;display:flex;flex-direction:column;gap:.1rem">
+            <div style="font-size:.82rem;color:rgba(23,23,24,.5);font-style:italic">Ce n'est pas du "temps perdu".</div>
+            <div style="font-size:.84rem;color:#171718;font-weight:700;text-transform:uppercase;letter-spacing:.03em">C'est de l'entretien.<br>COMME RECHARGER UN TÉLÉPHONE.</div>
+          </div>
         </div>
       </div>
 
-      <!-- ÉTAPE 1 : Formulaire -->
-      <div id="wiz-step1" style="padding:1.4rem;">
-        <div style="font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;margin-bottom:1.1rem;display:flex;align-items:center;gap:.5rem;">
-          <span style="background:var(--bleu);color:white;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0;">1</span>
-          Quel lieu veux-tu ajouter ?
+      <!-- 3 Personnes de confiance -->
+      <div style="border:2px solid rgba(40,151,213,.3);border-radius:4px;overflow:hidden;display:flex;flex-direction:column">
+        <div style="background:rgba(40,151,213,.1);padding:.45rem .85rem;display:flex;align-items:center;gap:.5rem">
+          <span style="background:var(--bleu);color:white;font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</span>
+          <span style="font-family:'Nunito',sans-serif;font-size:.92rem;font-weight:900;color:#171718">Personnes de confiance</span>
         </div>
-        <div style="display:flex;flex-direction:column;gap:.9rem;">
-
-          <div>
-            <label style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:rgba(23,23,24,.4);display:block;margin-bottom:.32rem;">Nom du lieu *</label>
-            <input id="pin-name" type="text" placeholder="Ex : Mission Locale, Spar, Arrêt Bus Gare…"
-              style="width:100%;border:2px solid var(--gris-border);border-radius:6px;padding:.55rem .8rem;font-family:'Nunito Sans',sans-serif;font-size:.9rem;outline:none;transition:border .18s;"
-              onfocus="this.style.borderColor='var(--bleu)'" onblur="this.style.borderColor='var(--gris-border)'"/>
+        <div style="padding:.65rem .85rem;display:flex;flex-direction:column;gap:.3rem;flex:1">
+          <div style="font-size:.86rem;color:#171718;font-weight:700;margin-bottom:.15rem">Qui peut t'écouter sans te juger ?</div>
+          <div style="display:flex;flex-direction:column;gap:.2rem">
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.86rem;color:#171718"><span style="font-size:.9rem">🏠</span>Famille</div>
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.86rem;color:#171718"><span style="font-size:.9rem">🤝</span>Ami</div>
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.86rem;color:#171718"><span style="font-size:.9rem">🔵</span>Référent</div>
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.86rem;color:#171718"><span style="font-size:.9rem">💬</span>Conseiller</div>
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.86rem;color:#171718"><span style="font-size:.9rem">👤</span>Coach</div>
           </div>
-
-          <div>
-            <label style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:rgba(23,23,24,.4);display:block;margin-bottom:.32rem;">Dans quel axe ? *</label>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;" id="cat-select">
-              <div class="cat-opt" data-val="reseau" onclick="selectCat(this)" style="border-color:var(--rose);">
-                <div style="width:9px;height:9px;border-radius:50%;background:var(--rose);flex-shrink:0;"></div>
-                <div><div style="font-weight:900;font-size:.78rem;">Réseau</div><div style="font-size:.68rem;opacity:.6;">Qui je connais</div></div>
-              </div>
-              <div class="cat-opt" data-val="competences" onclick="selectCat(this)" style="border-color:var(--vert);">
-                <div style="width:9px;height:9px;border-radius:50%;background:var(--vert);flex-shrink:0;"></div>
-                <div><div style="font-weight:900;font-size:.78rem;">Compétences</div><div style="font-size:.68rem;opacity:.6;">Où j'ai appris</div></div>
-              </div>
-              <div class="cat-opt" data-val="solutions" onclick="selectCat(this)" style="border-color:var(--bleu);">
-                <div style="width:9px;height:9px;border-radius:50%;background:var(--bleu);flex-shrink:0;"></div>
-                <div><div style="font-weight:900;font-size:.78rem;">Solutions</div><div style="font-size:.68rem;opacity:.6;">Transport, repas…</div></div>
-              </div>
-              <div class="cat-opt" data-val="ressources" onclick="selectCat(this)" style="border-color:var(--orange);">
-                <div style="width:9px;height:9px;border-radius:50%;background:var(--orange);flex-shrink:0;"></div>
-                <div><div style="font-weight:900;font-size:.78rem;">Ressources</div><div style="font-size:.68rem;opacity:.6;">Me ressourcer</div></div>
-              </div>
-            </div>
-            <div id="cat-error" style="display:none;color:var(--rose);font-size:.72rem;margin-top:.3rem;font-family:'Nunito',sans-serif;font-weight:700;">Choisis un axe pour continuer.</div>
+          <div style="margin-top:auto;background:rgba(40,151,213,.07);border-radius:4px;padding:.55rem .7rem;border:1px solid rgba(40,151,213,.2)">
+            <div style="font-size:.86rem;color:#171718;line-height:1.55">Avoir au moins <strong style="color:var(--bleu)">2 contacts fiables</strong> est un facteur de stabilité énorme.</div>
           </div>
-
-          <div>
-            <label style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:rgba(23,23,24,.4);display:block;margin-bottom:.32rem;">Note rapide <span style="font-weight:400;text-transform:none;letter-spacing:0;">(optionnel)</span></label>
-            <input id="pin-note" type="text" placeholder="Ex : contact, horaires, prix, à faire…"
-              style="width:100%;border:2px solid var(--gris-border);border-radius:6px;padding:.55rem .8rem;font-family:'Nunito Sans',sans-serif;font-size:.9rem;outline:none;transition:border .18s;"
-              onfocus="this.style.borderColor='var(--bleu)'" onblur="this.style.borderColor='var(--gris-border)'"/>
-          </div>
-        </div>
-
-        <div style="display:flex;gap:.5rem;margin-top:1.2rem;">
-          <button onclick="closeAddPin()" style="flex:1;background:var(--gris-clair);border:2px solid var(--gris-border);border-radius:6px;padding:.6rem;font-family:'Nunito',sans-serif;font-size:.78rem;font-weight:800;cursor:pointer;">Annuler</button>
-          <button onclick="wizNext()" style="flex:2;background:var(--bleu);color:white;border:none;border-radius:6px;padding:.6rem;font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.4rem;">
-            Suivant — Poser sur la carte
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- ÉTAPE 2 : Localiser le lieu -->
-      <div id="wiz-step2" style="display:none;padding:1.4rem;">
-        <div style="font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem;">
-          <span style="background:var(--vert);color:white;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0;">2</span>
-          Où se trouve ce lieu ?
-        </div>
-
-        <!-- Résumé du lieu -->
-        <div id="wiz-resume" style="display:flex;align-items:center;gap:.6rem;padding:.65rem .9rem;border-radius:7px;margin-bottom:1rem;border:2px solid;">
-          <div id="wiz-resume-dot" style="width:11px;height:11px;border-radius:50%;flex-shrink:0;"></div>
-          <div>
-            <div id="wiz-resume-name" style="font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;"></div>
-            <div id="wiz-resume-cat" style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;opacity:.7;"></div>
-          </div>
-        </div>
-
-        <!-- RECHERCHE ADRESSE -->
-        <div style="margin-bottom:.75rem;">
-          <label style="font-family:'Nunito',sans-serif;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:rgba(23,23,24,.4);display:block;margin-bottom:.32rem;">
-            🔍 Cherche l'adresse
-          </label>
-          <div style="display:flex;gap:.4rem;">
-            <input id="addr-search" type="text" placeholder="Ex : 3 rue de la Paix, Bayonne"
-              style="flex:1;border:2px solid var(--gris-border);border-radius:6px;padding:.55rem .8rem;font-family:'Nunito Sans',sans-serif;font-size:.88rem;outline:none;transition:border .18s;"
-              onfocus="this.style.borderColor='var(--bleu)'" onblur="this.style.borderColor='var(--gris-border)'"
-              onkeydown="if(event.key==='Enter'){event.preventDefault();searchAddress();}"
-            />
-            <button onclick="searchAddress()" style="background:var(--bleu);color:white;border:none;border-radius:6px;padding:.55rem .85rem;cursor:pointer;font-size:.9rem;flex-shrink:0;" title="Rechercher">
-              🔍
-            </button>
-          </div>
-          <!-- Résultats suggestions -->
-          <div id="addr-results" style="display:none;margin-top:.35rem;border:1.5px solid var(--gris-border);border-radius:6px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.1);background:white;max-height:180px;overflow-y:auto;"></div>
-          <div id="addr-error" style="display:none;color:var(--rose);font-size:.75rem;margin-top:.3rem;font-family:'Nunito',sans-serif;font-weight:700;"></div>
-        </div>
-
-        <!-- Séparateur OU -->
-        <div style="display:flex;align-items:center;gap:.6rem;margin:.6rem 0;">
-          <div style="flex:1;height:1px;background:var(--gris-border);"></div>
-          <span style="font-family:'Nunito',sans-serif;font-size:.7rem;font-weight:800;color:rgba(23,23,24,.3);text-transform:uppercase;letter-spacing:.1em;">ou</span>
-          <div style="flex:1;height:1px;background:var(--gris-border);"></div>
-        </div>
-
-        <!-- Clic carte -->
-        <div style="background:var(--gris-clair);border-radius:8px;padding:.85rem 1rem;border:2px dashed var(--gris-border);display:flex;align-items:center;gap:.75rem;">
-          <span style="font-size:1.3rem;flex-shrink:0;">👆</span>
-          <div>
-            <div style="font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:800;color:var(--noir);">Clique directement sur la carte</div>
-            <div style="font-size:.72rem;color:rgba(23,23,24,.45);margin-top:.1rem;">Le pin se posera exactement là où tu cliques</div>
-          </div>
-        </div>
-
-        <div id="wiz-pos-confirm" style="display:none;margin-top:.6rem;padding:.6rem .9rem;background:rgba(149,193,31,.1);border:1.5px solid rgba(149,193,31,.4);border-radius:6px;font-size:.78rem;color:var(--vert);font-family:'Nunito',sans-serif;font-weight:800;"></div>
-
-        <div style="display:flex;gap:.5rem;margin-top:.9rem;">
-          <button onclick="wizBack()" style="flex:1;background:var(--gris-clair);border:2px solid var(--gris-border);border-radius:6px;padding:.6rem;font-family:'Nunito',sans-serif;font-size:.78rem;font-weight:800;cursor:pointer;">← Retour</button>
-          <button id="wiz-confirm-btn" onclick="confirmAddPin()" style="flex:2;background:var(--vert);color:white;border:none;border-radius:6px;padding:.6rem;font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:900;cursor:pointer;">
-            Poser le pin ici ✓
-          </button>
-        </div>
-        <div style="margin-top:.5rem;text-align:center;">
-          <button onclick="confirmAddPin()" style="background:none;border:none;font-family:'Nunito',sans-serif;font-size:.7rem;color:rgba(23,23,24,.3);cursor:pointer;text-decoration:underline;">Poser au centre de la carte</button>
         </div>
       </div>
 
@@ -1768,8 +2044,8 @@ function initMap() {
 
   map = L.map('map-container', { center: [43.29, -1.32], zoom: 12, zoomControl: true });
 
-  L.tileLayer('https://tile.opentopomap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap © OpenTopoMap',
+  L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap France',
     maxZoom: 17
   }).addTo(map);
 
