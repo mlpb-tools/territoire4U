@@ -41,17 +41,17 @@
         /* Styles Marqueurs Néo-brutalistes */
         .custom-div-icon { background: transparent; border: none; }
         .marker-pin {
-            width: 32px; height: 32px;
+            width: 24px; height: 24px;
             border-radius: 50% 50% 50% 0;
             position: absolute;
             transform: rotate(-45deg);
             left: 50%; top: 50%;
-            margin: -16px 0 0 -16px;
+            margin: -12px 0 0 -12px;
             border: 2px solid #1a1a1a;
             box-shadow: 2px 2px 0px 0px rgba(0,0,0,1);
             display: flex; align-items: center; justify-content: center;
         }
-        .marker-icon { transform: rotate(45deg); color: #1a1a1a; font-size: 14px; }
+        .marker-icon { transform: rotate(45deg); color: #1a1a1a; font-size: 11px; }
 
         /* Couleurs Thématiques */
         .theme-culture { background: #d946ef; }
@@ -116,7 +116,7 @@
 
             <div class="p-4 flex flex-col gap-5 overflow-y-auto flex-grow custom-scroll">
                 
-                <!-- Filtres THEMES -->
+                <!-- Filtres THEMES (Uniques Filtres Conservés) -->
                 <div>
                     <h3 class="text-[10px] font-black uppercase text-gray-400 mb-2 tracking-widest border-b border-gray-200 pb-1">Thématiques de Visite</h3>
                     <div class="space-y-2">
@@ -157,8 +157,8 @@
                             <span>Cliquez sur l'heure pour la modifier</span>
                         </div>
                         <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-phone text-emerald-500"></i>
-                            <span>Contact / Téléphone renseigné</span>
+                            <i class="fa-solid fa-user text-emerald-500"></i>
+                            <span>Contact renseigné</span>
                         </div>
                         <div class="flex items-center gap-2 mt-1">
                             <i class="fa-solid fa-location-dot text-gray-500"></i>
@@ -209,7 +209,7 @@
             repas: { css: 'theme-repas', icon: 'fa-solid fa-utensils', hex: '#ffb703' }
         };
 
-        // Données complètes, avec adresses postales exactes et points rigoureusement vérifiés
+        // Données complètes, avec adresses postales exactes, sans numéros de téléphone.
         const locations = [
             // --- PLÉNIÈRES ET RASSEMBLEMENTS DE BASE ---
             { lat: 43.329, lng: -1.405, type: 'ralliement', title: 'Sanoki (Itxassou)', address: 'Salle Sanoki, 64250 Itxassou', legend: '16/03 / Lancement en plénière', time: '09:00' },
@@ -217,44 +217,44 @@
             { lat: 43.395, lng: -1.458, type: 'ralliement', title: 'Ustaritz (Mairie Lapurdi)', address: 'Place du Labourd, 64480 Ustaritz', legend: '30/03 / Travail de restitution', time: '09:00' },
             
             // --- LISTE EXACTE FOURNIE PAR L'UTILISATEUR ---
-            { lat: 43.193, lng: -0.903, type: 'institution', title: 'ODACE & AZIA', address: '940 Route d\'Argouague, 64130 Gotein-Libarrenx', legend: 'Appui entreprises', time: '09:15', contact: '06 84 70 17 08' },
+            { lat: 43.193, lng: -0.903, type: 'institution', title: 'ODACE & AZIA', address: '940 Route d\'Argouague, 64130 Gotein-Libarrenx', legend: 'Appui entreprises', time: '09:15' },
             { lat: 43.377, lng: -1.749, type: 'institution', title: 'Château Abbadia (CPIE)', address: 'Rte de la Corniche, 64700 Hendaye', legend: 'Visite Environnement', time: '09:30' },
-            { lat: 43.336, lng: -1.267, type: 'culture', title: 'Régis Pochelu (Château Garro)', address: 'Quartier Garro, 64240 Mendionde', legend: 'Parcours, visite expo + visite du site', time: '09:30', contact: '06 26 72 18 38' },
+            { lat: 43.336, lng: -1.267, type: 'culture', title: 'Régis Pochelu (Château Garro)', address: 'Quartier Garro, 64240 Mendionde', legend: 'Parcours, visite expo + visite du site', time: '09:30' },
             { lat: 43.541, lng: -1.463, type: 'culture', title: 'Grandola', address: '1 Place Serpa Pinto, 40220 Tarnos', legend: 'Visite Tiers-Lieu', time: '10:00 - 11:00' },
             { lat: 43.493, lng: -1.470, type: 'culture', title: 'Cinéma L\'Atalante', address: '3-5 Quai Amiral Antoine Sala, 64100 Bayonne', legend: 'Visite & Rencontre', time: '10:00 - 12:00' },
             { lat: 43.441, lng: -1.551, type: 'entreprise', title: 'Groupe IZARRALDE', address: 'Technopole Izarbel, 45 All. T. Monod, 64210 Bidart', legend: 'Visite Numérique', time: '10:00 - 12:00' },
             { lat: 43.226, lng: -0.892, type: 'entreprise', title: 'SPI AERO', address: '67 Avenue de Tréville, 64130 Mauléon-Licharre', legend: 'Visite Entreprise Industrielle', time: '11:00' },
-            { lat: 43.170, lng: -1.240, type: 'institution', title: 'Recyclerie Lokala', address: '630 Baionako Errepidea, 64220 Ascarat', legend: 'Visite (1h max) - pas de restauration', time: '11:00 - 12:00', contact: '06 41 95 35 26' },
+            { lat: 43.170, lng: -1.240, type: 'institution', title: 'Recyclerie Lokala', address: '630 Baionako Errepidea, 64220 Ascarat', legend: 'Visite (1h max) - pas de restauration', time: '11:00 - 12:00' },
             { lat: 43.222, lng: -0.889, type: 'repas', title: 'Restaurant Euskalduna', address: '4 Rue Pasteur, 64130 Mauléon-Licharre', legend: 'Déjeuner', time: '12:00' },
-            { lat: 43.163, lng: -1.236, type: 'repas', title: 'Le Chat Perché', address: '11 Rue de la Citadelle, 64220 Saint-Jean-Pied-de-Port', legend: 'Déjeuner', time: '12:30', contact: '05 24 34 11 49 / 05 24 34 13 87' },
+            { lat: 43.163, lng: -1.236, type: 'repas', title: 'Le Chat Perché', address: '11 Rue de la Citadelle, 64220 Saint-Jean-Pied-de-Port', legend: 'Déjeuner', time: '12:30' },
             { lat: 43.224, lng: -0.890, type: 'culture', title: 'Berritza (Cie Danse)', address: '4 Rue de l\'Alava, 64130 Mauléon-Licharre', legend: 'Spectacle / Danse', time: '14:00', contact: 'Maité Irigoyen / Etchecopar Camu' },
             { lat: 43.383, lng: -1.304, type: 'institution', title: 'ALDATU', address: '30 Rue Léon Larregain, 64240 Hasparren', legend: 'Visite / Rencontre', time: '14:00', contact: 'Louisette Bilbao' },
             { lat: 43.494, lng: -1.476, type: 'entreprise', title: 'Coopérative Corbo', address: '14 Rue Albert 1er, 64100 Bayonne', legend: 'Rencontre et échanges', time: '14:30 - 16:00' },
             { lat: 43.494, lng: -1.478, type: 'institution', title: 'Office de tourisme de Bayonne', address: '25 Place des Basques, 64100 Bayonne', legend: 'Visite Institution', time: '14:30' },
-            { lat: 43.166, lng: -1.237, type: 'institution', title: 'MSP Garazi (France Service)', address: '1 Rue des Bergers, 64220 Saint-Jean-Pied-de-Port', legend: 'Visite (1h)', time: '09:00', contact: 'Indart : 06 25 50 48 23' },
+            { lat: 43.166, lng: -1.237, type: 'institution', title: 'MSP Garazi (France Service)', address: '1 Rue des Bergers, 64220 Saint-Jean-Pied-de-Port', legend: 'Visite (1h)', time: '09:00', contact: 'Indart' },
             { lat: 43.266, lng: -1.503, type: 'entreprise', title: 'Grottes d\'Urdax (+ Baserriberri)', address: 'Bo. Leorlas, s/n, 31711 Urdax, Navarre (ES)', legend: 'Entreprise & Visite', time: '09:30' },
             { lat: 43.163, lng: -1.238, type: 'entreprise', title: 'Akiloukap', address: '18 Rue d\'Espagne, 64220 Saint-Jean-Pied-de-Port', legend: 'Pays Basque au Coeur / Récolte du monde', time: '11:00' },
             { lat: 43.492, lng: -1.474, type: 'repas', title: 'Le Moka', address: '22 Rue Thiers, 64100 Bayonne', legend: 'Déjeuner', time: '12:00' },
             { lat: 43.265, lng: -1.505, type: 'repas', title: 'Restaurant Landibar', address: 'Barrio Landibar 14, 31711 Urdax (ES)', legend: 'Déjeuner', time: '12:00' },
-            { lat: 43.327, lng: -1.031, type: 'repas', title: 'Restaurant Xibiouz', address: '235 Rue d\'Oxidoy, 64120 Saint-Palais', legend: 'Déjeuner', time: '12:30', contact: 'Sylvie Doxaran : 07 60 71 63 11' },
-            { lat: 43.329, lng: -1.035, type: 'culture', title: 'Bilbalka (Amikuze)', address: '95 Ainaren Karrika, 64120 Saint-Palais', legend: 'Visite du site', time: '14:00', contact: 'Irola Stéphane : 06 80 98 87 40' },
+            { lat: 43.327, lng: -1.031, type: 'repas', title: 'Restaurant Xibiouz', address: '235 Rue d\'Oxidoy, 64120 Saint-Palais', legend: 'Déjeuner', time: '12:30', contact: 'Sylvie Doxaran' },
+            { lat: 43.329, lng: -1.035, type: 'culture', title: 'Bilbalka (Amikuze)', address: '95 Ainaren Karrika, 64120 Saint-Palais', legend: 'Visite du site', time: '14:00', contact: 'Irola Stéphane' },
             { lat: 43.540, lng: -1.460, type: 'entreprise', title: 'Métrolocco (PTCE)', address: 'Placette du Métro, 40220 Tarnos', legend: 'Visite Pôle Territorial', time: '14:00 - 15:30' },
-            { lat: 43.328, lng: -1.033, type: 'entreprise', title: 'Lycée Jean Errecart', address: '305 Route des Écoles, 64120 Saint-Palais', legend: 'Action Ifria + Agro Alimentaire', time: 'Journée', contact: 'André Larralde : 06 12 64 70 75' },
+            { lat: 43.328, lng: -1.033, type: 'entreprise', title: 'Lycée Jean Errecart', address: '305 Route des Écoles, 64120 Saint-Palais', legend: 'Action Ifria + Agro Alimentaire', time: 'Journée', contact: 'André Larralde' },
 
             // --- COMPLÉMENTS PDF ET RESTAURANTS RESTANTS ---
-            { lat: 43.165, lng: -1.235, type: 'culture', title: 'Club Pelote Goizeko Izarra', address: 'Jaï Alaï, 64220 Saint-Jean-Pied-de-Port', legend: 'Sport', time: '14:30', contact: 'Mme Carricaburru : 06 81 49 87 01' },
+            { lat: 43.165, lng: -1.235, type: 'culture', title: 'Club Pelote Goizeko Izarra', address: 'Jaï Alaï, 64220 Saint-Jean-Pied-de-Port', legend: 'Sport', time: '14:30', contact: 'Mme Carricaburru' },
             { lat: 43.396, lng: -1.683, type: 'culture', title: 'Trainière Sokoa', address: 'Port de Socoa, 64500 Ciboure', legend: 'A Confirmer', time: 'A définir' },
             { lat: 43.268, lng: -1.539, type: 'culture', title: 'Grottes de Zugarramurdi', address: '31710 Zugarramurdi, Navarre (ES)', legend: 'Visite', time: 'A définir' },
-            { lat: 43.372, lng: -1.774, type: 'repas', title: 'l\'Océ', address: '61 Boulevard de la Mer, 64700 Hendaye', legend: 'Déjeuner', time: '12:30', contact: '05 59 20 71 64' },
-            { lat: 43.371, lng: -1.773, type: 'repas', title: 'O\'Yuk', address: '4 Rue des Figuiers, 64700 Hendaye', legend: 'Déjeuner', time: '12:30', contact: '05 24 33 54 63' },
-            { lat: 43.370, lng: -1.775, type: 'repas', title: 'Sukaldea', address: '15 Rue des Eucalyptus, 64700 Hendaye', legend: 'Déjeuner', time: '12:30', contact: '05 59 20 83 21' },
+            { lat: 43.372, lng: -1.774, type: 'repas', title: 'l\'Océ', address: '61 Boulevard de la Mer, 64700 Hendaye', legend: 'Déjeuner', time: '12:30' },
+            { lat: 43.371, lng: -1.773, type: 'repas', title: 'O\'Yuk', address: '4 Rue des Figuiers, 64700 Hendaye', legend: 'Déjeuner', time: '12:30' },
+            { lat: 43.370, lng: -1.775, type: 'repas', title: 'Sukaldea', address: '15 Rue des Eucalyptus, 64700 Hendaye', legend: 'Déjeuner', time: '12:30' },
             { lat: 43.359, lng: -1.399, type: 'entreprise', title: 'Imprimerie Mendiboure', address: 'Z.A. Errobi, 64250 Cambo-les-Bains', legend: 'Visite Entreprise', time: '09:30' },
             { lat: 43.358, lng: -1.398, type: 'entreprise', title: 'Librairie Margot', address: '12 Rue du Trinquet, 64250 Cambo-les-Bains', legend: 'Visite Librairie', time: '11:00' },
-            { lat: 43.221, lng: -0.891, type: 'institution', title: 'Château Fort de Mauléon', address: 'Allée du Château, 64130 Mauléon-Licharre', legend: 'Lecture de paysage (Philippe Mayté)', time: 'A définir' },
+            { lat: 43.221, lng: -0.891, type: 'institution', title: 'Château Fort de Mauléon', address: 'Allée du Château, 64130 Mauléon-Licharre', legend: 'Lecture de paysage', time: 'A définir', contact: 'Philippe Mayté' },
             { lat: 43.384, lng: -1.304, type: 'culture', title: 'Ferme Uhaldia', address: 'Quartier Zelhai, 64240 Hasparren', legend: 'Visite Ferme', time: 'A définir', contact: 'Julia Abadie' },
-            { lat: 43.382, lng: -1.303, type: 'repas', title: 'Restaurant Argia', address: '54 Rue Francis Jammes, 64240 Hasparren', legend: 'Déjeuner', time: '12:30', contact: '05 59 29 60 24' },
-            { lat: 43.371, lng: -1.412, type: 'repas', title: 'Aldaburua', address: 'Le Bourg, 64480 Larressore', legend: 'Déjeuner', time: '12:30', contact: '09 83 94 27 71' },
-            { lat: 43.163, lng: -1.234, type: 'repas', title: 'Chez Dédé', address: '17 Rue de la Citadelle, 64220 Saint-Jean-Pied-de-Port', legend: 'Déjeuner', time: '12:30', contact: '05 24 34 11 49' }
+            { lat: 43.382, lng: -1.303, type: 'repas', title: 'Restaurant Argia', address: '54 Rue Francis Jammes, 64240 Hasparren', legend: 'Déjeuner', time: '12:30' },
+            { lat: 43.371, lng: -1.412, type: 'repas', title: 'Aldaburua', address: 'Le Bourg, 64480 Larressore', legend: 'Déjeuner', time: '12:30' },
+            { lat: 43.163, lng: -1.234, type: 'repas', title: 'Chez Dédé', address: '17 Rue de la Citadelle, 64220 Saint-Jean-Pied-de-Port', legend: 'Déjeuner', time: '12:30' }
         ];
 
         // Persistence des horaires modifiés
@@ -263,10 +263,10 @@
         function getPopupHTML(loc, index) {
             const theme = themes[loc.type];
             
-            // Génération du bloc contact s'il existe
+            // Génération du bloc contact s'il existe (Icône Utilisateur au lieu de Téléphone)
             const contactHTML = loc.contact ? `
                 <div class="flex items-start gap-2 mb-2 bg-gray-50 p-2 rounded border border-gray-200 shadow-sm">
-                    <i class="fa-solid fa-phone text-[10px] mt-0.5" style="color: ${theme.hex}"></i>
+                    <i class="fa-solid fa-user text-[10px] mt-0.5" style="color: ${theme.hex}"></i>
                     <span class="text-[10px] font-bold text-gray-700 leading-tight">${loc.contact}</span>
                 </div>
             ` : '';
@@ -331,7 +331,7 @@
             const icon = L.divIcon({
                 className: 'custom-div-icon',
                 html: `<div class="marker-pin ${theme.css}"><i class="${theme.icon} marker-icon"></i></div>`,
-                iconSize: [32, 32], iconAnchor: [16, 32], popupAnchor: [0, -32]
+                iconSize: [24, 24], iconAnchor: [12, 24], popupAnchor: [0, -24]
             });
             loc.marker = L.marker([loc.lat, loc.lng], { icon: icon }).bindPopup(getPopupHTML(loc, i));
             // Ajout initial
