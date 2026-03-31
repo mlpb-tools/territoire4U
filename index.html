@@ -3,67 +3,71 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carte des Acteurs du Territoire</title>
+<title>Carte des Acteurs du Territoire - Sombre</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
   :root {
-    --rouge: #e8173d; 
-    --vert: #6bb22e; 
-    --bleu: #2897d5; 
-    --jaune: #f7b731;
-    --noir: #171318; 
-    --blanc: #ffffff;
+    --rouge: #ff3366; 
+    --vert: #8de045; 
+    --bleu: #3bb2f6; 
+    --jaune: #ffcb47;
+    --fond-sombre: #1e1e24;
+    --texte-clair: #f5f5f5;
   }
   
   * { margin: 0; padding: 0; box-sizing: border-box; }
   
   body { 
     font-family: 'DM Sans', sans-serif; 
-    color: var(--noir); 
+    background: var(--fond-sombre);
+    color: var(--texte-clair); 
     height: 100vh; 
     display: flex; 
     flex-direction: column; 
     overflow: hidden; 
   }
 
+  /* En-tête mode sombre */
   .header {
-    background: var(--blanc);
+    background: rgba(30, 30, 36, 0.95);
     padding: 16px 24px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
     z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid #333;
   }
-  .header h1 { font-size: 20px; font-weight: 700; }
-  .header p { font-size: 13px; color: #666; margin-top: 4px; }
+  .header h1 { font-size: 20px; font-weight: 700; letter-spacing: 0.5px; }
+  .header p { font-size: 13px; color: #aaa; margin-top: 4px; }
 
   #map-container { flex: 1; position: relative; width: 100%; }
-  #map { width: 100%; height: 100%; background: #e5e5e5; }
+  #map { width: 100%; height: 100%; background: #111; }
 
-  /* Légende flottante */
+  /* Légende flottante sombre */
   .legend {
     position: absolute;
     bottom: 30px;
     right: 30px;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(30, 30, 36, 0.85);
     padding: 18px 24px;
     border-radius: 14px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
     z-index: 1000;
-    backdrop-filter: blur(5px);
-    border: 1px solid #eee;
+    backdrop-filter: blur(8px);
+    border: 1px solid #444;
   }
-  .legend h3 { font-size: 14px; margin-bottom: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-  .legend-item { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; font-size: 14px; font-weight: 500; }
+  .legend h3 { font-size: 14px; margin-bottom: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #fff; }
+  .legend-item { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; font-size: 14px; font-weight: 500; color: #eee; }
   .legend-item:last-child { margin-bottom: 0; }
-  .dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+  .dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #222; box-shadow: 0 0 8px rgba(255,255,255,0.2); }
 
-  /* Personnalisation des popups Leaflet */
-  .leaflet-popup-content-wrapper { border-radius: 12px; padding: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
-  .leaflet-popup-content { margin: 16px; }
+  /* Personnalisation des popups Leaflet (gardées claires pour le contraste) */
+  .leaflet-popup-content-wrapper { background: #fff; border-radius: 12px; padding: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+  .leaflet-popup-tip { background: #fff; }
+  .leaflet-popup-content { margin: 16px; color: #111; }
   .custom-popup .title { font-weight: 700; font-size: 16px; margin-bottom: 8px; line-height: 1.2; }
   .custom-popup .cat-badge { 
     display: inline-flex; align-items: center; gap: 6px; 
@@ -71,7 +75,7 @@
     border-radius: 20px; text-transform: uppercase; 
     margin-bottom: 10px; border: 1px solid currentColor;
   }
-  .custom-popup .note { font-size: 13.5px; color: #444; line-height: 1.5; }
+  .custom-popup .note { font-size: 13.5px; color: #555; line-height: 1.5; font-weight: 500; }
 </style>
 </head>
 <body>
@@ -130,43 +134,38 @@ const initialPins = [
   {name: "Métrolocco", cat: "solutions", note: "23 Rue Hélène Boucher, 40220 Tarnos", lat: 43.535, lng: -1.465}
 ];
 
-// Configuration des catégories
-const CAT_COLORS = { reseau: '#e8173d', comp: '#2897d5', solutions: '#6bb22e', appuis: '#f7b731' };
+// Configuration des couleurs (légèrement éclaircies pour mieux ressortir sur fond noir)
+const CAT_COLORS = { reseau: '#ff3366', comp: '#3bb2f6', solutions: '#8de045', appuis: '#ffcb47' };
 const CAT_LABELS = { reseau: 'Réseau humain', comp: 'Compétences', solutions: 'Solutions pratiques', appuis: 'Appuis de maintien' };
 
-// Initialisation de la carte
 const map = L.map('map');
 
-// Fond de carte très clair ("CartoDB Positron") pour une lisibilité maximale
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+// Utilisation du fond de carte sombre de CartoDB ("Dark Matter")
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
   maxZoom: 19,
   attribution: '&copy; OpenStreetMap &copy; CARTO'
 }).addTo(map);
 
-// Fonction pour créer l'icône du point
 function makePinIcon(color){
   return L.divIcon({
     className: '',
-    html: '<div style="width:20px;height:20px;background:'+color+';border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid #fff;box-shadow:0 3px 8px rgba(0,0,0,0.3);"></div>',
+    html: '<div style="width:20px;height:20px;background:'+color+';border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid #222;box-shadow:0 3px 10px rgba(0,0,0,0.8);"></div>',
     iconSize: [20, 20],
     iconAnchor: [10, 20],
     popupAnchor: [0, -22]
   });
 }
 
-// Groupe pour pouvoir zoomer automatiquement sur tous les points
 const markersGroup = L.featureGroup().addTo(map);
 
-// Ajout des points sur la carte
 initialPins.forEach(function(p){
   const color = CAT_COLORS[p.cat];
   const label = CAT_LABELS[p.cat];
   
-  // Design de la popup
   const popHtml = `
     <div class="custom-popup" style="min-width: 180px;">
       <div class="title">${p.name}</div>
-      <div class="cat-badge" style="color: ${color}; background: ${color}15;">
+      <div class="cat-badge" style="color: ${color}; background: ${color}20;">
         <div style="width:8px;height:8px;border-radius:50%;background:${color};"></div>
         ${label}
       </div>
@@ -174,13 +173,12 @@ initialPins.forEach(function(p){
     </div>
   `;
 
-  // Création du marker
   const marker = L.marker([p.lat, p.lng], { icon: makePinIcon(color) });
   marker.bindPopup(popHtml, { maxWidth: 280 });
   markersGroup.addLayer(marker);
 });
 
-// Ajustement automatique de la vue pour inclure tous les points avec une marge (padding)
+// Centrage et zoom automatique sur tous les points
 map.fitBounds(markersGroup.getBounds(), { padding: [50, 50] });
 
 </script>
